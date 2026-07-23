@@ -97,7 +97,14 @@ export const formations: Formation[] = [
       "Opérateur pipeline",
       "Inspecteur HSE gaz",
     ],
-    semestres: [],
+    semestres: [
+      { numero: 1, titre: "Fondamentaux gaziers", ues: ["Chimie des gaz", "Thermodynamique", "Sécurité industrielle"] },
+      { numero: 2, titre: "Transport et distribution", ues: ["Réseaux de pipelines", "Compression", "Instrumentation gaz"] },
+      { numero: 3, titre: "GNL & Traitements", ues: ["Liquéfaction", "Traitement du gaz naturel", "Stockage GNL"] },
+      { numero: 4, titre: "HSE & Réglementation gaz", ues: ["Normes gaz", "Environnement", "Réglementation CEDEAO"] },
+      { numero: 5, titre: "Projets gaziers", ues: ["Montage de projet", "Économie gazière", "Gestion contractuelle"] },
+      { numero: 6, titre: "Stage & Mémoire", ues: ["Stage 4 mois", "Mémoire de licence", "Soutenance"] },
+    ],
   },
   {
     id: "f03",
@@ -117,7 +124,14 @@ export const formations: Formation[] = [
       "Consultant transition énergétique",
       "Chef de projet ENR",
     ],
-    semestres: [],
+    semestres: [
+      { numero: 1, titre: "Physique de l'énergie", ues: ["Électrotechnique", "Ressources solaires & éoliennes", "Mathématiques"] },
+      { numero: 2, titre: "Systèmes photovoltaïques", ues: ["Dimensionnement PV", "Onduleurs", "Raccordement réseau"] },
+      { numero: 3, titre: "Éolien & Hybridation", ues: ["Éoliennes", "Systèmes hybrides", "Stockage batterie"] },
+      { numero: 4, titre: "Réseaux intelligents", ues: ["Smart grids", "Effacement de charge", "Outils de simulation"] },
+      { numero: 5, titre: "Transition & Politiques", ues: ["Marchés de l'énergie", "Financement ENR", "Cadre CEDEAO ENR"] },
+      { numero: 6, titre: "Stage & Mémoire", ues: ["Stage 4 mois", "Mémoire de licence", "Soutenance"] },
+    ],
   },
   {
     id: "f04",
@@ -133,7 +147,12 @@ export const formations: Formation[] = [
     description:
       "Maintenance préventive et curative des équipements de raffinerie, d'unités de traitement et de stations de pompage.",
     debouches: ["Technicien de maintenance", "Inspecteur équipements", "Chef d'équipe maintenance"],
-    semestres: [],
+    semestres: [
+      { numero: 1, titre: "Bases de la maintenance", ues: ["Mécanique industrielle", "Électricité industrielle", "Pneumatique/hydraulique"] },
+      { numero: 2, titre: "Équipements pétroChimiques", ues: ["Pompes & compresseurs", "Échangeurs", "Vannes & robinetterie"] },
+      { numero: 3, titre: "Maintenance préventive", ues: ["Analyse vibratoire", "Thermographie IR", "GMAO"] },
+      { numero: 4, titre: "Stage & Projet", ues: ["Stage 3 mois", "Rapport de stage", "Soutenance BTS"] },
+    ],
   },
   {
     id: "f05",
@@ -153,7 +172,12 @@ export const formations: Formation[] = [
       "Auditeur environnemental",
       "Technicien sécurité industrielle",
     ],
-    semestres: [],
+    semestres: [
+      { numero: 1, titre: "Fondamentaux HSE", ues: ["Droit du travail", "Analyse des risques", "Ergonomie"] },
+      { numero: 2, titre: "Sécurité industrielle", ues: ["Prévention incendie", "Équipements de protection", "Plans d'urgence"] },
+      { numero: 3, titre: "Environnement", ues: ["ISO 14001", "Évaluation d'impact environnemental", "Traitement des déchets"] },
+      { numero: 4, titre: "Stage & Projet HSE", ues: ["Stage 3 mois", "Rapport de stage", "Soutenance BTS"] },
+    ],
   },
   {
     id: "f06",
@@ -175,7 +199,12 @@ export const formations: Formation[] = [
       "Consultant stratégie",
       "Project Manager O&G",
     ],
-    semestres: [],
+    semestres: [
+      { numero: 1, titre: "Management de projet avancé", ues: ["PMBoK / Prince2", "Planification", "Gestion des risques"] },
+      { numero: 2, titre: "Finance & Structuration", ues: ["Montage financier", "Contractualisation", "Due diligence"] },
+      { numero: 3, titre: "Alternance & Projets terrain", ues: ["Mission en entreprise", "Études de cas", "Négociation internationale"] },
+      { numero: 4, titre: "Leadership & Mémoire", ues: ["Gestion d'équipes multiculturelles", "Thèse professionnelle", "Soutenance Master"] },
+    ],
   },
   {
     id: "f07",
@@ -216,7 +245,10 @@ export const formations: Formation[] = [
       "Acheteur industriel",
       "Coordinateur logistique offshore",
     ],
-    semestres: [],
+    semestres: [
+      { numero: 1, titre: "Fondamentaux de la logistique", ues: ["Supply chain management", "Transport international", "Achats industriels"] },
+      { numero: 2, titre: "Logistique pétrolière", ues: ["Logistique offshore", "Gestion des stocks critiques", "Douanes & commerce"] },
+    ],
   },
 ];
 
