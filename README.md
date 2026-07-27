@@ -56,6 +56,26 @@ src/
   lib/            Utilitaires serveur (envoi d'email, validations)
 ```
 
+## Contenu — comment ajouter une photo, un logo ou une brochure
+
+Il n'y a pas d'interface d'administration : tout le contenu du site vit dans
+les fichiers TypeScript de `src/data/` (formations, actualités, écosystème,
+institution, think tank). Chaque champ visuel (`image`, `portrait`, `logo`,
+`photo`, `brochureUrl`) est typé `string | null` — tant qu'il vaut `null`,
+la page correspondante affiche automatiquement un bloc placeholder
+(« Photo provisoire », etc.) ou masque l'élément (ex. le bouton de
+téléchargement de brochure). Fournir une vraie valeur suffit à faire
+disparaître le placeholder, sans toucher au code des composants.
+
+Pour ajouter un fichier :
+
+1. Déposer l'image ou le PDF dans `public/` (créer le sous-dossier si besoin,
+   par exemple `public/images/partenaires/` ou `public/brochures/`).
+2. Dans le fichier de données concerné (`src/data/*.ts`), remplacer `null`
+   par le chemin public du fichier — ex. `brochureUrl: "/brochures/genie-petrolier.pdf"`.
+3. Committer et déployer. Une modification de `src/data/` prend effet au
+   prochain build ; il n'y a pas de mise à jour à chaud en production.
+
 ## CI
 
 Un workflow GitHub Actions (`.github/workflows/ci.yml`) exécute le

@@ -143,9 +143,15 @@ export default async function FicheFormation({
               >
                 Candidater
               </Link>
-              <button className="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 text-[15px] font-medium hover:border-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]">
-                Télécharger la brochure PDF
-              </button>
+              {formation.brochureUrl && (
+                <a
+                  href={formation.brochureUrl}
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/40 text-[15px] font-medium hover:border-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+                >
+                  Télécharger la brochure PDF
+                </a>
+              )}
             </div>
           </div>
         </div>

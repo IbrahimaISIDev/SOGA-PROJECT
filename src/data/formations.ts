@@ -14,6 +14,8 @@ export interface Formation {
   rentree: string;
   placesLimitees: boolean;
   capacite?: number;
+  /** Chemin public vers la brochure PDF (ex. "/brochures/genie-petrolier.pdf"), ou null si aucune n'est disponible. */
+  brochureUrl: string | null;
   description: string;
   debouches: string[];
   semestres: {
@@ -28,6 +30,7 @@ export const formations: Formation[] = [
     id: "f01",
     slug: "genie-petrolier",
     code: "GP-LP",
+    brochureUrl: null,
     titre: "Génie Pétrolier",
     pole: "technique",
     niveau: "Licence Pro",
@@ -81,6 +84,7 @@ export const formations: Formation[] = [
     id: "f02",
     slug: "genie-gaz",
     code: "GG-LP",
+    brochureUrl: null,
     titre: "Génie du Gaz",
     pole: "technique",
     niveau: "Licence Pro",
@@ -110,6 +114,7 @@ export const formations: Formation[] = [
     id: "f03",
     slug: "energies-renouvelables",
     code: "ER-LP",
+    brochureUrl: null,
     titre: "Énergies Renouvelables et Transition Énergétique",
     pole: "technique",
     niveau: "Licence Pro",
@@ -137,6 +142,7 @@ export const formations: Formation[] = [
     id: "f04",
     slug: "maintenance-industrielle",
     code: "MI-BTS",
+    brochureUrl: null,
     titre: "Maintenance Industrielle Pétrochimique",
     pole: "technique",
     niveau: "BTS",
@@ -158,6 +164,7 @@ export const formations: Formation[] = [
     id: "f05",
     slug: "hse-environnement",
     code: "HSE-BTS",
+    brochureUrl: null,
     titre: "Hygiène, Sécurité, Environnement (HSE)",
     pole: "technique",
     niveau: "BTS",
@@ -183,6 +190,7 @@ export const formations: Formation[] = [
     id: "f06",
     slug: "management-projets-energetiques",
     code: "MPE-MP",
+    brochureUrl: null,
     titre: "Management des Projets Énergétiques",
     pole: "managerial",
     niveau: "Master Pro",
@@ -210,6 +218,7 @@ export const formations: Formation[] = [
     id: "f07",
     slug: "economie-droit-petrole",
     code: "EDP-LP",
+    brochureUrl: null,
     titre: "Économie et Droit du Pétrole",
     pole: "managerial",
     niveau: "Licence Pro",
@@ -231,6 +240,7 @@ export const formations: Formation[] = [
     id: "f08",
     slug: "logistique-supply-chain",
     code: "LSC-DTS",
+    brochureUrl: null,
     titre: "Logistique et Supply Chain Pétrolière",
     pole: "managerial",
     niveau: "DTS",
