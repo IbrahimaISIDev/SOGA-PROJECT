@@ -1,3 +1,5 @@
+import { readCollection } from "@/lib/content";
+
 export interface Publication {
   id: string;
   slug: string;
@@ -26,32 +28,7 @@ export interface Thematique {
   description: string;
 }
 
-export const thematiquesListe: Thematique[] = [
-  {
-    id: "th01",
-    titre: "Gouvernance des ressources naturelles",
-    description:
-      "Cadres légaux, fonds souverains, transparence fiscale et contractuelle dans le secteur extractif africain.",
-  },
-  {
-    id: "th02",
-    titre: "Transition énergétique & climat",
-    description:
-      "Trajectoires de décarbonation, mix énergétique souverain, financement climatique et adaptation aux accords de Paris.",
-  },
-  {
-    id: "th03",
-    titre: "Contenu local & emploi",
-    description:
-      "Politiques de préférence nationale, formation des compétences locales et retombées socio-économiques des projets extractifs.",
-  },
-  {
-    id: "th04",
-    titre: "Leadership des jeunes et des femmes",
-    description:
-      "Inclusion, accès aux filières techniques et rôle des nouvelles générations dans la souveraineté énergétique africaine.",
-  },
-];
+export const thematiquesListe: Thematique[] = readCollection<Thematique>("thematiques");
 
 export const thematiques = [
   "Gouvernance des ressources naturelles",
@@ -62,92 +39,6 @@ export const thematiques = [
   "Géopolitique de l'énergie en Afrique de l'Ouest",
 ];
 
-export const publications: Publication[] = [
-  {
-    id: "p01",
-    slug: "transition-energetique-senegal-2035",
-    type: "rapport",
-    titre: "Scénarios de transition énergétique pour le Sénégal à l'horizon 2035",
-    auteurs: ["Think Tank SOGA"],
-    date: "2025-04-20",
-    thematique: "Transition énergétique & climat",
-    resume:
-      "Analyse prospective des trajectoires énergétiques sénégalaises combinant exploitation des hydrocarbures et développement accéléré des énergies renouvelables. Recommandations pour un mix énergétique souverain et durable.",
-    image: null,
-    telechargeable: true,
-  },
-  {
-    id: "p02",
-    slug: "contenu-local-petrole-senegal",
-    type: "note",
-    titre: "Contenu local dans l'industrie pétrolière sénégalaise : état des lieux et leviers",
-    auteurs: ["Think Tank SOGA"],
-    date: "2025-02-10",
-    thematique: "Contenu local & emploi",
-    resume:
-      "Note d'analyse sur les dispositions du Code pétrolier sénégalais en matière de contenu local et leur application effective dans les projets GTA et Sangomar.",
-    image: null,
-    telechargeable: true,
-  },
-  {
-    id: "p03",
-    slug: "gouvernance-fonds-petrolier",
-    type: "rapport",
-    titre: "Gouvernance du fonds souverain pétrolier : leçons d'Afrique et perspectives sénégalaises",
-    auteurs: ["Think Tank SOGA"],
-    date: "2024-11-05",
-    thematique: "Gouvernance des ressources naturelles",
-    resume:
-      "Étude comparative des fonds souverains africains (Ghana, Nigeria, Angola) et recommandations pour la structuration du fonds sénégalais.",
-    image: null,
-    telechargeable: true,
-  },
-  {
-    id: "p04",
-    slug: "financement-projets-ener-afrique",
-    type: "note",
-    titre: "Financement des projets énergétiques en Afrique de l'Ouest : panorama 2024",
-    auteurs: ["Think Tank SOGA"],
-    date: "2024-09-18",
-    thematique: "Financement des projets énergétiques",
-    resume:
-      "Tour d'horizon des mécanismes de financement disponibles (obligations vertes, blended finance, DFI) pour les projets énergétiques en Afrique subsaharienne.",
-    image: null,
-    telechargeable: false,
-  },
-];
+export const publications: Publication[] = readCollection<Publication>("publications");
 
-export const experts: Expert[] = [
-  {
-    id: "ex00",
-    nom: "Dr. Aïssatou Cissoko",
-    titre: "Fondatrice & Directrice Générale",
-    institution: "SOGA",
-    specialite: "Énergie & Transition",
-    portrait: null,
-  },
-  {
-    id: "ex01",
-    nom: "Contenu provisoire",
-    titre: "Directeur de recherche",
-    institution: "SOGA Think Tank",
-    specialite: "Économie de l'énergie",
-    portrait: null,
-  },
-  {
-    id: "ex02",
-    nom: "Contenu provisoire",
-    titre: "Chercheur associé",
-    institution: "SOGA Think Tank",
-    specialite: "Droit pétrolier",
-    portrait: null,
-  },
-  {
-    id: "ex03",
-    nom: "Contenu provisoire",
-    titre: "Chercheure associée",
-    institution: "SOGA Think Tank",
-    specialite: "Transition énergétique",
-    portrait: null,
-  },
-];
+export const experts: Expert[] = readCollection<Expert>("experts");

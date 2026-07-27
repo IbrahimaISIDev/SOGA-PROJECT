@@ -1,0 +1,77 @@
+{
+  "itemId": "f01",
+  "slug": "genie-petrolier",
+  "code": "GP-LP",
+  "brochureUrl": null,
+  "titre": "Génie Pétrolier",
+  "pole": "technique",
+  "niveau": "Licence Pro",
+  "mode": "Temps plein",
+  "duree": "3 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": true,
+  "capacite": 30,
+  "description": "Formation d'excellence couvrant l'exploration, le forage, la production et la gestion des réservoirs pétroliers. Socle technique rigoureux ancré dans le contexte ouest-africain.",
+  "debouches": [
+    "Ingénieur reservoir",
+    "Technicien de forage",
+    "Géologue pétrolier",
+    "Ingénieur de production"
+  ],
+  "semestres": [
+    {
+      "numero": 1,
+      "titre": "Fondamentaux scientifiques",
+      "ues": [
+        "Géologie de base",
+        "Mathématiques appliquées",
+        "Chimie des fluides"
+      ]
+    },
+    {
+      "numero": 2,
+      "titre": "Exploration et géophysique",
+      "ues": [
+        "Sismique réflexion",
+        "Pétrophysique",
+        "Cartographie géologique"
+      ]
+    },
+    {
+      "numero": 3,
+      "titre": "Forage et complétion",
+      "ues": [
+        "Techniques de forage",
+        "Fluides de forage",
+        "Sécurité puits"
+      ]
+    },
+    {
+      "numero": 4,
+      "titre": "Production et réservoirs",
+      "ues": [
+        "Ingénierie de réservoirs",
+        "Optimisation de production",
+        "EOR"
+      ]
+    },
+    {
+      "numero": 5,
+      "titre": "HSE & Réglementation",
+      "ues": [
+        "Normes HSE",
+        "Droit pétrolier",
+        "Code pétrolier sénégalais"
+      ]
+    },
+    {
+      "numero": 6,
+      "titre": "Projet de fin d'études",
+      "ues": [
+        "Stage industrie 4 mois",
+        "Mémoire de licence",
+        "Soutenance"
+      ]
+    }
+  ]
+}

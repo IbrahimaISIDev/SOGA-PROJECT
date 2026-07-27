@@ -56,25 +56,59 @@ src/
   lib/            Utilitaires serveur (envoi d'email, validations)
 ```
 
-## Contenu — comment ajouter une photo, un logo ou une brochure
+## Contenu — éditer via TinaCMS
 
-Il n'y a pas d'interface d'administration : tout le contenu du site vit dans
-les fichiers TypeScript de `src/data/` (formations, actualités, écosystème,
-institution, think tank). Chaque champ visuel (`image`, `portrait`, `logo`,
-`photo`, `brochureUrl`) est typé `string | null` — tant qu'il vaut `null`,
-la page correspondante affiche automatiquement un bloc placeholder
-(« Photo provisoire », etc.) ou masque l'élément (ex. le bouton de
-téléchargement de brochure). Fournir une vraie valeur suffit à faire
-disparaître le placeholder, sans toucher au code des composants.
+Le contenu du site (formations, actualités, événements, partenaires,
+témoignages, équipe, publications, experts, thématiques, informations
+institutionnelles) vit dans des fichiers JSON sous `content/`, un fichier
+par élément (`content/formations/genie-petrolier.json`, etc.). Les fichiers
+`src/data/*.ts` ne contiennent plus les données elles-mêmes : ils les lisent
+depuis `content/` (via `src/lib/content.ts`) et exposent exactement les
+mêmes types qu'avant — aucun composant du site n'a eu besoin de changer.
 
-Pour ajouter un fichier :
+Le schéma (quels champs, quels types, quelles options) est défini une seule
+fois dans `tina/config.ts`.
 
-1. Déposer l'image ou le PDF dans `public/` (créer le sous-dossier si besoin,
-   par exemple `public/images/partenaires/` ou `public/brochures/`).
-2. Dans le fichier de données concerné (`src/data/*.ts`), remplacer `null`
-   par le chemin public du fichier — ex. `brochureUrl: "/brochures/genie-petrolier.pdf"`.
-3. Committer et déployer. Une modification de `src/data/` prend effet au
-   prochain build ; il n'y a pas de mise à jour à chaud en production.
+### Éditer en local (sans compte)
+
+```bash
+npm run cms:dev
+```
+
+Ouvre le site normalement sur [http://localhost:3000](http://localhost:3000)
+et l'interface d'édition sur
+[http://localhost:3000/admin/index.html](http://localhost:3000/admin/index.html).
+En local, les modifications sont enregistrées directement dans les fichiers
+`content/*.json` de votre copie du dépôt — à committer ensuite comme
+n'importe quel changement de code.
+
+### Éditer sur le site déployé (TinaCloud)
+
+Pour qu'une personne non-technique puisse éditer le contenu du site en ligne
+(sur `/admin`), sans avoir Node ni le dépôt en local :
+
+1. Créer un compte gratuit sur [tina.io](https://tina.io) et y connecter ce
+   dépôt GitHub.
+2. Récupérer le `Client ID` et le `Token` fournis par TinaCloud.
+3. Les renseigner comme variables d'environnement sur la plateforme
+   d'hébergement (et dans `.env.local` en local si besoin) :
+   `NEXT_PUBLIC_TINA_CLIENT_ID` et `TINA_TOKEN` (voir `.env.example`).
+4. Le build de production doit générer l'interface d'admin avant de
+   construire le site : `npm run cms:build` au lieu de `npm run build`
+   (à configurer comme commande de build sur la plateforme d'hébergement).
+
+Sans ces variables, le site continue de fonctionner normalement
+(`npm run dev` / `npm run build` / `npm run start` restent inchangés et ne
+nécessitent aucun compte) — seule l'édition en ligne sur le site déployé
+est indisponible tant que TinaCloud n'est pas connecté.
+
+### Photos, logos, portraits, brochures
+
+Chaque champ visuel (`image`, `portrait`, `logo`, `photo`, `brochureUrl`)
+est optionnel — tant qu'il est vide, la page correspondante affiche
+automatiquement un bloc placeholder (« Photo provisoire », etc.) ou masque
+l'élément (ex. le bouton de téléchargement de brochure). Les images
+envoyées depuis l'admin Tina sont stockées dans `public/uploads/`.
 
 ## CI
 

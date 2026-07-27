@@ -1,0 +1,77 @@
+{
+  "itemId": "f02",
+  "slug": "genie-gaz",
+  "code": "GG-LP",
+  "brochureUrl": null,
+  "titre": "Génie du Gaz",
+  "pole": "technique",
+  "niveau": "Licence Pro",
+  "mode": "Temps plein",
+  "duree": "3 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": true,
+  "capacite": 25,
+  "description": "Spécialisation sur les filières GNL, gaz naturel et transport par pipeline. Préparation aux standards internationaux du secteur gazier en plein essor au Sénégal.",
+  "debouches": [
+    "Ingénieur procédés gaz",
+    "Technicien GNL",
+    "Opérateur pipeline",
+    "Inspecteur HSE gaz"
+  ],
+  "semestres": [
+    {
+      "numero": 1,
+      "titre": "Fondamentaux gaziers",
+      "ues": [
+        "Chimie des gaz",
+        "Thermodynamique",
+        "Sécurité industrielle"
+      ]
+    },
+    {
+      "numero": 2,
+      "titre": "Transport et distribution",
+      "ues": [
+        "Réseaux de pipelines",
+        "Compression",
+        "Instrumentation gaz"
+      ]
+    },
+    {
+      "numero": 3,
+      "titre": "GNL & Traitements",
+      "ues": [
+        "Liquéfaction",
+        "Traitement du gaz naturel",
+        "Stockage GNL"
+      ]
+    },
+    {
+      "numero": 4,
+      "titre": "HSE & Réglementation gaz",
+      "ues": [
+        "Normes gaz",
+        "Environnement",
+        "Réglementation CEDEAO"
+      ]
+    },
+    {
+      "numero": 5,
+      "titre": "Projets gaziers",
+      "ues": [
+        "Montage de projet",
+        "Économie gazière",
+        "Gestion contractuelle"
+      ]
+    },
+    {
+      "numero": 6,
+      "titre": "Stage & Mémoire",
+      "ues": [
+        "Stage 4 mois",
+        "Mémoire de licence",
+        "Soutenance"
+      ]
+    }
+  ]
+}

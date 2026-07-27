@@ -1,0 +1,57 @@
+{
+  "itemId": "f05",
+  "slug": "hse-environnement",
+  "code": "HSE-BTS",
+  "brochureUrl": null,
+  "titre": "Hygiène, Sécurité, Environnement (HSE)",
+  "pole": "technique",
+  "niveau": "BTS",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation aux normes HSE internationales (ISO 45001, ISO 14001) appliquées aux industries pétrolière, gazière et minière.",
+  "debouches": [
+    "Responsable HSE",
+    "Auditeur environnemental",
+    "Technicien sécurité industrielle"
+  ],
+  "semestres": [
+    {
+      "numero": 1,
+      "titre": "Fondamentaux HSE",
+      "ues": [
+        "Droit du travail",
+        "Analyse des risques",
+        "Ergonomie"
+      ]
+    },
+    {
+      "numero": 2,
+      "titre": "Sécurité industrielle",
+      "ues": [
+        "Prévention incendie",
+        "Équipements de protection",
+        "Plans d'urgence"
+      ]
+    },
+    {
+      "numero": 3,
+      "titre": "Environnement",
+      "ues": [
+        "ISO 14001",
+        "Évaluation d'impact environnemental",
+        "Traitement des déchets"
+      ]
+    },
+    {
+      "numero": 4,
+      "titre": "Stage & Projet HSE",
+      "ues": [
+        "Stage 3 mois",
+        "Rapport de stage",
+        "Soutenance BTS"
+      ]
+    }
+  ]
+}
