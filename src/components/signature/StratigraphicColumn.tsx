@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useRevealOnScroll } from "@/hooks/useRevealOnMount";
 
 interface Strate {
   height: number;
@@ -45,33 +46,8 @@ export default function StratigraphicColumn({
   className = "",
   progress,
 }: StratigraphicColumnProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
+  const { ref, revealed } = useRevealOnScroll<HTMLDivElement>(0.2);
   const [scrollProgress, setScrollProgress] = useState(progress ?? 0);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setRevealed(true);
-      return;
-    }
-
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setRevealed(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     if (variant !== "hero" || progress !== undefined) return;
@@ -127,24 +103,7 @@ export default function StratigraphicColumn({
 
 /* ─── Section separator variant (horizontal) ─────────────────── */
 export function StratigraphicSeparator({ className = "" }: { className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setRevealed(true);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setRevealed(true); obs.disconnect(); } },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  const { ref, revealed } = useRevealOnScroll<HTMLDivElement>(0.2);
 
   const segments = [
     { flex: 3, color: "var(--soga-line)", h: 1 },

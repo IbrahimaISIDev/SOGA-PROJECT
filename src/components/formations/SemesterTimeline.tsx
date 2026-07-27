@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useRevealOnScroll } from "@/hooks/useRevealOnMount";
 
 interface Semestre {
   numero: number;
@@ -22,24 +23,8 @@ function strateColor(index: number, total: number): string {
 }
 
 export default function SemesterTimeline({ semestres }: SemesterTimelineProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
+  const { ref, revealed } = useRevealOnScroll<HTMLDivElement>(0.2);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setRevealed(true);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setRevealed(true); obs.disconnect(); } },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
   if (!semestres.length) {
     return (

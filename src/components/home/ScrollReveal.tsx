@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRevealOnScroll } from "@/hooks/useRevealOnMount";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -13,28 +13,7 @@ export default function ScrollReveal({
   className = "",
   delay = 0,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  const { ref, revealed: visible } = useRevealOnScroll<HTMLDivElement>(0.2);
 
   return (
     <div

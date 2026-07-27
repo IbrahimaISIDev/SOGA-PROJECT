@@ -1,94 +1,44 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import StratigraphicColumn from "@/components/signature/StratigraphicColumn";
-
-const STATS = [
-  { valeur: "8", libelle: "Filières spécialisées" },
-  { valeur: "40+", libelle: "Partenaires industriels" },
-  { valeur: "95%", libelle: "Taux d'insertion" },
-  { valeur: "3", libelle: "Pôles d'expertise" },
-];
-
-function useCountUp(target: number, enabled: boolean, duration = 1200) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!enabled) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setCount(target);
-      return;
-    }
-    const start = performance.now();
-    const step = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      setCount(Math.round(progress * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [target, enabled, duration]);
-  return count;
-}
-
-function StatItem({ valeur, libelle, enabled }: { valeur: string; libelle: string; enabled: boolean }) {
-  const numericPart = parseInt(valeur.replace(/\D/g, ""), 10);
-  const suffix = valeur.replace(/\d/g, "");
-  const count = useCountUp(numericPart || 0, enabled);
-
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="text-display text-[40px] md:text-[56px] font-display text-soga-gold-light leading-none">
-        {numericPart ? `${count}${suffix}` : valeur}
-      </span>
-      <span className="text-eyebrow text-white/60">{libelle}</span>
-    </div>
-  );
-}
+import { useRevealOnMount } from "@/hooks/useRevealOnMount";
 
 export default function HeroSection() {
-  const [titleRevealed, setTitleRevealed] = useState(false);
-  const [statsVisible, setStatsVisible] = useState(false);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const revealed = useRevealOnMount(80);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setTitleRevealed(true);
-      setStatsVisible(true);
-      return;
-    }
-    const timer = setTimeout(() => setTitleRevealed(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const el = statsRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setStatsVisible(true); obs.disconnect(); } },
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const titleLines = ["Former l'élite africaine", "de l'énergie. Ici,"];
+  const titleLines = ["Former l’élite africaine", "de l’énergie. Ici,"];
 
   return (
     <section
       className="relative min-h-screen flex flex-col justify-end bg-soga-black overflow-hidden"
-      aria-label="Hero — SOGA"
+      aria-label="Page d’accueil SOGA"
     >
-      {/* Background placeholder */}
-      <div className="absolute inset-0 placeholder-block opacity-30" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-t from-soga-black via-soga-black/70 to-transparent" aria-hidden />
-
+      {/* Duotone placeholder background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "repeating-linear-gradient(115deg,#0B0C0E,#0B0C0E 14px,#1a3040 14px,#1a3040 28px)",
+          opacity: 0.9,
+        }}
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(to top, #0B0C0E 0%, #0B0C0E 20%, rgba(11,12,14,0.55) 60%, transparent 100%)" }}
+        aria-hidden
+      />
       {/* Provisional label */}
-      <div className="absolute top-0 left-0 right-0 z-10 px-4 pt-3">
-        <p className="text-eyebrow text-soga-muted">
-          PHOTO / VIDÉO PROVISOIRE — À REMPLACER
-        </p>
-      </div>
+      <p
+        className="absolute top-4 left-[88px] text-eyebrow z-10"
+        style={{ color: "#F0C868", fontSize: "11px", backgroundColor: "rgba(0,0,0,0.45)", padding: "4px 8px" }}
+        aria-hidden
+      >
+        PHOTO / VIDÉO PROVISOIRE — À REMPLACER
+      </p>
 
       {/* Stratigraphic column — left edge */}
       <div className="absolute left-0 top-0 bottom-0 flex items-stretch z-10" aria-hidden>
@@ -96,109 +46,107 @@ export default function HeroSection() {
       </div>
 
       {/* Hero content */}
-      <div className="relative z-10 container-soga pb-16 md:pb-24">
+      <div className="relative z-10 container-soga pb-20 md:pb-28">
         {/* Eyebrow */}
         <div
-          className="mb-8 transition-all duration-500"
-          style={{
-            opacity: titleRevealed ? 1 : 0,
-            transform: titleRevealed ? "translateY(0)" : "translateY(12px)",
-          }}
+          className="mb-5 transition-all duration-500"
+          style={{ opacity: revealed ? 1 : 0, transform: revealed ? "none" : "translateY(12px)" }}
         >
-          <p className="text-eyebrow text-white/60">
+          <p className="text-eyebrow" style={{ color: "#F0C868" }}>
             SENEGAL OIL AND GAS ACADEMY · DAKAR
           </p>
         </div>
 
-        {/* Title — line by line reveal */}
-        <h1 className="text-display text-white mb-4 overflow-hidden">
+        {/* H1 */}
+        <h1
+          className="font-display font-semibold text-white mb-7 overflow-hidden"
+          style={{ fontSize: "clamp(40px, 5vw, 72px)", lineHeight: 1.05, letterSpacing: "-0.01em" }}
+        >
           {titleLines.map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <span
                 className="block transition-all"
                 style={{
-                  transitionDuration: "400ms",
+                  transitionDuration: "420ms",
                   transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
                   transitionDelay: `${i * 80}ms`,
-                  clipPath: titleRevealed ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
-                  transform: titleRevealed ? "translateY(0)" : "translateY(100%)",
+                  clipPath: revealed ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
+                  transform: revealed ? "none" : "translateY(100%)",
                 }}
               >
                 {line}
               </span>
             </span>
           ))}
-          {/* Gold word */}
           <span className="block overflow-hidden">
             <span
               className="block transition-all"
               style={{
-                transitionDuration: "400ms",
+                transitionDuration: "420ms",
                 transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
                 transitionDelay: "160ms",
-                clipPath: titleRevealed ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
-                transform: titleRevealed ? "translateY(0)" : "translateY(100%)",
+                clipPath: revealed ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
+                transform: revealed ? "none" : "translateY(100%)",
+                color: "#C9962C",
               }}
             >
-              <span className="text-soga-gold">au Sénégal.</span>
+              au Sénégal.
             </span>
           </span>
         </h1>
 
-        {/* Sub-headline */}
+        {/* Subtitle */}
         <p
-          className="text-lead text-white/70 max-w-xl mb-10 transition-all duration-500"
+          className="text-lead max-w-[560px] mb-10 transition-all duration-500"
           style={{
-            transitionDelay: "280ms",
-            opacity: titleRevealed ? 1 : 0,
-            transform: titleRevealed ? "translateY(0)" : "translateY(12px)",
+            color: "#D8D4C8",
+            transitionDelay: "260ms",
+            opacity: revealed ? 1 : 0,
+            transform: revealed ? "none" : "translateY(12px)",
           }}
         >
-          L&apos;académie supérieure dédiée aux métiers du pétrole, du gaz et des énergies durables,
-          formant des professionnels capables de relever les défis énergétiques africains.
+          Une école supérieure dédiée aux métiers du pétrole, du gaz et des énergies durables — pensée pour l&apos;industrie réelle.
         </p>
 
         {/* CTAs */}
         <div
-          className="flex flex-wrap gap-4 transition-all duration-500"
+          className="flex flex-col sm:flex-row gap-4 transition-all duration-500"
           style={{
-            transitionDelay: "360ms",
-            opacity: titleRevealed ? 1 : 0,
-            transform: titleRevealed ? "translateY(0)" : "translateY(12px)",
+            transitionDelay: "340ms",
+            opacity: revealed ? 1 : 0,
+            transform: revealed ? "none" : "translateY(12px)",
           }}
         >
           <Link
             href="/formations"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-soga-black text-soga-gold-light border border-soga-gold text-[15px] font-medium hover:bg-soga-graphite transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+            className="inline-flex items-center justify-center px-7 py-4 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+            style={{ backgroundColor: "#C9962C", color: "#0B0C0E" }}
           >
             Découvrir nos formations
           </Link>
           <Link
             href="/admissions"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white border border-white/30 text-[15px] font-medium hover:border-white hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+            className="inline-flex items-center justify-center px-7 py-4 text-[15px] font-semibold border transition-colors hover:border-soga-gold hover:text-soga-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+            style={{ borderColor: "#F6F4EF", color: "#F6F4EF", backgroundColor: "transparent" }}
           >
-            Candidater pour 2025
+            Candidater →
           </Link>
         </div>
       </div>
 
-      {/* Stats bar */}
-      <div
-        ref={statsRef}
-        className="relative z-10 bg-soga-graphite/80 backdrop-blur-sm border-t border-soga-graphite"
-      >
-        <div className="container-soga py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {STATS.map((stat) => (
-              <StatItem
-                key={stat.libelle}
-                valeur={stat.valeur}
-                libelle={stat.libelle}
-                enabled={statsVisible}
-              />
-            ))}
-          </div>
-        </div>
+      {/* Scroll hint */}
+      <div ref={scrollRef} className="absolute bottom-8 z-10" style={{ left: "clamp(20px, 6vw, 88px)" }}>
+        <p
+          className="text-eyebrow transition-all duration-700"
+          style={{
+            color: "#8a8a8a",
+            transitionDelay: "600ms",
+            opacity: revealed ? 1 : 0,
+          }}
+          aria-hidden
+        >
+          FAIRE DÉFILER ↓
+        </p>
       </div>
     </section>
   );
