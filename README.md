@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SOGA — Senegal Oil and Gas Academy
 
-## Getting Started
+Site institutionnel de la Senegal Oil and Gas Academy, une école supérieure
+dédiée aux métiers du pétrole, du gaz et des énergies durables, basée à
+Dakar. Le site présente les formations, les admissions, l'écosystème de
+partenaires, le Think Tank de l'académie et l'institution elle-même.
 
-First, run the development server:
+## Stack technique
+
+- [Next.js](https://nextjs.org) 16 (App Router, Turbopack)
+- [React](https://react.dev) 19
+- [TypeScript](https://www.typescriptlang.org) en mode strict
+- [Tailwind CSS](https://tailwindcss.com) 4
+- [Resend](https://resend.com) pour l'envoi des emails déclenchés par les formulaires
+
+## Démarrage
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est servi sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copier `.env.example` vers `.env.local` et renseigner les valeurs :
 
-## Learn More
+```bash
+cp .env.example .env.local
+```
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Rôle |
+| --- | --- |
+| `RESEND_API_KEY` | Clé API [Resend](https://resend.com). Sans elle, les formulaires fonctionnent toujours mais l'envoi d'email est simulé (journalisé côté serveur uniquement). |
+| `RESEND_FROM_EMAIL` | Adresse d'expédition — doit provenir d'un domaine vérifié dans Resend, ou de l'adresse bac à sable `onboarding@resend.dev` en attendant la vérification. |
+| `CONTACT_EMAIL_TO` | Adresse qui reçoit les notifications de formulaires. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Commande | Effet |
+| --- | --- |
+| `npm run dev` | Serveur de développement |
+| `npm run build` | Build de production |
+| `npm run start` | Sert le build de production |
+| `npm run lint` | ESLint (flat config, `eslint-config-next`) |
 
-## Deploy on Vercel
+## Structure du projet
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/            Routes (App Router) — pages publiques et routes API (src/app/api)
+  components/     Composants React, organisés par domaine (layout, home, ui, ...)
+  data/           Contenu structuré du site (formations, actualités, écosystème, ...)
+  hooks/          Hooks partagés (ex. animations d'apparition respectueuses de prefers-reduced-motion)
+  lib/            Utilitaires serveur (envoi d'email, validations)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## CI
+
+Un workflow GitHub Actions (`.github/workflows/ci.yml`) exécute le
+typecheck, le lint et le build sur chaque push vers `main` et chaque
+pull request.
