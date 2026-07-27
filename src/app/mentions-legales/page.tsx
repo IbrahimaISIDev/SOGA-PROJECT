@@ -91,14 +91,14 @@ const SECTIONS = [
     titre: "Cookies",
     contenu: [
       <>
-        Ce site utilise des cookies strictement nécessaires à son fonctionnement
-        technique et des cookies de mesure d&apos;audience anonymisée. Aucun cookie
-        publicitaire ou de traçage commercial n&apos;est déposé sur votre terminal.
+        Ce site utilise uniquement des cookies strictement nécessaires à son
+        fonctionnement technique. Aucun cookie de mesure d&apos;audience, publicitaire
+        ou de traçage commercial n&apos;est déposé sur votre terminal.
       </>,
       <>
-        Vous pouvez accepter ou refuser les cookies de mesure via la bannière affichée
-        lors de votre première visite, ou à tout moment en vidant les données de votre
-        navigateur. Le refus n&apos;affecte pas la navigation sur le site.
+        Une bannière est affichée lors de votre première visite pour vous en informer.
+        Votre choix est mémorisé localement sur votre appareil et n&apos;affecte pas la
+        navigation sur le site.
       </>,
     ],
   },

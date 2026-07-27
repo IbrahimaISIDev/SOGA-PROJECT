@@ -54,7 +54,7 @@ export default function CookieBanner() {
         }}
       >
         <p className="text-[14px] leading-relaxed" style={{ color: "#D8D4C8" }}>
-          Ce site utilise des cookies essentiels et de mesure d&apos;audience.{" "}
+          Ce site utilise des cookies strictement nécessaires à son fonctionnement technique.{" "}
           <Link
             href="/mentions-legales#cookies"
             className="font-medium hover:underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
