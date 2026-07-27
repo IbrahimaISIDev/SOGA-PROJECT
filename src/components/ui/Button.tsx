@@ -1,16 +1,30 @@
 "use client";
 
-import { forwardRef } from "react";
+import Link from "next/link";
 
 type Variant = "primary" | "secondary" | "tertiary";
 type Size = "sm" | "md" | "lg";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface CommonProps {
   variant?: Variant;
   size?: Size;
-  as?: "button" | "a";
-  href?: string;
+  className?: string;
+  children?: React.ReactNode;
 }
+
+type ButtonAsButton = CommonProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children"> & {
+    as?: "button";
+    href?: undefined;
+  };
+
+type ButtonAsLink = CommonProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "children"> & {
+    as: "a";
+    href: string;
+  };
+
+type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const sizeClasses: Record<Size, string> = {
   sm: "px-4 py-2 text-sm",
@@ -35,30 +49,33 @@ const variantClasses: Record<Variant, string> = {
     "disabled:opacity-40 disabled:cursor-not-allowed",
 };
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    variant = "primary",
-    size = "md",
-    className = "",
-    children,
-    ...props
-  },
-  ref
-) {
+export default function Button({
+  variant = "primary",
+  size = "md",
+  className = "",
+  children,
+  ...props
+}: ButtonProps) {
   const base =
     "inline-flex items-center justify-center gap-2 font-sans transition-all duration-200 " +
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 " +
     "min-h-[44px] cursor-pointer";
 
+  const classes = `${base} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+
+  if (props.as === "a") {
+    const { as: _as, ...anchorProps } = props;
+    return (
+      <Link className={classes} {...anchorProps}>
+        {children}
+      </Link>
+    );
+  }
+
+  const { as: _as, ...buttonProps } = props;
   return (
-    <button
-      ref={ref}
-      className={`${base} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
-      {...props}
-    >
+    <button className={classes} {...buttonProps}>
       {children}
     </button>
   );
-});
-
-export default Button;
+}

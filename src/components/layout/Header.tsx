@@ -227,11 +227,7 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
                 <span className="opacity-40">/</span>
                 <span>EN</span>
               </button>
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={() => (window.location.href = "/admissions/candidature")}
-              >
+              <Button as="a" href="/admissions/candidature" variant="primary" size="sm">
                 Candidater
               </Button>
             </div>
@@ -532,10 +528,12 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
 
         <div className="px-5 py-6 border-t border-soga-graphite flex flex-col gap-3">
           <Button
+            as="a"
+            href="/admissions/candidature"
             variant="primary"
             size="lg"
             className="w-full justify-center"
-            onClick={() => { window.location.href = "/admissions/candidature"; setMobileOpen(false); }}
+            onClick={() => setMobileOpen(false)}
           >
             Candidater
           </Button>
