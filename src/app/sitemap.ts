@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 import { formations } from "@/data/formations";
 import { articles, evenements } from "@/data/actualites";
 import { publications } from "@/data/thinktank";
+import { SITE_URL as BASE } from "@/lib/site";
 
-const BASE = "https://senegaloilandgasacademy.com";
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

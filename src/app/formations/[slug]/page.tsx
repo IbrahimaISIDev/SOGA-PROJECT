@@ -7,6 +7,9 @@ import Badge from "@/components/ui/Badge";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import SemesterTimeline, { SemesterList } from "@/components/formations/SemesterTimeline";
 import { formations } from "@/data/formations";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/site";
+import { institution } from "@/data/institution";
 
 export function generateStaticParams() {
   return formations.map((f) => ({ slug: f.slug }));
@@ -45,8 +48,28 @@ export default async function FicheFormation({
     .filter((f) => f.slug !== formation.slug && f.pole === formation.pole)
     .slice(0, 3);
 
+  const courseJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: formation.titre,
+    description: formation.description,
+    url: `${SITE_URL}/formations/${formation.slug}`,
+    educationalCredentialAwarded: formation.niveau,
+    provider: {
+      "@type": "EducationalOrganization",
+      name: institution.nom,
+      sameAs: SITE_URL,
+    },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: formation.mode,
+      courseWorkload: formation.duree,
+    },
+  };
+
   return (
     <>
+      <JsonLd data={courseJsonLd} />
       <Header variant="dark" />
       <main id="main-content">
         {/* ── Hero header ──────────────────────────────────── */}
