@@ -56,6 +56,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       {message && (
         <p
           id={`${inputId}-message`}
+          role={state === "error" ? "alert" : undefined}
           className={`text-small ${state === "error" ? "text-red-600" : "text-green-600"}`}
         >
           {message}
@@ -109,6 +110,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {message && (
           <p
             id={`${inputId}-message`}
+            role={state === "error" ? "alert" : undefined}
             className={`text-small ${state === "error" ? "text-red-600" : "text-green-600"}`}
           >
             {message}
@@ -179,6 +181,7 @@ export function Select({
       {message && (
         <p
           id={`${inputId}-message`}
+          role={state === "error" ? "alert" : undefined}
           className={`text-small ${state === "error" ? "text-red-600" : "text-green-600"}`}
         >
           {message}
