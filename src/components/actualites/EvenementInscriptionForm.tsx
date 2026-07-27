@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Input } from "@/components/ui/Input";
 
 interface Props {
   titre: string;
@@ -64,40 +65,23 @@ export default function EvenementInscriptionForm({ titre, inscriptionOuverte }: 
             S&apos;inscrire à l&apos;événement
           </h2>
           <form onSubmit={handleSubmit} noValidate className="space-y-4">
-            <div>
-              <label
-                htmlFor="insc-nom"
-                className="text-small font-medium text-soga-ink block mb-1.5"
-              >
-                Nom complet <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="insc-nom"
-                type="text"
-                required
-                value={nom}
-                onChange={(e) => setNom(e.target.value)}
-                placeholder="Aminata Diallo"
-                className="w-full px-4 py-3 border border-soga-line text-[14px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="insc-email"
-                className="text-small font-medium text-soga-ink block mb-1.5"
-              >
-                Adresse e-mail <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="insc-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="vous@exemple.com"
-                className="w-full px-4 py-3 border border-soga-line text-[14px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
-              />
-            </div>
+            <Input
+              label="Nom complet"
+              id="insc-nom"
+              required
+              value={nom}
+              onChange={(e) => setNom(e.target.value)}
+              placeholder="Aminata Diallo"
+            />
+            <Input
+              label="Adresse e-mail"
+              id="insc-email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="vous@exemple.com"
+            />
             <input type="hidden" value={titre} readOnly aria-hidden />
             {error && (
               <p className="text-[12px] text-red-600" role="alert">

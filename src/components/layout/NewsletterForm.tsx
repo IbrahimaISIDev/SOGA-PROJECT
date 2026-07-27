@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { isValidEmail } from "@/lib/validators";
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -16,7 +15,7 @@ export default function NewsletterForm() {
       setError("Veuillez saisir votre adresse e-mail.");
       return;
     }
-    if (!emailRe.test(email)) {
+    if (!isValidEmail(email)) {
       setError("Adresse e-mail invalide.");
       return;
     }

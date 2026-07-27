@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Input, Textarea, Select } from "@/components/ui/Input";
+import { isValidEmail } from "@/lib/validators";
 
 const MOTIFS = [
   { value: "admissions", label: "Admissions" },
@@ -12,13 +14,11 @@ const MOTIFS = [
 type Fields = { nom: string; email: string; motif: string; message: string };
 type Errs = Partial<Record<keyof Fields, string>>;
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 function validate(d: Fields): Errs {
   const e: Errs = {};
   if (!d.nom.trim()) e.nom = "Ce champ est requis.";
   if (!d.email.trim()) e.email = "Ce champ est requis.";
-  else if (!emailRe.test(d.email)) e.email = "Adresse e-mail invalide.";
+  else if (!isValidEmail(d.email)) e.email = "Adresse e-mail invalide.";
   if (!d.motif) e.motif = "Veuillez sélectionner un motif.";
   if (!d.message.trim()) e.message = "Ce champ est requis.";
   else if (d.message.trim().length < 10) e.message = "Message trop court (10 caractères minimum).";
@@ -73,13 +73,6 @@ export default function ContactForm() {
 
   const hasErr = (k: keyof Fields) => touched.has(k) && !!errors[k];
 
-  const inputCls = (k: keyof Fields, extra = "") =>
-    `w-full px-4 py-3 border text-[15px] text-soga-ink bg-white focus:outline-none focus:ring-2 transition-colors ${extra} ${
-      hasErr(k)
-        ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-        : "border-soga-line focus:border-soga-gold focus:ring-soga-gold/20"
-    }`;
-
   if (sent) {
     return (
       <div className="flex flex-col items-start gap-4 py-6">
@@ -106,106 +99,56 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
-      {/* Nom */}
-      <div>
-        <label htmlFor="c-nom" className="text-small font-semibold text-soga-ink block mb-2">
-          Nom complet <span className="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <input
-          id="c-nom"
-          type="text"
-          value={fields.nom}
-          onChange={set("nom")}
-          onBlur={blur("nom")}
-          aria-required="true"
-          aria-invalid={hasErr("nom")}
-          aria-describedby={hasErr("nom") ? "c-err-nom" : undefined}
-          className={inputCls("nom")}
-          placeholder="Prénom et nom"
-        />
-        {hasErr("nom") && (
-          <p id="c-err-nom" className="text-[12px] text-red-600 mt-1.5" role="alert">
-            {errors.nom}
-          </p>
-        )}
-      </div>
+      <Input
+        label="Nom complet"
+        id="c-nom"
+        required
+        value={fields.nom}
+        onChange={set("nom")}
+        onBlur={blur("nom")}
+        placeholder="Prénom et nom"
+        state={hasErr("nom") ? "error" : "default"}
+        message={hasErr("nom") ? errors.nom : undefined}
+      />
 
-      {/* Email */}
-      <div>
-        <label htmlFor="c-email" className="text-small font-semibold text-soga-ink block mb-2">
-          Email <span className="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <input
-          id="c-email"
-          type="email"
-          value={fields.email}
-          onChange={set("email")}
-          onBlur={blur("email")}
-          aria-required="true"
-          aria-invalid={hasErr("email")}
-          aria-describedby={hasErr("email") ? "c-err-email" : undefined}
-          className={inputCls("email")}
-          placeholder="vous@exemple.com"
-        />
-        {hasErr("email") && (
-          <p id="c-err-email" className="text-[12px] text-red-600 mt-1.5" role="alert">
-            {errors.email}
-          </p>
-        )}
-      </div>
+      <Input
+        label="Email"
+        id="c-email"
+        type="email"
+        required
+        value={fields.email}
+        onChange={set("email")}
+        onBlur={blur("email")}
+        placeholder="vous@exemple.com"
+        state={hasErr("email") ? "error" : "default"}
+        message={hasErr("email") ? errors.email : undefined}
+      />
 
-      {/* Motif */}
-      <div>
-        <label htmlFor="c-motif" className="text-small font-semibold text-soga-ink block mb-2">
-          Motif <span className="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <select
-          id="c-motif"
-          value={fields.motif}
-          onChange={set("motif")}
-          onBlur={blur("motif")}
-          aria-required="true"
-          aria-invalid={hasErr("motif")}
-          aria-describedby={hasErr("motif") ? "c-err-motif" : undefined}
-          className={inputCls("motif")}
-        >
-          <option value="">Sélectionnez un motif</option>
-          {MOTIFS.map((m) => (
-            <option key={m.value} value={m.value}>
-              {m.label}
-            </option>
-          ))}
-        </select>
-        {hasErr("motif") && (
-          <p id="c-err-motif" className="text-[12px] text-red-600 mt-1.5" role="alert">
-            {errors.motif}
-          </p>
-        )}
-      </div>
+      <Select
+        label="Motif"
+        id="c-motif"
+        required
+        value={fields.motif}
+        onChange={set("motif")}
+        onBlur={blur("motif")}
+        placeholder="Sélectionnez un motif"
+        options={MOTIFS}
+        state={hasErr("motif") ? "error" : "default"}
+        message={hasErr("motif") ? errors.motif : undefined}
+      />
 
-      {/* Message */}
-      <div>
-        <label htmlFor="c-message" className="text-small font-semibold text-soga-ink block mb-2">
-          Message <span className="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <textarea
-          id="c-message"
-          rows={5}
-          value={fields.message}
-          onChange={set("message")}
-          onBlur={blur("message")}
-          aria-required="true"
-          aria-invalid={hasErr("message")}
-          aria-describedby={hasErr("message") ? "c-err-message" : undefined}
-          className={inputCls("message", "resize-y")}
-          placeholder="Votre message..."
-        />
-        {hasErr("message") && (
-          <p id="c-err-message" className="text-[12px] text-red-600 mt-1.5" role="alert">
-            {errors.message}
-          </p>
-        )}
-      </div>
+      <Textarea
+        label="Message"
+        id="c-message"
+        rows={5}
+        required
+        value={fields.message}
+        onChange={set("message")}
+        onBlur={blur("message")}
+        placeholder="Votre message..."
+        state={hasErr("message") ? "error" : "default"}
+        message={hasErr("message") ? errors.message : undefined}
+      />
 
       {submitError && (
         <p className="text-[13px] text-red-600" role="alert">

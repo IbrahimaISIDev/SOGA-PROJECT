@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Input, Textarea, Select } from "@/components/ui/Input";
+import { isValidEmail } from "@/lib/validators";
 
 const TYPES = [
   { value: "entreprise", label: "Entreprise" },
@@ -12,15 +14,13 @@ const TYPES = [
 type Fields = { org: string; type: string; contact: string; email: string; objet: string };
 type Errs = Partial<Record<keyof Fields, string>>;
 
-const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 function validate(d: Fields): Errs {
   const e: Errs = {};
   if (!d.org.trim()) e.org = "Ce champ est requis.";
   if (!d.type) e.type = "Veuillez sélectionner un type.";
   if (!d.contact.trim()) e.contact = "Ce champ est requis.";
   if (!d.email.trim()) e.email = "Ce champ est requis.";
-  else if (!emailRe.test(d.email)) e.email = "Adresse e-mail invalide.";
+  else if (!isValidEmail(d.email)) e.email = "Adresse e-mail invalide.";
   if (!d.objet.trim()) e.objet = "Ce champ est requis.";
   else if (d.objet.trim().length < 20) e.objet = "Description trop courte (20 caractères minimum).";
   return e;
@@ -95,7 +95,7 @@ export default function DevenirPartenaireForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5 max-w-2xl">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <Field
+        <Input
           label="Organisation"
           id="dp-org"
           required
@@ -103,43 +103,24 @@ export default function DevenirPartenaireForm() {
           value={fields.org}
           onChange={set("org")}
           onBlur={blur("org")}
-          error={hasErr("org") ? errors.org : undefined}
+          state={hasErr("org") ? "error" : "default"}
+          message={hasErr("org") ? errors.org : undefined}
         />
 
-        {/* Type de partenariat */}
-        <div>
-          <label htmlFor="dp-type" className="text-small font-semibold text-soga-ink block mb-2">
-            Type de partenariat <span className="text-red-500" aria-hidden="true">*</span>
-          </label>
-          <select
-            id="dp-type"
-            value={fields.type}
-            onChange={set("type")}
-            onBlur={blur("type")}
-            aria-required="true"
-            aria-invalid={hasErr("type")}
-            aria-describedby={hasErr("type") ? "dp-type-err" : undefined}
-            className={`w-full px-4 py-3 border text-[15px] text-soga-ink bg-white focus:outline-none focus:ring-2 transition-colors ${
-              hasErr("type")
-                ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-                : "border-soga-line focus:border-soga-gold focus:ring-soga-gold/20"
-            }`}
-          >
-            <option value="">Sélectionnez</option>
-            {TYPES.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
-              </option>
-            ))}
-          </select>
-          {hasErr("type") && (
-            <p id="dp-type-err" className="text-[12px] text-red-600 mt-1.5" role="alert">
-              {errors.type}
-            </p>
-          )}
-        </div>
+        <Select
+          label="Type de partenariat"
+          id="dp-type"
+          required
+          placeholder="Sélectionnez"
+          options={TYPES}
+          value={fields.type}
+          onChange={set("type")}
+          onBlur={blur("type")}
+          state={hasErr("type") ? "error" : "default"}
+          message={hasErr("type") ? errors.type : undefined}
+        />
 
-        <Field
+        <Input
           label="Personne contact"
           id="dp-contact"
           required
@@ -147,9 +128,10 @@ export default function DevenirPartenaireForm() {
           value={fields.contact}
           onChange={set("contact")}
           onBlur={blur("contact")}
-          error={hasErr("contact") ? errors.contact : undefined}
+          state={hasErr("contact") ? "error" : "default"}
+          message={hasErr("contact") ? errors.contact : undefined}
         />
-        <Field
+        <Input
           label="Email professionnel"
           id="dp-email"
           type="email"
@@ -158,37 +140,23 @@ export default function DevenirPartenaireForm() {
           value={fields.email}
           onChange={set("email")}
           onBlur={blur("email")}
-          error={hasErr("email") ? errors.email : undefined}
+          state={hasErr("email") ? "error" : "default"}
+          message={hasErr("email") ? errors.email : undefined}
         />
       </div>
 
-      {/* Objet */}
-      <div>
-        <label htmlFor="dp-objet" className="text-small font-semibold text-soga-ink block mb-2">
-          Objet du partenariat <span className="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <textarea
-          id="dp-objet"
-          rows={4}
-          value={fields.objet}
-          onChange={set("objet")}
-          onBlur={blur("objet")}
-          aria-required="true"
-          aria-invalid={hasErr("objet")}
-          aria-describedby={hasErr("objet") ? "dp-objet-err" : undefined}
-          className={`w-full px-4 py-3 border text-[15px] text-soga-ink bg-white focus:outline-none focus:ring-2 transition-colors resize-y ${
-            hasErr("objet")
-              ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-              : "border-soga-line focus:border-soga-gold focus:ring-soga-gold/20"
-          }`}
-          placeholder="Décrivez l'objet de votre demande de partenariat..."
-        />
-        {hasErr("objet") && (
-          <p id="dp-objet-err" className="text-[12px] text-red-600 mt-1.5" role="alert">
-            {errors.objet}
-          </p>
-        )}
-      </div>
+      <Textarea
+        label="Objet du partenariat"
+        id="dp-objet"
+        rows={4}
+        required
+        placeholder="Décrivez l'objet de votre demande de partenariat..."
+        value={fields.objet}
+        onChange={set("objet")}
+        onBlur={blur("objet")}
+        state={hasErr("objet") ? "error" : "default"}
+        message={hasErr("objet") ? errors.objet : undefined}
+      />
 
       {submitError && (
         <p className="text-[13px] text-red-600" role="alert">
@@ -205,61 +173,5 @@ export default function DevenirPartenaireForm() {
         {submitting ? "Envoi en cours…" : "Envoyer la demande"}
       </button>
     </form>
-  );
-}
-
-function Field({
-  label,
-  id,
-  type = "text",
-  required,
-  placeholder,
-  value,
-  onChange,
-  onBlur,
-  error,
-}: {
-  label: string;
-  id: string;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: () => void;
-  error?: string;
-}) {
-  return (
-    <div>
-      <label htmlFor={id} className="text-small font-semibold text-soga-ink block mb-2">
-        {label}
-        {required && (
-          <span className="text-red-500 ml-0.5" aria-hidden="true">
-            *
-          </span>
-        )}
-      </label>
-      <input
-        id={id}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        aria-invalid={!!error}
-        aria-describedby={error ? `${id}-err` : undefined}
-        className={`w-full px-4 py-3 border text-[15px] text-soga-ink bg-white focus:outline-none focus:ring-2 transition-colors ${
-          error
-            ? "border-red-500 focus:border-red-500 focus:ring-red-200"
-            : "border-soga-line focus:border-soga-gold focus:ring-soga-gold/20"
-        }`}
-      />
-      {error && (
-        <p id={`${id}-err`} className="text-[12px] text-red-600 mt-1.5" role="alert">
-          {error}
-        </p>
-      )}
-    </div>
   );
 }

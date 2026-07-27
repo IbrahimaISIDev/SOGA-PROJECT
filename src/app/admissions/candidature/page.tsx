@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { formations } from "@/data/formations";
+import { Input, Select } from "@/components/ui/Input";
 
 const ETAPES = [
   { num: 1, titre: "Identité" },
@@ -172,36 +173,33 @@ export default function CandidaturePage() {
           <fieldset className="border-0 p-0 m-0">
             <legend className="sr-only">Identité</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-              <Field label="Prénom" id="prenom" required placeholder="Ex : Aminata" />
-              <Field label="Nom" id="nom" required placeholder="Ex : Diallo" />
-              <Field
-                label="Date de naissance"
-                id="naissance"
-                type="date"
-                required
-              />
-              <Field
+              <Input label="Prénom" id="prenom" required placeholder="Ex : Aminata" />
+              <Input label="Nom" id="nom" required placeholder="Ex : Diallo" />
+              <Input label="Date de naissance" id="naissance" type="date" required />
+              <Input
                 label="Nationalité"
                 id="nationalite"
                 required
                 placeholder="Ex : Sénégalaise"
               />
-              <Field
-                label="Adresse e-mail"
-                id="email"
-                type="email"
-                required
-                placeholder="vous@exemple.com"
-                className="sm:col-span-2"
-              />
-              <Field
-                label="Téléphone"
-                id="tel"
-                type="tel"
-                required
-                placeholder="+221 7X XXX XX XX"
-                className="sm:col-span-2"
-              />
+              <div className="sm:col-span-2">
+                <Input
+                  label="Adresse e-mail"
+                  id="email"
+                  type="email"
+                  required
+                  placeholder="vous@exemple.com"
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <Input
+                  label="Téléphone"
+                  id="tel"
+                  type="tel"
+                  required
+                  placeholder="+221 7X XXX XX XX"
+                />
+              </div>
             </div>
           </fieldset>
         )}
@@ -211,27 +209,14 @@ export default function CandidaturePage() {
             <legend className="sr-only">Parcours scolaire</legend>
             <div className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    htmlFor="diplome"
-                    className="text-small font-medium text-soga-ink block mb-1.5"
-                  >
-                    Dernier diplôme obtenu <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    id="diplome"
-                    required
-                    className="w-full px-4 py-3 border border-soga-line text-[14px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
-                  >
-                    <option value="">Sélectionnez</option>
-                    {DIPLOMES.map((d) => (
-                      <option key={d.value} value={d.value}>
-                        {d.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <Field
+                <Select
+                  label="Dernier diplôme obtenu"
+                  id="diplome"
+                  required
+                  placeholder="Sélectionnez"
+                  options={DIPLOMES}
+                />
+                <Input
                   label="Année d'obtention"
                   id="annee"
                   type="number"
@@ -239,12 +224,12 @@ export default function CandidaturePage() {
                   placeholder="2024"
                 />
               </div>
-              <Field
+              <Input
                 label="Établissement"
                 id="etablissement"
                 placeholder="Nom de l'établissement"
               />
-              <Field
+              <Input
                 label="Mention / moyenne"
                 id="mention"
                 placeholder="Ex. Assez bien — 13,5/20"
@@ -295,45 +280,20 @@ export default function CandidaturePage() {
               </div>
 
               {/* Rythme */}
-              <div>
-                <label
-                  htmlFor="rythme"
-                  className="text-small font-medium text-soga-ink block mb-1.5"
-                >
-                  Rythme souhaité
-                </label>
-                <select
-                  id="rythme"
-                  className="w-full max-w-xs px-4 py-3 border border-soga-line text-[14px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
-                >
-                  {RYTHMES.map((r) => (
-                    <option key={r.value} value={r.value}>
-                      {r.label}
-                    </option>
-                  ))}
-                </select>
+              <div className="max-w-xs">
+                <Select label="Rythme souhaité" id="rythme" options={RYTHMES} />
               </div>
 
               {/* Vœu secondaire */}
-              <div>
-                <label
-                  htmlFor="voeu2"
-                  className="text-small font-medium text-soga-ink block mb-1.5"
-                >
-                  Vœu secondaire{" "}
-                  <span className="text-soga-muted font-normal">(optionnel)</span>
-                </label>
-                <select
+              <div className="max-w-xs">
+                <Select
+                  label="Vœu secondaire (optionnel)"
                   id="voeu2"
-                  className="w-full max-w-xs px-4 py-3 border border-soga-line text-[14px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
-                >
-                  <option value="">— Aucun —</option>
-                  {formations.map((f) => (
-                    <option key={f.slug} value={f.slug}>
-                      {f.titre}
-                    </option>
-                  ))}
-                </select>
+                  options={[
+                    { value: "", label: "— Aucun —" },
+                    ...formations.map((f) => ({ value: f.slug, label: f.titre })),
+                  ]}
+                />
               </div>
             </div>
           </fieldset>
@@ -441,47 +401,6 @@ export default function CandidaturePage() {
           )}
         </div>
       </main>
-    </div>
-  );
-}
-
-/* ── Field helper ─────────────────────────────────── */
-function Field({
-  label,
-  id,
-  type = "text",
-  required,
-  placeholder,
-  hint,
-  className = "",
-}: {
-  label: string;
-  id: string;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-  hint?: string;
-  className?: string;
-}) {
-  return (
-    <div className={className}>
-      <label
-        htmlFor={id}
-        className="text-small font-medium text-soga-ink block mb-1.5"
-      >
-        {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
-      </label>
-      <input
-        id={id}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        className="w-full px-4 py-3 border border-soga-line text-[14px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
-      />
-      {hint && (
-        <p className="text-eyebrow text-soga-muted mt-1.5 text-[10px]">{hint}</p>
-      )}
     </div>
   );
 }
