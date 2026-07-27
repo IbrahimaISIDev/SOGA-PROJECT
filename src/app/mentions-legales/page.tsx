@@ -1,61 +1,196 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import PageHeader from "@/components/layout/PageHeader";
+import { institution } from "@/data/institution";
 
-export const metadata = {
-  title: "Mentions légales",
+export const metadata: Metadata = {
+  title: "Mentions légales — SOGA",
+  description:
+    "Mentions légales, politique de confidentialité et cookies de la Senegal Oil and Gas Academy.",
 };
+
+const SECTIONS = [
+  {
+    id: "editeur",
+    titre: "Éditeur du site",
+    contenu: [
+      <>
+        <strong>Dénomination sociale :</strong> Senegal Oil and Gas Academy (SOGA)
+      </>,
+      <>
+        <strong>Siège social :</strong> Dakar, Sénégal
+      </>,
+      <>
+        <strong>Directrice de publication :</strong> Dr. Aïssatou Cissoko
+      </>,
+      <>
+        <strong>Contact :</strong>{" "}
+        <a
+          href="mailto:direction@senegaloilandgasacademy.com"
+          className="text-soga-gold-deep hover:underline underline-offset-2"
+        >
+          {institution.email}
+        </a>{" "}
+        — {institution.telephone}
+      </>,
+    ],
+  },
+  {
+    id: "hebergement",
+    titre: "Hébergement",
+    contenu: [
+      <>
+        Les informations relatives à l&apos;hébergeur seront complétées dès mise en
+        production du site.
+      </>,
+    ],
+  },
+  {
+    id: "propriete-intellectuelle",
+    titre: "Propriété intellectuelle",
+    contenu: [
+      <>
+        L&apos;ensemble du contenu de ce site — textes, visuels, publications, marques
+        et logos — est la propriété exclusive de SOGA ou de ses partenaires autorisés.
+        Toute reproduction, même partielle, est strictement interdite sans autorisation
+        écrite préalable de SOGA.
+      </>,
+      <>
+        Les publications du Think Tank SOGA sont protégées par le droit d&apos;auteur.
+        Leur citation doit mentionner la source et l&apos;auteur.
+      </>,
+    ],
+  },
+  {
+    id: "donnees-personnelles",
+    titre: "Données personnelles",
+    contenu: [
+      <>
+        Les données collectées via les formulaires de ce site (candidature, contact,
+        inscription aux événements) sont traitées par SOGA dans le cadre de ses
+        activités pédagogiques et institutionnelles. Elles ne sont pas cédées à des
+        tiers à des fins commerciales.
+      </>,
+      <>
+        Conformément à la réglementation en vigueur, vous disposez d&apos;un droit
+        d&apos;accès, de rectification et de suppression de vos données. Pour exercer
+        ces droits, contactez{" "}
+        <a
+          href="mailto:direction@senegaloilandgasacademy.com"
+          className="text-soga-gold-deep hover:underline underline-offset-2"
+        >
+          {institution.email}
+        </a>
+        .
+      </>,
+    ],
+  },
+  {
+    id: "cookies",
+    titre: "Cookies",
+    contenu: [
+      <>
+        Ce site utilise des cookies strictement nécessaires à son fonctionnement
+        technique et des cookies de mesure d&apos;audience anonymisée. Aucun cookie
+        publicitaire ou de traçage commercial n&apos;est déposé sur votre terminal.
+      </>,
+      <>
+        Vous pouvez accepter ou refuser les cookies de mesure via la bannière affichée
+        lors de votre première visite, ou à tout moment en vidant les données de votre
+        navigateur. Le refus n&apos;affecte pas la navigation sur le site.
+      </>,
+    ],
+  },
+  {
+    id: "liens",
+    titre: "Liens hypertextes",
+    contenu: [
+      <>
+        SOGA décline toute responsabilité quant au contenu des sites tiers accessibles
+        via des liens figurant sur ce site. La présence d&apos;un lien ne constitue pas
+        une validation des contenus liés.
+      </>,
+    ],
+  },
+];
 
 export default function MentionsLegalesPage() {
   return (
     <>
-      <Header variant="dark" />
-      <main id="main-content">
-        <PageHeader
-          eyebrow="LÉGAL"
-          title="Mentions légales"
-          breadcrumbs={[
-            { label: "Accueil", href: "/" },
-            { label: "Mentions légales" },
-          ]}
-        />
-        <section className="section-gap bg-soga-sand">
-          <div className="container-soga max-w-3xl">
-            <div className="prose-like space-y-8 text-body text-soga-ink">
-              <div>
-                <h2 className="text-h3 mb-3">Éditeur du site</h2>
-                <p className="text-soga-muted">
-                  Senegal Oil and Gas Academy (SOGA)<br />
-                  Dakar, Sénégal<br />
-                  Tél : +221 78 103 23 70<br />
-                  E-mail : direction@senegaloilandgasacademy.com
-                </p>
-              </div>
-              <div>
-                <h2 className="text-h3 mb-3">Hébergement</h2>
-                <p className="text-soga-muted">
-                  Contenu provisoire — informations d&apos;hébergement à compléter.
-                </p>
-              </div>
-              <div id="cookies">
-                <h2 className="text-h3 mb-3">Cookies</h2>
-                <p className="text-soga-muted">
-                  Ce site utilise des cookies strictement nécessaires à son fonctionnement.
-                  Aucun cookie de traçage publicitaire n&apos;est utilisé. Vous pouvez désactiver
-                  les cookies dans les paramètres de votre navigateur.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-h3 mb-3">Propriété intellectuelle</h2>
-                <p className="text-soga-muted">
-                  L&apos;ensemble du contenu de ce site (textes, images, publications, marques)
-                  est la propriété exclusive de SOGA. Toute reproduction est interdite sans
-                  autorisation préalable.
-                </p>
-              </div>
+      <Header />
+      <main id="main-content" className="bg-soga-sand min-h-screen">
+        <div className="container-soga py-16 md:py-24">
+          <div className="max-w-[820px]">
+            {/* Breadcrumb */}
+            <nav aria-label="Fil d'Ariane" className="mb-10">
+              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-soga-muted">
+                <li>
+                  <Link href="/" className="hover:text-soga-gold-deep transition-colors">
+                    Accueil
+                  </Link>
+                </li>
+                <li aria-hidden>/</li>
+                <li aria-current="page" className="text-soga-gold-deep">
+                  Mentions légales
+                </li>
+              </ol>
+            </nav>
+
+            <h1 className="font-display font-semibold text-soga-ink mb-10"
+              style={{ fontSize: "clamp(24px,4vw,36px)" }}
+            >
+              Mentions légales
+            </h1>
+
+            {/* Jump nav */}
+            <nav
+              aria-label="Sommaire"
+              className="mb-12 p-5 border border-soga-line bg-white"
+            >
+              <p className="text-eyebrow text-soga-muted mb-3">SOMMAIRE</p>
+              <ul className="space-y-1">
+                {SECTIONS.map((s) => (
+                  <li key={s.id}>
+                    <a
+                      href={`#${s.id}`}
+                      className="text-small text-soga-gold-deep hover:underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                    >
+                      {s.titre}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Sections */}
+            <div
+              className="space-y-10 text-[15px] leading-[1.9]"
+              style={{ color: "#3a3a3a" }}
+            >
+              {SECTIONS.map((s) => (
+                <section key={s.id} id={s.id} aria-labelledby={`h-${s.id}`}>
+                  <h2
+                    id={`h-${s.id}`}
+                    className="font-display font-semibold text-soga-ink mb-4 pb-2 border-b border-soga-line"
+                    style={{ fontSize: "18px" }}
+                  >
+                    {s.titre}
+                  </h2>
+                  <div className="space-y-3">
+                    {s.contenu.map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
+                </section>
+              ))}
             </div>
+
+            <p className="text-eyebrow text-soga-muted mt-14">
+              Dernière mise à jour : juillet 2025
+            </p>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
     </>

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
@@ -8,6 +9,7 @@ import PublicationSidebar from "@/components/thinktank/PublicationSidebar";
 import PublicationRelatedLinks from "@/components/thinktank/PublicationRelatedLinks";
 import CopyButton from "@/components/thinktank/CopyButton";
 import { publications } from "@/data/thinktank";
+import ReadingProgress from "@/components/ui/ReadingProgress";
 
 const TT_GREEN = "#1E6F5C";
 const TT_GREEN_LIGHT = "#3ea08a";
@@ -53,8 +55,14 @@ export default async function FichePublication({
 
   const citation = `${pub.auteurs.join(", ")} (${new Date(pub.date).getFullYear()}). ${pub.titre}. SOGA Think Tank.`;
 
+  const pages = (pub as { pages?: number }).pages;
+  const readingMins = pages
+    ? `${pages} pages`
+    : `${Math.max(1, Math.round((pub.resume ?? "").split(/\s+/).length / 200))} min`;
+
   return (
     <>
+      <ReadingProgress />
       <ThinkTankHeader activeSection="Publications" />
       <main
         id="main-content"
@@ -104,14 +112,13 @@ export default async function FichePublication({
 
               <p className="text-eyebrow text-white/40 mb-10 leading-relaxed">
                 {pub.auteurs.join(", ")} · {dateFormatted} ·{" "}
-                THÉMATIQUE : {pub.thematique.toUpperCase()}
+                THÉMATIQUE : {pub.thematique.toUpperCase()} · {readingMins.toUpperCase()}
               </p>
 
               {/* Image */}
-              <div className="aspect-[16/7] mb-10 overflow-hidden">
+              <div className="relative aspect-[16/7] mb-10 overflow-hidden">
                 {pub.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={pub.image} alt="" className="w-full h-full object-cover" />
+                  <Image src={pub.image} alt="" fill className="object-cover" />
                 ) : (
                   <div
                     className="w-full h-full placeholder-block flex items-end p-6"

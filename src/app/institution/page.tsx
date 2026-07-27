@@ -110,7 +110,7 @@ export default function InstitutionPage() {
                 <h2 id="fondatrice-title" className="text-h2 text-white mb-8">
                   Un message de la direction.
                 </h2>
-                <p className="text-lead text-white/70">{institution.fondatrice.mot}</p>
+                <p className="text-lead text-white/70">{institution.fondatrice.citation}</p>
               </div>
             </div>
           </div>
@@ -152,10 +152,10 @@ export default function InstitutionPage() {
                   {institution.campus.description}
                 </p>
                 <ul className="space-y-3">
-                  {institution.campus.equipements.map((eq) => (
-                    <li key={eq} className="flex gap-3 items-start">
+                  {institution.campus.infrastructures.map((infra) => (
+                    <li key={infra.titre} className="flex gap-3 items-start">
                       <span className="text-soga-gold shrink-0 mt-1" aria-hidden>—</span>
-                      <span className="text-body text-white/80">{eq}</span>
+                      <span className="text-body text-white/80">{infra.titre}</span>
                     </li>
                   ))}
                 </ul>

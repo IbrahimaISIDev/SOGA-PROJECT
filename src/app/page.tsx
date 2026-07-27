@@ -3,116 +3,328 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ScrollReveal from "@/components/home/ScrollReveal";
-import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { CardFormation, CardActualite } from "@/components/ui/Card";
 import { formations } from "@/data/formations";
-import { articles } from "@/data/actualites";
+import { articles, evenements } from "@/data/actualites";
 import { institution } from "@/data/institution";
+import { publications } from "@/data/thinktank";
+
+const DUOTONE =
+  "repeating-linear-gradient(115deg,#0B0C0E,#0B0C0E 14px,#1a3040 14px,#1a3040 28px)";
+
+const HOME_STATS = [
+  { valeur: "08", libelle: "filières techniques & managériales" },
+  { valeur: "4", libelle: "niveaux de diplôme, du DTS au Master Pro" },
+  { valeur: "20", libelle: "partenariats stratégiques visés — 2025–2027" },
+  { valeur: "2026", libelle: "lancement du Think Tank SOGA" },
+];
+
+const METHODE_PILLIERS = [
+  {
+    titre: "Pédagogie par la pratique",
+    texte:
+      "Compétences visées avant contenu théorique — chaque module se termine par un cas réel.",
+  },
+  {
+    titre: "Bancs didactiques & simulateurs",
+    texte:
+      "Équipements industriels réels en laboratoire — électrotechnique, instrumentation, QHSE.",
+  },
+  {
+    titre: "Stages en entreprise",
+    texte: "Immersions professionnelles chaque année, dès la première année de cycle.",
+  },
+  {
+    titre: "Experts du secteur",
+    texte:
+      "Interventions régulières de professionnels en poste dans l'industrie pétrolière et gazière.",
+  },
+];
+
+const TEMOIGNAGES = [
+  {
+    citation:
+      "« Les bancs didactiques nous mettent face aux mêmes équipements qu'on trouve sur un site de production. »",
+    auteur: "Témoignage provisoire",
+    role: "Étudiante, DTS Instrumentation & Contrôle",
+  },
+  {
+    citation:
+      "« Ce que je retiens : ici, on ne nous prépare pas à un examen, on nous prépare à un poste. »",
+    auteur: "Témoignage provisoire",
+    role: "Étudiant, BTS QHSE",
+  },
+  {
+    citation:
+      "« Un partenariat qui répond à un vrai besoin de compétences locales sur nos sites. »",
+    auteur: "Témoignage provisoire",
+    role: "Partenaire entreprise",
+  },
+];
+
+const POLE_TECHNIQUE = [
+  "DTS Exploration & Production Pétrolière",
+  "DTS Raffinage & Pétrochimie",
+  "DTS Instrumentation & Contrôle Oil & Gas",
+  "BTS Électrotechnique et Maintenance industrielle",
+  "BTS QHSE",
+];
+
+const POLE_MANAGERIAL = [
+  "Licence Sciences pour l'Ingénieur",
+  "Licence Business Management",
+  "Licence Logistique et Transports Internationaux",
+  "Master Économie de l'Électricité, de l'Environnement et des Transports",
+];
+
+const FORMATIONS_PHARES_IDS = ["f01", "f02", "f05", "f04", "f07", "f06"];
+
+function getLevelBadgeLabel(niveau: string) {
+  if (niveau === "Licence Pro") return "LICENCE PRO";
+  if (niveau === "Master Pro") return "MASTER PRO";
+  return niveau;
+}
 
 export default function HomePage() {
-  const featuredFormations = formations.slice(0, 3);
+  const formationsPhares = FORMATIONS_PHARES_IDS.map(
+    (id) => formations.find((f) => f.id === id)!
+  ).filter(Boolean);
+
   const featuredArticles = articles.slice(0, 3);
+  const nextEvent = evenements[0];
+  const pub1 = publications[0];
+  const pub2 = publications[1];
 
   return (
     <>
       <Header variant="dark" />
       <main id="main-content">
-        {/* ── Hero ─────────────────────────────────────────── */}
+        {/* ── Hero ──────────────────────────────────────────── */}
         <HeroSection />
 
-        {/* ── Mission ──────────────────────────────────────── */}
-        <section aria-labelledby="mission-title" className="section-gap bg-soga-sand">
-          <div className="container-soga">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <ScrollReveal>
-                <p className="text-eyebrow text-soga-muted mb-4">01 · NOTRE MISSION</p>
-                <h2 id="mission-title" className="text-h2 text-soga-ink mb-6">
-                  Former les bâtisseurs de l&apos;énergie africaine.
-                </h2>
-              </ScrollReveal>
-              <ScrollReveal delay={80}>
-                <div className="space-y-4">
-                  {institution.mission.map((point, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="shrink-0 w-0.5 bg-soga-gold self-stretch" aria-hidden />
-                      <p className="text-body text-soga-muted">{point}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8">
-                  <Link
-                    href="/institution"
-                    className="text-[15px] font-medium text-soga-gold-deep underline underline-offset-4 decoration-soga-line hover:decoration-soga-gold transition-colors"
+        {/* ── Stats band ────────────────────────────────────── */}
+        <section aria-label="Chiffres clés SOGA" className="bg-soga-cream border-b border-soga-line">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-soga-line">
+            {HOME_STATS.map((s) => (
+              <div key={s.libelle} className="py-12 px-10">
+                <ScrollReveal>
+                  <p
+                    className="font-display font-semibold leading-none"
+                    style={{ fontSize: "44px", color: "#8C6516" }}
                   >
-                    En savoir plus sur l&apos;institution →
-                  </Link>
-                </div>
-              </ScrollReveal>
-            </div>
+                    {s.valeur}
+                  </p>
+                  <p className="text-[14px] mt-2" style={{ color: "#3a3a3a" }}>
+                    {s.libelle}
+                  </p>
+                </ScrollReveal>
+              </div>
+            ))}
+          </div>
+          <p className="text-eyebrow px-10 pb-5 pt-1" style={{ color: "#B0ADA4" }} aria-hidden>
+            SOURCE : PROJECTIONS SOGA — CONTENU PROVISOIRE
+          </p>
+        </section>
+
+        {/* ── Notre Projet ──────────────────────────────────── */}
+        <section aria-labelledby="projet-title" className="section-gap bg-soga-sand">
+          <div className="container-soga grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold-deep">NOTRE PROJET</p>
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <p
+                id="projet-title"
+                className="font-display font-medium text-soga-ink mb-6"
+                style={{ fontSize: "clamp(24px,2.5vw,32px)", lineHeight: 1.3 }}
+              >
+                SOGA forme des techniciens, ingénieurs et managers immédiatement opérationnels
+                pour l&apos;industrie énergétique africaine — et prépare, dès 2026, un think tank
+                sur les politiques énergétiques du continent.
+              </p>
+              <Link
+                href="/institution"
+                className="text-[15px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+              >
+                Notre histoire →
+              </Link>
+            </ScrollReveal>
           </div>
         </section>
 
-        <StratigraphicSeparator className="mx-16 md:mx-24" />
-
-        {/* ── Formations ───────────────────────────────────── */}
-        <section aria-labelledby="formations-title" className="section-gap bg-soga-sand">
-          <div className="container-soga">
-            <ScrollReveal>
-              <div className="flex items-end justify-between mb-10">
-                <div>
-                  <p className="text-eyebrow text-soga-muted mb-3">02 · NOS FORMATIONS</p>
-                  <h2 id="formations-title" className="text-h2 text-soga-ink">
-                    8 filières, du DTS au Master Pro.
-                  </h2>
-                </div>
-                <Link
-                  href="/formations"
-                  className="hidden md:block text-[15px] font-medium text-soga-gold-deep underline underline-offset-4 decoration-soga-line hover:decoration-soga-gold transition-colors"
+        {/* ── Deux Pôles ────────────────────────────────────── */}
+        <section aria-label="Les deux pôles de formation" className="grid grid-cols-1 md:grid-cols-2">
+          <div
+            className="relative overflow-hidden text-white"
+            style={{ minHeight: "560px", backgroundColor: "#0D2B3E", padding: "56px" }}
+          >
+            <div className="absolute inset-0" style={{ background: DUOTONE, opacity: 0.5 }} aria-hidden />
+            <div className="relative z-10 flex flex-col h-full justify-between">
+              <div>
+                <p className="text-eyebrow mb-4" style={{ color: "#F0C868" }}>
+                  PÔLE TECHNIQUE &amp; TECHNOLOGIQUE
+                </p>
+                <h2
+                  className="font-display font-semibold mb-6"
+                  style={{ fontSize: "clamp(22px,2vw,32px)", lineHeight: 1.25 }}
                 >
-                  Voir tout le catalogue →
-                </Link>
+                  Métiers de terrain, laboratoires, équipements réels
+                </h2>
+                <ul
+                  className="mb-8 space-y-0"
+                  style={{ fontSize: "15px", lineHeight: 2.1, color: "#D8D4C8", listStyle: "none", padding: 0 }}
+                >
+                  {POLE_TECHNIQUE.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
               </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredFormations.map((f, i) => (
-                <ScrollReveal key={f.id} delay={i * 60}>
-                  <CardFormation formation={f} />
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <div className="mt-8 md:hidden text-center">
               <Link
                 href="/formations"
-                className="text-[15px] font-medium text-soga-gold-deep underline underline-offset-4 decoration-soga-line hover:decoration-soga-gold transition-colors"
+                className="text-[15px] font-semibold border-b transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 w-fit"
+                style={{ color: "#F0C868", borderColor: "#F0C868", outlineColor: "#F0C868" }}
               >
-                Voir tout le catalogue →
+                Voir les filières techniques →
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className="relative overflow-hidden text-white"
+            style={{ minHeight: "560px", backgroundColor: "#16181C", padding: "56px" }}
+          >
+            <div className="absolute inset-0" style={{ background: DUOTONE, opacity: 0.5 }} aria-hidden />
+            <div className="relative z-10 flex flex-col h-full justify-between">
+              <div>
+                <p className="text-eyebrow mb-4" style={{ color: "#F0C868" }}>
+                  PÔLE MANAGÉRIAL &amp; TRANSITION
+                </p>
+                <h2
+                  className="font-display font-semibold mb-6"
+                  style={{ fontSize: "clamp(22px,2vw,32px)", lineHeight: 1.25 }}
+                >
+                  Piloter l&apos;industrie, penser la transition
+                </h2>
+                <ul
+                  className="mb-8 space-y-0"
+                  style={{ fontSize: "15px", lineHeight: 2.1, color: "#D8D4C8", listStyle: "none", padding: 0 }}
+                >
+                  {POLE_MANAGERIAL.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              </div>
+              <Link
+                href="/formations"
+                className="text-[15px] font-semibold border-b transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 w-fit"
+                style={{ color: "#F0C868", borderColor: "#F0C868", outlineColor: "#F0C868" }}
+              >
+                Voir les filières managériales →
               </Link>
             </div>
           </div>
         </section>
 
-        <StratigraphicSeparator className="mx-16 md:mx-24" />
-
-        {/* ── Chiffres clés ────────────────────────────────── */}
-        <section aria-labelledby="chiffres-title" className="section-gap bg-soga-black">
+        {/* ── Formations Phares ─────────────────────────────── */}
+        <section aria-labelledby="formations-title" className="section-gap bg-soga-sand">
           <div className="container-soga">
             <ScrollReveal>
-              <p className="text-eyebrow text-soga-gold mb-4">03 · EN CHIFFRES</p>
-              <h2 id="chiffres-title" className="text-h2 text-white mb-12">
-                L&apos;excellence en données.
+              <div className="flex items-baseline justify-between mb-12">
+                <div>
+                  <p className="text-eyebrow text-soga-gold-deep mb-3">FORMATIONS PHARES</p>
+                  <h2
+                    id="formations-title"
+                    className="font-display font-semibold text-soga-ink"
+                    style={{ fontSize: "clamp(28px,2.8vw,40px)" }}
+                  >
+                    Six filières, une même exigence
+                  </h2>
+                </div>
+                <Link
+                  href="/formations"
+                  className="hidden md:block text-[15px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                >
+                  Catalogue complet →
+                </Link>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {formationsPhares.map((f, i) => (
+                <ScrollReveal key={f.id} delay={i * 50}>
+                  <Link
+                    href={`/formations/${f.slug}`}
+                    className="group block border border-soga-line rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
+                  >
+                    <div className="relative h-[170px]">
+                      <div className="absolute inset-0" style={{ background: DUOTONE }} />
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-0.5"
+                        style={{ backgroundColor: "#C9962C" }}
+                      />
+                    </div>
+                    <div className="p-5">
+                      <span
+                        className="text-eyebrow text-white px-2 py-1 rounded"
+                        style={{ backgroundColor: "#0D2B3E", fontSize: "11px" }}
+                      >
+                        {getLevelBadgeLabel(f.niveau)}
+                      </span>
+                      <h3
+                        className="font-display font-semibold text-soga-ink mt-3 mb-2 leading-snug"
+                        style={{ fontSize: "19px" }}
+                      >
+                        {f.titre}
+                      </h3>
+                      <p className="text-[13px] text-soga-muted">
+                        {f.duree} · Rentrée {f.rentree}
+                      </p>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            <div className="mt-6 md:hidden">
+              <Link
+                href="/formations"
+                className="text-[15px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep"
+              >
+                Catalogue complet →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Méthode SOGA ──────────────────────────────────── */}
+        <section
+          aria-labelledby="methode-title"
+          className="section-gap"
+          style={{ backgroundColor: "#F0EDE3" }}
+        >
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold-deep mb-3">LA MÉTHODE SOGA</p>
+              <h2
+                id="methode-title"
+                className="font-display font-semibold text-soga-ink mb-14 max-w-[700px]"
+                style={{ fontSize: "clamp(28px,2.8vw,40px)" }}
+              >
+                Apprendre par la pratique, dès le premier semestre
               </h2>
             </ScrollReveal>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
-              {institution.chiffres.map((c, i) => (
-                <ScrollReveal key={c.libelle} delay={i * 60}>
-                  <div className="flex flex-col gap-2">
-                    <span className="font-display text-[56px] text-soga-gold-light leading-none">
-                      {c.valeur}
-                    </span>
-                    <div className="w-8 h-0.5 bg-soga-gold" />
-                    <span className="text-eyebrow text-white/60">{c.libelle}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {METHODE_PILLIERS.map((p, i) => (
+                <ScrollReveal key={p.titre} delay={i * 60}>
+                  <div className="border-t-2 pt-5" style={{ borderColor: "#C9962C" }}>
+                    <h3
+                      className="font-display font-semibold text-soga-ink mb-3"
+                      style={{ fontSize: "19px" }}
+                    >
+                      {p.titre}
+                    </h3>
+                    <p className="text-[14px] leading-[1.6]" style={{ color: "#3a3a3a" }}>
+                      {p.texte}
+                    </p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -120,106 +332,303 @@ export default function HomePage() {
           </div>
         </section>
 
-        <StratigraphicSeparator className="mx-16 md:mx-24" />
-
-        {/* ── Think Tank teaser ────────────────────────────── */}
-        <section aria-labelledby="thinktank-title" className="section-gap bg-soga-petrol">
+        {/* ── Think Tank Band ───────────────────────────────── */}
+        <section
+          aria-labelledby="thinktank-title"
+          className="section-gap relative"
+          style={{ backgroundColor: "#0B0C0E" }}
+        >
+          <div
+            className="absolute left-0 top-0 bottom-0 w-1.5"
+            style={{ backgroundColor: "#1E6F5C" }}
+            aria-hidden
+          />
           <div className="container-soga">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <ScrollReveal>
-                <p className="text-eyebrow mb-4" style={{ color: "#1E6F5C" }}>
-                  04 · THINK TANK
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
+              <div>
+                <p className="text-eyebrow mb-3" style={{ color: "#3ea08a" }}>
+                  THINK TANK ÉNERGIE &amp; TRANSITION
                 </p>
-                <h2 id="thinktank-title" className="text-h2 text-white mb-6">
-                  La recherche au service de la politique énergétique africaine.
-                </h2>
-                <p className="text-lead text-white/70 mb-8">
-                  Le Think Tank SOGA produit des analyses indépendantes, des notes de politique
-                  publique et des rapports sectoriels sur les enjeux énergétiques africains.
-                </p>
-                <Link
-                  href="/think-tank"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-[#1E6F5C] text-white text-[15px] font-medium hover:bg-[#1E6F5C]/20 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#1E6F5C] focus-visible:outline-offset-2 min-h-[44px]"
+                <h2
+                  id="thinktank-title"
+                  className="font-display font-semibold text-white"
+                  style={{ fontSize: "clamp(26px,2.5vw,36px)", maxWidth: "600px" }}
                 >
-                  Explorer le Think Tank
-                </Link>
-              </ScrollReveal>
+                  Penser les politiques énergétiques africaines
+                </h2>
+              </div>
+              <Link
+                href="/think-tank"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 text-[15px] font-semibold border transition-colors hover:bg-[#1E6F5C]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 min-h-[44px]"
+                style={{ borderColor: "#1E6F5C", color: "#3ea08a", outlineColor: "#1E6F5C" }}
+              >
+                Explorer le Think Tank →
+              </Link>
+            </div>
 
-              <ScrollReveal delay={80}>
-                <div className="bg-soga-black/30 border border-white/10 p-6 rounded-md">
-                  <p className="text-small text-white/50 mb-2">Dernière publication</p>
-                  <h3 className="text-h3 text-white mb-3">
-                    Scénarios de transition énergétique pour le Sénégal à l&apos;horizon 2035
-                  </h3>
-                  <p className="text-small text-white/60 mb-5">
-                    Analyse prospective des trajectoires énergétiques sénégalaises combinant
-                    exploitation des hydrocarbures et développement accéléré des ENR.
-                  </p>
-                  <Link
-                    href="/think-tank/publications/transition-energetique-senegal-2035"
-                    className="text-[14px] font-medium hover:opacity-80 transition-opacity"
-                    style={{ color: "#1E6F5C" }}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[pub1, pub2].map((pub) => (
+                <Link
+                  key={pub.slug}
+                  href={`/think-tank/publications/${pub.slug}`}
+                  className="block border rounded-lg p-6 transition-colors hover:bg-[#1E6F5C]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                  style={{ borderColor: "#1E6F5C", outlineColor: "#1E6F5C" }}
+                >
+                  <span
+                    className="text-eyebrow text-white px-2 py-1 rounded inline-block mb-4"
+                    style={{ backgroundColor: "#1E6F5C", fontSize: "11px" }}
                   >
-                    Lire le rapport →
-                  </Link>
-                </div>
-              </ScrollReveal>
+                    {pub.type.toUpperCase()}
+                  </span>
+                  <h3
+                    className="font-display font-semibold text-white mb-3 leading-snug"
+                    style={{ fontSize: "19px" }}
+                  >
+                    {pub.titre}
+                  </h3>
+                  <p className="text-eyebrow" style={{ color: "#7a9a92", fontSize: "11px" }}>
+                    {pub.auteurs.join(", ").toUpperCase()}
+                  </p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
 
-        <StratigraphicSeparator className="mx-16 md:mx-24" />
+        {/* ── Mot de la Fondatrice ──────────────────────────── */}
+        <section aria-labelledby="fondatrice-quote" className="section-gap bg-soga-sand">
+          <div className="container-soga grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-16 items-center">
+            <ScrollReveal>
+              <div
+                className="rounded-sm overflow-hidden"
+                style={{ height: "460px", background: DUOTONE }}
+                aria-hidden
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <p className="text-eyebrow text-soga-gold-deep mb-6">MOT DE LA FONDATRICE</p>
+              <blockquote
+                id="fondatrice-quote"
+                className="font-display font-medium text-soga-ink mb-7"
+                style={{ fontSize: "clamp(22px,2.2vw,34px)", lineHeight: 1.35 }}
+              >
+                {institution.fondatrice.citation}
+              </blockquote>
+              <p className="font-semibold text-soga-ink text-[16px]">{institution.fondatrice.nom}</p>
+              <p className="text-[14px] text-soga-muted mb-5">
+                Fondatrice, {institution.fondatrice.qualifications}
+              </p>
+              <Link
+                href="/institution/fondatrice"
+                className="text-[15px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+              >
+                Lire le message complet →
+              </Link>
+            </ScrollReveal>
+          </div>
+        </section>
 
-        {/* ── Actualités ───────────────────────────────────── */}
+        {/* ── Actualités & Événements ───────────────────────── */}
         <section aria-labelledby="actu-title" className="section-gap bg-soga-sand">
           <div className="container-soga">
             <ScrollReveal>
-              <div className="flex items-end justify-between mb-10">
-                <div>
-                  <p className="text-eyebrow text-soga-muted mb-3">05 · ACTUALITÉS</p>
-                  <h2 id="actu-title" className="text-h2 text-soga-ink">
-                    Dernières nouvelles de SOGA.
-                  </h2>
-                </div>
-                <Link
-                  href="/actualites"
-                  className="hidden md:block text-[15px] font-medium text-soga-gold-deep underline underline-offset-4 decoration-soga-line hover:decoration-soga-gold transition-colors"
-                >
-                  Toutes les actualités →
-                </Link>
-              </div>
+              <p className="text-eyebrow text-soga-gold-deep mb-3">ACTUALITÉS &amp; ÉVÉNEMENTS</p>
+              <h2
+                id="actu-title"
+                className="font-display font-semibold text-soga-ink mb-12"
+                style={{ fontSize: "clamp(28px,2.8vw,36px)" }}
+              >
+                Ce qui se passe à SOGA
+              </h2>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {featuredArticles.map((a, i) => (
-                <ScrollReveal key={a.id} delay={i * 60}>
-                  <CardActualite article={a} />
+                <ScrollReveal key={a.id} delay={i * 50}>
+                  <Link
+                    href={`/actualites/${a.slug}`}
+                    className="group block border border-soga-line rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
+                  >
+                    <div className="relative h-[130px]">
+                      <div className="absolute inset-0" style={{ background: DUOTONE }} />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-eyebrow text-soga-gold-deep mb-2">
+                        {new Date(a.date)
+                          .toLocaleDateString("fr-FR", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })
+                          .toUpperCase()}
+                      </p>
+                      <h3
+                        className="font-display font-semibold text-soga-ink leading-snug"
+                        style={{ fontSize: "16px" }}
+                      >
+                        {a.titre}
+                      </h3>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+
+              {nextEvent && (
+                <ScrollReveal delay={150}>
+                  <Link
+                    href={`/actualites/evenements/${nextEvent.slug}`}
+                    className="group block border rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
+                    style={{ borderColor: "#C9962C" }}
+                  >
+                    <div
+                      className="h-[130px] flex flex-col items-center justify-center border-b border-soga-line"
+                      style={{ backgroundColor: "#F6F4EF" }}
+                    >
+                      <p className="text-eyebrow text-soga-gold-deep">
+                        {new Date(nextEvent.date)
+                          .toLocaleDateString("fr-FR", { month: "short" })
+                          .toUpperCase()}
+                      </p>
+                      <p
+                        className="font-display font-semibold text-soga-ink leading-none mt-1"
+                        style={{ fontSize: "32px" }}
+                      >
+                        {new Date(nextEvent.date).getDate()}
+                      </p>
+                    </div>
+                    <div className="p-4">
+                      <span
+                        className="text-eyebrow text-soga-black px-2 py-1 rounded inline-block mb-2"
+                        style={{ backgroundColor: "#C9962C", fontSize: "10px" }}
+                      >
+                        PROCHAIN ÉVÉNEMENT
+                      </span>
+                      <h3
+                        className="font-display font-semibold text-soga-ink leading-snug mt-1"
+                        style={{ fontSize: "16px" }}
+                      >
+                        {nextEvent.titre}
+                      </h3>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              )}
+            </div>
+
+            <div className="mt-10">
+              <Link
+                href="/actualites"
+                className="text-[15px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+              >
+                Toutes les actualités →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Témoignages ───────────────────────────────────── */}
+        <section
+          aria-labelledby="temoignages-title"
+          className="section-gap"
+          style={{ backgroundColor: "#F0EDE3" }}
+        >
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold-deep mb-3">TÉMOIGNAGES</p>
+              <h2
+                id="temoignages-title"
+                className="font-display font-semibold text-soga-ink mb-12"
+                style={{ fontSize: "clamp(28px,2.8vw,36px)" }}
+              >
+                Ceux qui construisent SOGA
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {TEMOIGNAGES.map((t, i) => (
+                <ScrollReveal key={t.role} delay={i * 60}>
+                  <div className="bg-white border border-soga-line rounded-lg p-7">
+                    <p
+                      className="font-display italic text-soga-ink mb-5"
+                      style={{ fontSize: "18px", lineHeight: 1.5 }}
+                    >
+                      {t.citation}
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full shrink-0"
+                        style={{ backgroundColor: "#E2DED5" }}
+                        aria-hidden
+                      />
+                      <div>
+                        <p className="font-semibold text-soga-ink text-[14px]">{t.auteur}</p>
+                        <p className="text-[13px] text-soga-muted">{t.role}</p>
+                      </div>
+                    </div>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── CTA Admissions ───────────────────────────────── */}
-        <section
-          aria-labelledby="admissions-cta-title"
-          className="section-gap bg-soga-black text-center"
-        >
-          <div className="container-soga max-w-2xl mx-auto">
+        {/* ── Partenaires ───────────────────────────────────── */}
+        <section aria-label="Nos partenaires" className="py-20 bg-soga-sand">
+          <div className="container-soga">
             <ScrollReveal>
-              <p className="text-eyebrow text-soga-gold mb-4">REJOIGNEZ SOGA</p>
-              <h2 id="admissions-cta-title" className="text-h2 text-white mb-6">
-                Candidatures ouvertes — Promotion 2025.
-              </h2>
-              <p className="text-lead text-white/70 mb-10">
-                Rentrée en octobre 2025. Dossiers acceptés jusqu&apos;au 30 septembre.
+              <p className="text-eyebrow text-soga-gold-deep mb-8">
+                ILS NOUS FONT CONFIANCE — CONTENU PROVISOIRE
               </p>
-              <Link
-                href="/admissions"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-soga-black text-soga-gold-light border border-soga-gold text-[15px] font-medium hover:bg-soga-graphite transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+            </ScrollReveal>
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-14 rounded"
+                  style={{ backgroundColor: "#E2DED5" }}
+                  aria-hidden
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA Final ─────────────────────────────────────── */}
+        <section
+          aria-labelledby="cta-title"
+          className="section-gap text-center"
+          style={{ backgroundColor: "#0B0C0E" }}
+        >
+          <div className="container-soga">
+            <ScrollReveal>
+              <h2
+                id="cta-title"
+                className="font-display font-semibold text-white mb-3"
+                style={{ fontSize: "clamp(28px,2.8vw,36px)" }}
               >
-                Déposer ma candidature
-              </Link>
+                Les inscriptions sont ouvertes
+              </h2>
+              <p className="mb-8" style={{ color: "#B8B4A8", fontSize: "16px" }}>
+                Rentrée octobre 2026 — places limitées par filière.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-7">
+                <Link
+                  href="/admissions/candidature"
+                  className="inline-flex items-center justify-center px-7 py-4 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+                  style={{ backgroundColor: "#C9962C", color: "#0B0C0E" }}
+                >
+                  Déposer ma candidature
+                </Link>
+                <Link
+                  href="/formations"
+                  className="inline-flex items-center justify-center px-7 py-4 text-[15px] font-semibold border transition-colors hover:border-soga-gold hover:text-soga-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]"
+                  style={{ borderColor: "#F6F4EF", color: "#F6F4EF" }}
+                >
+                  Voir toutes les filières
+                </Link>
+              </div>
+              <p className="text-eyebrow" style={{ color: "#6B6B6B" }}>
+                {institution.email} · {institution.telephone}
+              </p>
             </ScrollReveal>
           </div>
         </section>

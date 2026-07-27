@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
@@ -8,16 +9,15 @@ import { CardFormation } from "@/components/ui/Card";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { formations, type Niveau, type Mode } from "@/data/formations";
 
-type Filtre = "Tous" | Niveau | Mode | "Formation courte";
+type Filtre = "Tous" | Niveau | Mode;
 
-const filtres: Filtre[] = ["Tous", "DTS", "BTS", "Licence Pro", "Master Pro", "Formation courte", "Temps plein", "Alternance"];
+const filtres: Filtre[] = ["Tous", "DTS", "BTS", "Licence Pro", "Master Pro", "Temps plein", "Alternance"];
 
 export default function CatalogueFormations() {
   const [filtre, setFiltre] = useState<Filtre>("Tous");
 
   const filtered = formations.filter((f) => {
     if (filtre === "Tous") return true;
-    if (filtre === "Formation courte") return f.pole === "courte";
     if (filtre === "Temps plein" || filtre === "Alternance") return f.mode === filtre;
     return f.niveau === filtre;
   });
@@ -59,6 +59,12 @@ export default function CatalogueFormations() {
                   {f}
                 </button>
               ))}
+              <Link
+                href="/formations/courtes"
+                className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 text-[14px] font-medium border border-soga-line bg-white text-soga-ink hover:border-soga-gold transition-colors min-h-[44px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+              >
+                Formations courtes <span className="text-soga-gold-deep text-[12px]">↗</span>
+              </Link>
             </div>
           </div>
         </div>

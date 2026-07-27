@@ -4,16 +4,16 @@ import NewsletterForm from "./NewsletterForm";
 
 const footerLinks = {
   formations: [
-    { label: "Génie Pétrolier", href: "/formations/genie-petrolier" },
-    { label: "Génie du Gaz", href: "/formations/genie-gaz" },
-    { label: "Énergies Renouvelables", href: "/formations/energies-renouvelables" },
-    { label: "Management des Projets", href: "/formations/management-projets-energetiques" },
+    { label: "Filières techniques", href: "/formations" },
+    { label: "Filières managériales", href: "/formations" },
     { label: "Formations courtes", href: "/formations/courtes" },
+    { label: "Catalogue complet", href: "/formations" },
   ],
   institution: [
     { label: "À propos", href: "/institution" },
     { label: "Vision & Valeurs", href: "/institution/vision" },
-    { label: "Gouvernance & Équipe", href: "/institution/equipe" },
+    { label: "La Fondatrice", href: "/institution/fondatrice" },
+    { label: "Notre Équipe", href: "/institution/equipe" },
     { label: "Campus", href: "/institution/campus" },
   ],
   thinktank: [
@@ -24,10 +24,10 @@ const footerLinks = {
   ],
   pratique: [
     { label: "Admissions", href: "/admissions" },
-    { label: "Frais & Bourses", href: "/admissions/frais-bourses" },
-    { label: "Admissions internationales", href: "/admissions/internationales" },
+    { label: "Déposer ma candidature", href: "/admissions/candidature" },
     { label: "Actualités", href: "/actualites" },
-    { label: "Partenariats", href: "/ecosysteme" },
+    { label: "Partenariats", href: "/ecosysteme/partenariats" },
+    { label: "Devenir partenaire", href: "/ecosysteme/devenir-partenaire" },
     { label: "Contact", href: "/contact" },
   ],
 };
@@ -38,21 +38,22 @@ export default function Footer() {
   return (
     <footer className="bg-soga-black text-white" role="contentinfo">
       <div className="container-soga pt-16 pb-8">
-        {/* Top grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-14">
-          {/* Brand column */}
-          <div className="lg:col-span-1">
+        {/* Top grid — 4 cols matching design proportions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 lg:gap-8 mb-14">
+
+          {/* Col 1 — Brand + contacts + newsletter */}
+          <div>
             <Link
               href="/"
               className="text-eyebrow text-[14px] font-semibold tracking-widest text-white block mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
             >
               SOGA
             </Link>
-            <p className="text-small text-white/60 leading-relaxed mb-6">
+            <p className="text-small text-white/60 leading-relaxed mb-4">
               Senegal Oil and Gas Academy<br />
-              L&apos;école supérieure dédiée aux métiers du pétrole, du gaz et des énergies durables.
+              Dakar, Sénégal
             </p>
-            <div className="space-y-1 text-small text-white/60">
+            <div className="space-y-1 text-small text-white/60 mb-8">
               <p>
                 <a
                   href="mailto:direction@senegaloilandgasacademy.com"
@@ -69,32 +70,26 @@ export default function Footer() {
                   +221 78 103 23 70
                 </a>
               </p>
-              <p>Dakar, Sénégal</p>
+            </div>
+
+            {/* Newsletter */}
+            <div>
+              <p className="text-eyebrow text-soga-gold mb-2">NEWSLETTER</p>
+              <NewsletterForm />
             </div>
           </div>
 
-          {/* Formations */}
+          {/* Col 2 — Formations */}
           <FooterColumn title="Formations" links={footerLinks.formations} />
 
-          {/* Institution + Think Tank */}
+          {/* Col 3 — Institution + Think Tank */}
           <div className="space-y-8">
             <FooterColumn title="Institution" links={footerLinks.institution} />
             <FooterColumn title="Think Tank" links={footerLinks.thinktank} />
           </div>
 
-          {/* Pratique + Newsletter */}
-          <div className="space-y-8">
-            <FooterColumn title="Pratique" links={footerLinks.pratique} />
-
-            {/* Newsletter */}
-            <div>
-              <p className="text-eyebrow text-soga-gold mb-3">Newsletter</p>
-              <p className="text-small text-white/60 mb-3">
-                Actualités, publications et événements SOGA.
-              </p>
-              <NewsletterForm />
-            </div>
-          </div>
+          {/* Col 4 — Pratique */}
+          <FooterColumn title="Pratique" links={footerLinks.pratique} />
         </div>
 
         <StratigraphicSeparator className="mb-6" />
@@ -142,7 +137,7 @@ function FooterColumn({
       <p className="text-eyebrow text-soga-gold mb-3">{title}</p>
       <ul className="space-y-2">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={`${link.href}-${link.label}`}>
             <Link
               href={link.href}
               className="text-small text-white/60 hover:text-white transition-colors block py-0.5"

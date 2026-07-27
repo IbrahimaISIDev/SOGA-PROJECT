@@ -1,10 +1,15 @@
-import Link from "next/link";
+"use client";
 
-/* Stratigraphic bar pattern for 404: graphite / gold / graphite */
-const BAR_404 =
-  "repeating-linear-gradient(180deg,#3d4148 0,#3d4148 40px,#C9962C 40px,#C9962C 60px,#3d4148 60px,#3d4148 120px)";
+/* Stratigraphic bar pattern for 500: graphite / petrol / graphite */
+const BAR_500 =
+  "repeating-linear-gradient(180deg,#3d4148 0,#3d4148 30px,#0D2B3E 30px,#0D2B3E 90px,#3d4148 90px,#3d4148 100px)";
 
-export default function NotFound() {
+export default function GlobalError({
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <html lang="fr">
       <body style={{ margin: 0, backgroundColor: "#0B0C0E" }}>
@@ -16,35 +21,35 @@ export default function NotFound() {
           {/* Left stratigraphic bar */}
           <div
             className="absolute left-0 top-0 bottom-0 w-2"
-            style={{ background: BAR_404 }}
+            style={{ background: BAR_500 }}
             aria-hidden="true"
           />
 
-          {/* 404 number */}
+          {/* 500 number */}
           <p
             className="font-display font-semibold leading-none mb-0"
-            style={{ fontSize: "clamp(72px,12vw,96px)", color: "#C9962C" }}
+            style={{ fontSize: "clamp(72px,12vw,96px)", color: "#8C6516" }}
             aria-hidden="true"
           >
-            404
+            500
           </p>
 
           <h1
             className="font-display font-semibold mt-4 mb-3"
             style={{ fontSize: "clamp(20px,3vw,26px)", color: "#F6F4EF" }}
           >
-            Cette page n&apos;existe pas
+            Une erreur est survenue
           </h1>
 
           <p
             className="text-[15px] mb-10 max-w-sm mx-auto px-6"
             style={{ color: "#B8B4A8" }}
           >
-            La page recherchée a peut-être été déplacée ou renommée.
+            Nos équipes techniques ont été notifiées. Réessayez dans quelques instants.
           </p>
 
-          <Link
-            href="/"
+          <button
+            onClick={reset}
             className="inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-semibold transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 min-h-[44px]"
             style={{
               backgroundColor: "#C9962C",
@@ -52,8 +57,8 @@ export default function NotFound() {
               outlineColor: "#C9962C",
             }}
           >
-            Retour à l&apos;accueil
-          </Link>
+            Réessayer
+          </button>
         </main>
       </body>
     </html>

@@ -1,20 +1,25 @@
-"use client";
-
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
-import { Input, Select, Textarea } from "@/components/ui/Input";
-import Button from "@/components/ui/Button";
+import ContactForm from "@/components/contact/ContactForm";
+import { institution } from "@/data/institution";
+
+export const metadata: Metadata = {
+  title: "Contact — SOGA",
+  description:
+    "Contactez la Senegal Oil and Gas Academy : admissions, partenariats, presse ou toute autre demande.",
+};
 
 export default function ContactPage() {
   return (
     <>
-      <Header variant="dark" />
+      <Header />
       <main id="main-content">
         <PageHeader
           eyebrow="CONTACT"
-          title="Nous contacter"
+          title="Contact"
           breadcrumbs={[
             { label: "Accueil", href: "/" },
             { label: "Contact" },
@@ -23,75 +28,109 @@ export default function ContactPage() {
 
         <section className="section-gap bg-soga-sand">
           <div className="container-soga">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Infos */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
+              {/* ── Formulaire (gauche) ─────────────────────── */}
               <ScrollReveal>
-                <h2 className="text-h2 text-soga-ink mb-8">Coordonnées</h2>
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-eyebrow text-soga-muted mb-1">ADRESSE</p>
-                    <p className="text-body text-soga-ink">Dakar, Sénégal</p>
-                  </div>
-                  <div>
-                    <p className="text-eyebrow text-soga-muted mb-1">E-MAIL</p>
-                    <a
-                      href="mailto:direction@senegaloilandgasacademy.com"
-                      className="text-body text-soga-gold-deep hover:underline underline-offset-4"
-                    >
-                      direction@senegaloilandgasacademy.com
-                    </a>
-                  </div>
-                  <div>
-                    <p className="text-eyebrow text-soga-muted mb-1">TÉLÉPHONE</p>
-                    <a
-                      href="tel:+221781032370"
-                      className="text-body text-soga-ink hover:text-soga-gold-deep transition-colors"
-                    >
-                      +221 78 103 23 70
-                    </a>
-                  </div>
-                </div>
-
-                {/* Carte placeholder */}
-                <div className="mt-10 aspect-[4/3] bg-soga-graphite rounded-md overflow-hidden">
-                  <div className="w-full h-full placeholder-block-light flex items-center justify-center">
-                    <span className="text-eyebrow text-soga-muted">Carte — Contenu provisoire</span>
-                  </div>
-                </div>
+                <p className="text-eyebrow text-soga-gold-deep mb-6">ÉCRIVEZ-NOUS</p>
+                <ContactForm />
               </ScrollReveal>
 
-              {/* Formulaire */}
+              {/* ── Coordonnées + carte (droite) ────────────── */}
               <ScrollReveal delay={80}>
-                <h2 className="text-h2 text-soga-ink mb-8">Envoyer un message</h2>
-                <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <Input label="Prénom" required placeholder="Votre prénom" />
-                    <Input label="Nom" required placeholder="Votre nom" />
+                <p className="text-eyebrow text-soga-gold-deep mb-6">COORDONNÉES</p>
+
+                <address className="not-italic space-y-5 mb-10">
+                  <div>
+                    <p className="text-small font-semibold text-soga-ink mb-1">Adresse</p>
+                    <p className="text-body text-soga-graphite">{institution.adresse}</p>
                   </div>
-                  <Input label="E-mail" type="email" required placeholder="vous@exemple.com" />
-                  <Select
-                    label="Objet"
-                    required
-                    options={[
-                      { value: "admissions", label: "Admissions" },
-                      { value: "formations", label: "Informations sur les formations" },
-                      { value: "partenariat", label: "Partenariat" },
-                      { value: "presse", label: "Presse" },
-                      { value: "autre", label: "Autre" },
-                    ]}
-                    placeholder="Sélectionnez un objet"
-                  />
-                  <Textarea
-                    label="Message"
-                    required
-                    rows={5}
-                    placeholder="Votre message..."
-                  />
-                  <Button variant="primary" size="lg" className="w-full justify-center" type="submit">
-                    Envoyer le message
-                  </Button>
-                </form>
+                  <div>
+                    <p className="text-small font-semibold text-soga-ink mb-1">E-mail</p>
+                    <a
+                      href={`mailto:${institution.email}`}
+                      className="text-body text-soga-gold-deep hover:underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                    >
+                      {institution.email}
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-small font-semibold text-soga-ink mb-1">Téléphone</p>
+                    <a
+                      href={`tel:${institution.telephone.replace(/\s/g, "")}`}
+                      className="text-body text-soga-graphite hover:text-soga-gold-deep transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                    >
+                      {institution.telephone}
+                    </a>
+                  </div>
+                </address>
+
+                <div className="mb-8">
+                  <p className="text-eyebrow text-soga-gold-deep mb-3">HORAIRES</p>
+                  <p className="text-body text-soga-graphite">
+                    Lundi – Vendredi · 8h30 – 17h30
+                  </p>
+                </div>
+
+                {/* Map placeholder */}
+                <div
+                  className="overflow-hidden"
+                  style={{ height: "220px" }}
+                  aria-label="Carte de localisation — à venir"
+                >
+                  <div className="w-full h-full placeholder-block flex items-end p-4">
+                    <span className="text-eyebrow text-soga-line/50 text-[10px]">
+                      CARTE — PLACEHOLDER GOOGLE MAPS
+                    </span>
+                  </div>
+                </div>
               </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Autres contacts */}
+        <section aria-labelledby="autres-contacts-title" className="section-gap bg-soga-ink">
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold mb-6">SERVICES</p>
+              <h2 id="autres-contacts-title" className="text-h2 text-white mb-10">
+                Autres contacts
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                {
+                  label: "Admissions",
+                  desc: "Candidatures, dossiers, entretiens.",
+                  email: institution.email,
+                },
+                {
+                  label: "Partenariats",
+                  desc: "Accueil de stagiaires, collaborations industrielles.",
+                  email: institution.email,
+                },
+                {
+                  label: "Presse",
+                  desc: "Demandes d'interview et dossier de presse.",
+                  email: institution.email,
+                },
+              ].map((s, i) => (
+                <ScrollReveal key={s.label} delay={i * 70}>
+                  <div
+                    className="border p-6"
+                    style={{ borderColor: "rgba(255,255,255,0.1)" }}
+                  >
+                    <p className="text-eyebrow text-soga-gold mb-2">{s.label.toUpperCase()}</p>
+                    <p className="text-small text-white/60 mb-4 leading-relaxed">{s.desc}</p>
+                    <a
+                      href={`mailto:${s.email}`}
+                      className="text-small font-medium text-soga-gold-light hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                    >
+                      {s.email}
+                    </a>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>

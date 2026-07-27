@@ -9,7 +9,7 @@ export interface Article {
   date: string;
   categorie: string;
   image: string | null;
-  contenu?: string;
+  contenu?: string[];
 }
 
 export interface Evenement {
@@ -23,7 +23,17 @@ export interface Evenement {
   description: string;
   inscriptionOuverte: boolean;
   image: string | null;
+  placesLimitees?: boolean;
 }
+
+export const categories = [
+  "Toutes",
+  "Admissions",
+  "Partenariats",
+  "Think Tank",
+  "Campus",
+  "Institutionnel",
+] as const;
 
 export const articles: Article[] = [
   {
@@ -36,6 +46,11 @@ export const articles: Article[] = [
     date: "2025-06-01",
     categorie: "Admissions",
     image: null,
+    contenu: [
+      "Les candidatures pour l'ensemble des filières techniques et managériales de SOGA sont désormais ouvertes. La rentrée est prévue en octobre 2025, à Dakar.",
+      "Les candidats peuvent déposer leur dossier directement en ligne via l'assistant de candidature, disponible en français et en anglais. Un entretien de motivation est prévu pour les filières Licence Pro et Master Pro.",
+      "Les pièces à fournir incluent le dernier relevé de notes, le diplôme ou attestation de réussite, une pièce d'identité valide et une lettre de motivation. Le comité d'admission rend sa décision sous 10 jours ouvrés après réception du dossier complet.",
+    ],
   },
   {
     id: "a02",
@@ -47,6 +62,11 @@ export const articles: Article[] = [
     date: "2025-05-15",
     categorie: "Partenariats",
     image: null,
+    contenu: [
+      "Un protocole d'accord stratégique a été signé entre la Senegal Oil and Gas Academy et la Société des Pétroles du Sénégal (Petrosen), formalisant une collaboration académique et industrielle de long terme.",
+      "Ce partenariat ouvre la voie à des stages opérationnels intégrés dans les cursus SOGA, à des interventions régulières de professionnels Petrosen en amphithéâtre, ainsi qu'à des projets de recherche appliquée conduits conjointement par le Think Tank SOGA et les équipes de Petrosen.",
+      "Il s'inscrit dans la stratégie de SOGA d'ancrer ses formations dans la réalité industrielle sénégalaise, en rapprochant monde académique et acteurs de terrain du secteur pétrolier.",
+    ],
   },
   {
     id: "a03",
@@ -58,6 +78,11 @@ export const articles: Article[] = [
     date: "2025-04-20",
     categorie: "Think Tank",
     image: null,
+    contenu: [
+      "Le Think Tank de la Senegal Oil and Gas Academy publie son premier rapport de fond : une analyse prospective des scénarios de transition énergétique pour le Sénégal à l'horizon 2035.",
+      "Ce rapport examine les trajectoires possibles d'un mix énergétique sénégalais alliant exploitation des ressources hydrocarbures récemment découvertes et développement accéléré des énergies renouvelables. Il propose des recommandations concrètes à destination des décideurs publics et des opérateurs du secteur.",
+      "Le document est disponible en téléchargement libre sur la plateforme du Think Tank SOGA et sera présenté lors d'une conférence ouverte au public en septembre 2025.",
+    ],
   },
   {
     id: "a04",
@@ -69,6 +94,10 @@ export const articles: Article[] = [
     date: "2025-03-10",
     categorie: "Institutionnel",
     image: null,
+    contenu: [
+      "Le Secrétaire d'État à l'Énergie a effectué une visite officielle du campus de la Senegal Oil and Gas Academy le 10 mars 2025. Accompagné d'une délégation technique, il a pu découvrir les laboratoires et les équipements pédagogiques de l'institution.",
+      "Cette visite souligne l'intérêt des autorités publiques pour le rôle que SOGA entend jouer dans la formation des cadres nationaux du secteur pétrolier. La directrice générale, Dr. Aïssatou Cissoko, a présenté la vision pédagogique de l'académie et les perspectives d'expansion des filières.",
+    ],
   },
 ];
 
@@ -85,6 +114,7 @@ export const evenements: Evenement[] = [
       "Rencontrez nos équipes pédagogiques, visitez les installations et assistez aux présentations de nos 8 filières. Inscription gratuite, places limitées.",
     inscriptionOuverte: true,
     image: null,
+    placesLimitees: true,
   },
   {
     id: "e02",
@@ -98,6 +128,7 @@ export const evenements: Evenement[] = [
       "Experts industriels et chercheurs débattent du rôle du gaz naturel dans la transition énergétique africaine. Intervenants de Petrosen, Total Énergies et BP.",
     inscriptionOuverte: true,
     image: null,
+    placesLimitees: false,
   },
   {
     id: "e03",
@@ -111,5 +142,6 @@ export const evenements: Evenement[] = [
       "Cérémonie d'accueil de la promotion 2025. En présence des partenaires industriels et des autorités académiques.",
     inscriptionOuverte: false,
     image: null,
+    placesLimitees: false,
   },
 ];

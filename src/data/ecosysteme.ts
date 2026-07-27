@@ -1,9 +1,9 @@
 export type CategoriePartenaire =
-  | "Industrie pétrolière & gazière"
-  | "Énergies renouvelables"
-  | "Institutions financières"
-  | "Universités & centres de recherche"
-  | "Agences gouvernementales";
+  | "Ministères sectoriels"
+  | "Universités & écoles d'ingénieurs"
+  | "Entreprises pétrolières & gazières"
+  | "ONG & bailleurs internationaux"
+  | "Énergies renouvelables";
 
 export interface Partenaire {
   id: string;
@@ -25,53 +25,98 @@ export interface Temoignage {
 export const partenaires: Partenaire[] = [
   {
     id: "pt01",
-    nom: "Petrosen",
-    categorie: "Industrie pétrolière & gazière",
+    nom: "Ministère du Pétrole et des Énergies",
+    categorie: "Ministères sectoriels",
     logo: null,
-    description: "Société nationale des pétroles du Sénégal",
   },
   {
     id: "pt02",
-    nom: "TotalEnergies Sénégal",
-    categorie: "Industrie pétrolière & gazière",
+    nom: "CRSE",
+    categorie: "Ministères sectoriels",
     logo: null,
+    description: "Commission de Régulation du Secteur de l'Électricité",
   },
   {
     id: "pt03",
-    nom: "BP Sénégal",
-    categorie: "Industrie pétrolière & gazière",
+    nom: "Contenu provisoire",
+    categorie: "Ministères sectoriels",
     logo: null,
+    description: "Ministère partenaire — à confirmer",
   },
   {
     id: "pt04",
     nom: "Contenu provisoire",
-    categorie: "Énergies renouvelables",
+    categorie: "Ministères sectoriels",
     logo: null,
+    description: "Agence partenaire — à confirmer",
   },
   {
     id: "pt05",
     nom: "Contenu provisoire",
-    categorie: "Institutions financières",
+    categorie: "Universités & écoles d'ingénieurs",
     logo: null,
+    description: "Institution académique — à confirmer",
   },
   {
     id: "pt06",
     nom: "Contenu provisoire",
-    categorie: "Universités & centres de recherche",
+    categorie: "Universités & écoles d'ingénieurs",
     logo: null,
+    description: "École d'ingénieurs — à confirmer",
   },
   {
     id: "pt07",
-    nom: "Ministère du Pétrole et des Énergies",
-    categorie: "Agences gouvernementales",
+    nom: "Contenu provisoire",
+    categorie: "Universités & écoles d'ingénieurs",
     logo: null,
+    description: "Centre de recherche — à confirmer",
   },
   {
     id: "pt08",
-    nom: "CRSE",
-    categorie: "Agences gouvernementales",
+    nom: "Petrosen",
+    categorie: "Entreprises pétrolières & gazières",
     logo: null,
-    description: "Commission de Régulation du Secteur de l'Électricité",
+    description: "Société nationale des pétroles du Sénégal",
+  },
+  {
+    id: "pt09",
+    nom: "TotalEnergies Sénégal",
+    categorie: "Entreprises pétrolières & gazières",
+    logo: null,
+  },
+  {
+    id: "pt10",
+    nom: "BP Sénégal",
+    categorie: "Entreprises pétrolières & gazières",
+    logo: null,
+  },
+  {
+    id: "pt11",
+    nom: "Contenu provisoire",
+    categorie: "Entreprises pétrolières & gazières",
+    logo: null,
+    description: "Partenaire industriel — à confirmer",
+  },
+  {
+    id: "pt12",
+    nom: "Contenu provisoire",
+    categorie: "ONG & bailleurs internationaux",
+    logo: null,
+    description: "Bailleur international — à confirmer",
+  },
+  {
+    id: "pt13",
+    nom: "Contenu provisoire",
+    categorie: "ONG & bailleurs internationaux",
+    logo: null,
+    description: "ONG partenaire — à confirmer",
+  },
+  {
+    id: "pt14",
+    nom: "Contenu provisoire",
+    categorie: "Énergies renouvelables",
+    logo: null,
+    description: "Acteur des énergies renouvelables — à confirmer",
   },
 ];
 
@@ -94,4 +139,12 @@ export const temoignages: Temoignage[] = [
       "Contenu provisoire — témoignage à intégrer dès réception de la validation de la diplômée concernée.",
     photo: null,
   },
+];
+
+export const categoriesPartenaires: CategoriePartenaire[] = [
+  "Ministères sectoriels",
+  "Universités & écoles d'ingénieurs",
+  "Entreprises pétrolières & gazières",
+  "ONG & bailleurs internationaux",
+  "Énergies renouvelables",
 ];

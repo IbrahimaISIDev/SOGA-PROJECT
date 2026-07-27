@@ -20,6 +20,39 @@ export interface Expert {
   portrait: string | null;
 }
 
+export interface Thematique {
+  id: string;
+  titre: string;
+  description: string;
+}
+
+export const thematiquesListe: Thematique[] = [
+  {
+    id: "th01",
+    titre: "Gouvernance des ressources naturelles",
+    description:
+      "Cadres légaux, fonds souverains, transparence fiscale et contractuelle dans le secteur extractif africain.",
+  },
+  {
+    id: "th02",
+    titre: "Transition énergétique & climat",
+    description:
+      "Trajectoires de décarbonation, mix énergétique souverain, financement climatique et adaptation aux accords de Paris.",
+  },
+  {
+    id: "th03",
+    titre: "Contenu local & emploi",
+    description:
+      "Politiques de préférence nationale, formation des compétences locales et retombées socio-économiques des projets extractifs.",
+  },
+  {
+    id: "th04",
+    titre: "Leadership des jeunes et des femmes",
+    description:
+      "Inclusion, accès aux filières techniques et rôle des nouvelles générations dans la souveraineté énergétique africaine.",
+  },
+];
+
 export const thematiques = [
   "Gouvernance des ressources naturelles",
   "Transition énergétique & climat",
@@ -85,6 +118,14 @@ export const publications: Publication[] = [
 ];
 
 export const experts: Expert[] = [
+  {
+    id: "ex00",
+    nom: "Dr. Aïssatou Cissoko",
+    titre: "Fondatrice & Directrice Générale",
+    institution: "SOGA",
+    specialite: "Énergie & Transition",
+    portrait: null,
+  },
   {
     id: "ex01",
     nom: "Contenu provisoire",

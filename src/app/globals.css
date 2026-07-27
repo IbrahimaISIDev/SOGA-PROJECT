@@ -126,6 +126,24 @@
     outline-offset: 2px;
   }
 
+  /* Page fade-in on route change */
+  @keyframes soga-page-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  main#main-content {
+    animation: soga-page-in 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Count pop — /actualites filter badge */
+  @keyframes count-pop {
+    from { opacity: 0; transform: scale(0.75); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .animate-count-pop {
+    animation: count-pop 260ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -135,6 +153,18 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+    main#main-content { animation: none; }
+  }
+
+  /* ── Print styles (publications Think Tank) ──────────── */
+  @media print {
+    header, footer, nav[aria-label="Navigation principale"],
+    .no-print, button { display: none !important; }
+    body { font-size: 11pt; color: #000; background: #fff; }
+    a { color: #000; text-decoration: underline; }
+    h1, h2, h3 { break-after: avoid; }
+    p, li { break-inside: avoid; orphans: 3; widows: 3; }
+    .container-soga { max-width: 100%; padding: 0; }
   }
 }
 
@@ -154,8 +184,12 @@
     background-color: var(--soga-gold);
     transition: width 200ms ease;
   }
-  .nav-underline:hover::after {
+  .nav-underline:hover::after,
+  .nav-underline.nav-active::after {
     width: 100%;
+  }
+  .nav-underline.nav-active {
+    color: var(--soga-gold-light) !important;
   }
 
   /* Provisional content placeholder (striped) */

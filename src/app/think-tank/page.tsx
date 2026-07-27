@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { publications, thematiques, experts } from "@/data/thinktank";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Think Tank SOGA",
@@ -142,10 +143,9 @@ export default function ThinkTankPage() {
               {experts.map((expert, i) => (
                 <ScrollReveal key={expert.id} delay={i * 60}>
                   <div className="flex gap-5 items-start">
-                    <div className="w-16 h-16 rounded-sm overflow-hidden shrink-0 bg-soga-graphite">
+                    <div className="relative w-16 h-16 rounded-sm overflow-hidden shrink-0 bg-soga-graphite">
                       {expert.portrait ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={expert.portrait} alt={`Portrait de ${expert.nom}`} className="w-full h-full object-cover" />
+                        <Image src={expert.portrait} alt={`Portrait de ${expert.nom}`} fill className="object-cover" />
                       ) : (
                         <div className="w-full h-full placeholder-block" />
                       )}

@@ -1,3 +1,15 @@
+export interface MembreEquipe {
+  id: string;
+  slug: string;
+  nom: string;
+  titre: string;
+  direction: "fondation" | "pedagogique" | "administrative" | "thinktank" | "admissions";
+  specialite: string;
+  biographie: string;
+  filieres: string[];
+  portrait: string | null;
+}
+
 export const institution = {
   nom: "Senegal Oil and Gas Academy",
   sigle: "SOGA",
@@ -15,33 +27,38 @@ export const institution = {
   ],
 
   vision:
-    "Devenir la référence académique de l'industrie énergétique africaine d'ici 2030 — une institution où la rigueur scientifique rencontre l'engagement pour un développement durable et souverain.",
+    "Faire du Sénégal un hub régional de compétence, d'innovation et de leadership énergétique — une institution où la rigueur scientifique rencontre l'engagement pour un développement durable et souverain d'ici 2030.",
 
   valeurs: [
     {
       titre: "Excellence",
+      sousTitre: "Académique et professionnelle",
       description:
         "Des standards pédagogiques alignés sur les meilleures pratiques internationales, appliqués au contexte africain.",
     },
     {
-      titre: "Intégrité",
-      description:
-        "Éthique professionnelle et gouvernance transparente, au cœur de nos formations et de notre institution.",
-    },
-    {
-      titre: "Ancrage africain",
-      description:
-        "Une vision résolument tournée vers les besoins du continent, avec une pédagogie adaptée au terrain local.",
-    },
-    {
       titre: "Innovation",
+      sousTitre: "Et durabilité",
       description:
         "Recherche appliquée, partenariats industrie-académie et adaptation permanente aux mutations du secteur énergétique.",
     },
     {
-      titre: "Durabilité",
+      titre: "Éthique",
+      sousTitre: "Et transparence",
       description:
-        "Intégration systématique des enjeux de transition énergétique et de responsabilité environnementale.",
+        "Gouvernance transparente et intégrité professionnelle, au cœur de nos formations et de notre institution.",
+    },
+    {
+      titre: "Inclusion",
+      sousTitre: "Et leadership africain",
+      description:
+        "Une vision résolument tournée vers les besoins du continent, valorisant la diversité et les talents locaux.",
+    },
+    {
+      titre: "Partenariat",
+      sousTitre: "Et ouverture internationale",
+      description:
+        "Un réseau industriel et académique de premier plan, ancré en Afrique et ouvert sur le monde.",
     },
   ],
 
@@ -53,52 +70,110 @@ export const institution = {
   ],
 
   fondatrice: {
-    nom: "Contenu provisoire",
+    nom: "Dr. Aïssatou Cissoko",
     titre: "Fondatrice & Directrice Générale",
-    mot: "Contenu provisoire — le mot de la fondatrice sera intégré dès réception du texte validé.",
+    qualifications: "Docteure en Énergie",
+    citation:
+      "« Nous formons une génération qui ne subira pas la transition énergétique — elle la dirigera. »",
+    biographie: [
+      "Docteure en Énergie, Aïssatou Cissoko a fondé SOGA avec une conviction simple : l'Afrique ne manque pas de ressources énergétiques, elle manque de compétences formées localement pour les exploiter avec souveraineté et responsabilité.",
+      "Sous son impulsion, SOGA prépare le lancement d'un Think Tank Énergie & Transition, pensé comme un espace de recherche et de débat sur les politiques énergétiques africaines.",
+    ],
     portrait: null,
   },
+
+  organigramme: [
+    { label: "Fondatrice & Direction Générale", niveau: 0, accent: true },
+    { label: "Direction Pédagogique", niveau: 1, accent: false },
+    { label: "Direction Administrative", niveau: 1, accent: false },
+    { label: "Think Tank & Recherche", niveau: 1, accent: false },
+  ],
 
   equipe: [
     {
       id: "m01",
+      slug: "directeur-academique",
       nom: "Contenu provisoire",
       titre: "Directeur Académique",
+      direction: "pedagogique" as const,
       specialite: "Génie pétrolier",
+      biographie:
+        "Biographie provisoire — à compléter dès réception des informations du directeur académique.",
+      filieres: ["Génie Pétrolier", "Génie du Gaz"],
       portrait: null,
     },
     {
       id: "m02",
+      slug: "directrice-relations-industrielles",
       nom: "Contenu provisoire",
       titre: "Directrice des Relations Industrielles",
+      direction: "administrative" as const,
       specialite: "Management & Partenariats",
+      biographie:
+        "Biographie provisoire — à compléter dès réception des informations de la directrice des relations industrielles.",
+      filieres: ["Management des Projets Énergétiques"],
       portrait: null,
     },
     {
       id: "m03",
+      slug: "responsable-think-tank",
       nom: "Contenu provisoire",
       titre: "Responsable Think Tank",
+      direction: "thinktank" as const,
       specialite: "Économie de l'énergie",
+      biographie:
+        "Biographie provisoire — à compléter dès réception des informations du responsable Think Tank.",
+      filieres: ["Économie et Droit du Pétrole"],
       portrait: null,
     },
     {
       id: "m04",
+      slug: "responsable-admissions",
       nom: "Contenu provisoire",
       titre: "Responsable Admissions",
+      direction: "admissions" as const,
       specialite: "Recrutement & Accompagnement",
+      biographie:
+        "Biographie provisoire — à compléter dès réception des informations de la responsable admissions.",
+      filieres: [],
       portrait: null,
     },
-  ],
+  ] satisfies MembreEquipe[],
 
   campus: {
     description:
-      "Le campus SOGA est situé à Dakar, au cœur d'un écosystème industriel et institutionnel stratégique. Les infrastructures comprennent des salles de cours équipées, un laboratoire technique, une bibliothèque spécialisée et un espace de coworking pour les alumni et partenaires.",
-    equipements: [
-      "Laboratoire de simulation de forage",
-      "Bibliothèque spécialisée énergie",
-      "Amphithéâtre 150 places",
-      "Espace coworking & incubation",
-      "Salle de visioconférence internationale",
+      "Le campus SOGA est situé à Dakar, au cœur d'un écosystème industriel et institutionnel stratégique. Les installations offrent un environnement d'apprentissage professionnel, combinant théorie et pratique sur équipements industriels réels.",
+    infrastructures: [
+      {
+        titre: "Laboratoires techniques",
+        detail: "Électrotechnique · Instrumentation · QHSE · Géomatique",
+        enPlanification: false,
+        photo: null,
+      },
+      {
+        titre: "Bancs didactiques industriels",
+        detail: "Équipements réels, conditions de terrain",
+        enPlanification: false,
+        photo: null,
+      },
+      {
+        titre: "Centre multimédia & documentaire",
+        detail: "Ressources pédagogiques et recherche",
+        enPlanification: false,
+        photo: null,
+      },
+      {
+        titre: "Simulation & réalité virtuelle",
+        detail: "Simulateurs de puits et de process",
+        enPlanification: true,
+        photo: null,
+      },
+      {
+        titre: "SOGA Innovation Lab",
+        detail: "Incubateur de projets étudiants",
+        enPlanification: false,
+        photo: null,
+      },
     ],
     photos: [],
   },
