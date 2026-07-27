@@ -98,6 +98,17 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  /* Close mega-menu / mobile menu on Escape */
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      setOpenMega(null);
+      setMobileOpen(false);
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   /* Cleanup timers */
   useEffect(() => () => {
     if (openTimerRef.current) clearTimeout(openTimerRef.current);
@@ -215,18 +226,6 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
 
             {/* Right actions */}
             <div className="hidden lg:flex items-center gap-4">
-              <button
-                className={`text-eyebrow text-[12px] px-2 py-1 min-h-[44px] flex items-center gap-1 transition-colors ${
-                  isDark || scrolled
-                    ? "text-white/70 hover:text-white"
-                    : "text-soga-muted hover:text-soga-ink"
-                }`}
-                aria-label="Changer la langue"
-              >
-                <span aria-current="true">FR</span>
-                <span className="opacity-40">/</span>
-                <span>EN</span>
-              </button>
               <Button as="a" href="/admissions/candidature" variant="primary" size="sm">
                 Candidater
               </Button>
@@ -537,9 +536,6 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
           >
             Candidater
           </Button>
-          <button className="text-eyebrow text-soga-muted text-[12px] tracking-widest">
-            FR / EN
-          </button>
         </div>
       </div>
     </>
