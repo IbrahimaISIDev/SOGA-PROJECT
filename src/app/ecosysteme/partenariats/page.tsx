@@ -30,9 +30,18 @@ export default function PartenariatsPage() {
 
         <div className="section-gap bg-soga-sand">
           <div className="container-soga flex flex-col gap-14">
-            {categoriesPartenaires.map((cat, ci) => {
-              const filtered = partenaires.filter((p) => p.categorie === cat);
-              if (!filtered.length) return null;
+            {categoriesPartenaires
+              .map((cat) => ({
+                cat,
+                /* Seuls les partenaires réels sont affichés — masqués tant
+                   que "Contenu provisoire" n'a pas été remplacé par un vrai
+                   nom. */
+                filtered: partenaires.filter(
+                  (p) => p.categorie === cat && p.nom !== "Contenu provisoire"
+                ),
+              }))
+              .filter(({ filtered }) => filtered.length > 0)
+              .map(({ cat, filtered }, ci, visibles) => {
               return (
                 <section key={cat} aria-labelledby={`cat-${ci}`}>
                   <ScrollReveal>
@@ -75,7 +84,7 @@ export default function PartenariatsPage() {
                       </ScrollReveal>
                     ))}
                   </div>
-                  {ci < categoriesPartenaires.length - 1 && (
+                  {ci < visibles.length - 1 && (
                     <StratigraphicSeparator className="mt-10 opacity-50" />
                   )}
                 </section>

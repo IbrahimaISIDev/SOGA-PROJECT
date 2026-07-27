@@ -61,6 +61,10 @@ const TEMOIGNAGES = [
   },
 ];
 
+/* Ne garder que les témoignages réels — masqué tant que rien n'a
+   remplacé le texte "Témoignage provisoire" fourni par un vrai nom. */
+const TEMOIGNAGES_REELS = TEMOIGNAGES.filter((t) => t.auteur !== "Témoignage provisoire");
+
 const POLE_TECHNIQUE = [
   "DTS Exploration & Production Pétrolière",
   "DTS Raffinage & Pétrochimie",
@@ -527,70 +531,56 @@ export default function HomePage() {
         </section>
 
         {/* ── Témoignages ───────────────────────────────────── */}
-        <section
-          aria-labelledby="temoignages-title"
-          className="section-gap"
-          style={{ backgroundColor: "#F0EDE3" }}
-        >
-          <div className="container-soga">
-            <ScrollReveal>
-              <p className="text-eyebrow text-soga-gold-deep mb-3">TÉMOIGNAGES</p>
-              <h2
-                id="temoignages-title"
-                className="font-display font-semibold text-soga-ink mb-12"
-                style={{ fontSize: "clamp(28px,2.8vw,36px)" }}
-              >
-                Ceux qui construisent SOGA
-              </h2>
-            </ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TEMOIGNAGES.map((t, i) => (
-                <ScrollReveal key={t.role} delay={i * 60}>
-                  <div className="bg-white border border-soga-line rounded-lg p-7">
-                    <p
-                      className="font-display italic text-soga-ink mb-5"
-                      style={{ fontSize: "18px", lineHeight: 1.5 }}
-                    >
-                      {t.citation}
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="w-10 h-10 rounded-full shrink-0"
-                        style={{ backgroundColor: "#E2DED5" }}
-                        aria-hidden
-                      />
-                      <div>
-                        <p className="font-semibold text-soga-ink text-[14px]">{t.auteur}</p>
-                        <p className="text-[13px] text-soga-muted">{t.role}</p>
+        {/* Masqué tant qu'aucun témoignage réel n'est disponible — voir
+            TEMOIGNAGES_REELS ci-dessus. Les logos partenaires ne sont pas
+            encore prêts non plus (aucune donnée réelle à afficher), donc
+            cette section entière reste masquée pour l'instant plutôt que
+            de montrer des blocs vides étiquetés "contenu provisoire". */}
+        {TEMOIGNAGES_REELS.length > 0 && (
+          <section
+            aria-labelledby="temoignages-title"
+            className="section-gap"
+            style={{ backgroundColor: "#F0EDE3" }}
+          >
+            <div className="container-soga">
+              <ScrollReveal>
+                <p className="text-eyebrow text-soga-gold-deep mb-3">TÉMOIGNAGES</p>
+                <h2
+                  id="temoignages-title"
+                  className="font-display font-semibold text-soga-ink mb-12"
+                  style={{ fontSize: "clamp(28px,2.8vw,36px)" }}
+                >
+                  Ceux qui construisent SOGA
+                </h2>
+              </ScrollReveal>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {TEMOIGNAGES_REELS.map((t, i) => (
+                  <ScrollReveal key={t.role} delay={i * 60}>
+                    <div className="bg-white border border-soga-line rounded-lg p-7">
+                      <p
+                        className="font-display italic text-soga-ink mb-5"
+                        style={{ fontSize: "18px", lineHeight: 1.5 }}
+                      >
+                        {t.citation}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-10 h-10 rounded-full shrink-0"
+                          style={{ backgroundColor: "#E2DED5" }}
+                          aria-hidden
+                        />
+                        <div>
+                          <p className="font-semibold text-soga-ink text-[14px]">{t.auteur}</p>
+                          <p className="text-[13px] text-soga-muted">{t.role}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  </ScrollReveal>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-
-        {/* ── Partenaires ───────────────────────────────────── */}
-        <section aria-label="Nos partenaires" className="py-20 bg-soga-sand">
-          <div className="container-soga">
-            <ScrollReveal>
-              <p className="text-eyebrow text-soga-gold-deep mb-8">
-                ILS NOUS FONT CONFIANCE — CONTENU PROVISOIRE
-              </p>
-            </ScrollReveal>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-14 rounded"
-                  style={{ backgroundColor: "#E2DED5" }}
-                  aria-hidden
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ── CTA Final ─────────────────────────────────────── */}
         <section

@@ -45,6 +45,9 @@ const SECTIONS = [
 export default function EcosystemePage() {
   /* Afficher 4 partenaires en vitrine */
   const vitrine = partenaires.filter((p) => p.nom !== "Contenu provisoire").slice(0, 4);
+  /* Ne garder que les témoignages réels — masqué tant qu'aucun n'a
+     remplacé le texte "Contenu provisoire" fourni par un vrai récit. */
+  const temoignagesReels = temoignages.filter((t) => t.auteur !== "Contenu provisoire");
 
   return (
     <>
@@ -146,51 +149,55 @@ export default function EcosystemePage() {
           </section>
         )}
 
-        <StratigraphicSeparator className="mx-16 md:mx-24" />
+        {temoignagesReels.length > 0 && (
+          <>
+            <StratigraphicSeparator className="mx-16 md:mx-24" />
 
-        {/* Témoignages alumni */}
-        <section aria-labelledby="temoignages-title" className="section-gap bg-soga-black">
-          <div className="container-soga">
-            <ScrollReveal>
-              <p className="text-eyebrow text-soga-gold mb-4">ALUMNI</p>
-              <h2 id="temoignages-title" className="text-h2 text-white mb-10">
-                Ils ont étudié à SOGA.
-              </h2>
-            </ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {temoignages.map((t, i) => (
-                <ScrollReveal key={t.id} delay={i * 80}>
-                  <figure
-                    className="border p-6"
-                    style={{ backgroundColor: "#16181C", borderColor: "#2a2d33" }}
-                  >
-                    <blockquote>
-                      <p className="text-lead text-white/75 italic leading-relaxed">
-                        &ldquo;{t.texte}&rdquo;
-                      </p>
-                    </blockquote>
-                    <figcaption className="mt-6 flex items-center gap-4">
-                      <div
-                        className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 placeholder-block"
-                        aria-hidden="true"
-                      >
-                        {t.photo && (
-                          <Image src={t.photo} alt={t.auteur} fill sizes="40px" className="object-cover" />
-                        )}
-                      </div>
-                      <div>
-                        <p className="font-medium text-white text-small">{t.auteur}</p>
-                        <p className="text-eyebrow text-white/40 text-[10px]">
-                          {t.titre} · {t.promotion}
-                        </p>
-                      </div>
-                    </figcaption>
-                  </figure>
+            {/* Témoignages alumni */}
+            <section aria-labelledby="temoignages-title" className="section-gap bg-soga-black">
+              <div className="container-soga">
+                <ScrollReveal>
+                  <p className="text-eyebrow text-soga-gold mb-4">ALUMNI</p>
+                  <h2 id="temoignages-title" className="text-h2 text-white mb-10">
+                    Ils ont étudié à SOGA.
+                  </h2>
                 </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {temoignagesReels.map((t, i) => (
+                    <ScrollReveal key={t.id} delay={i * 80}>
+                      <figure
+                        className="border p-6"
+                        style={{ backgroundColor: "#16181C", borderColor: "#2a2d33" }}
+                      >
+                        <blockquote>
+                          <p className="text-lead text-white/75 italic leading-relaxed">
+                            &ldquo;{t.texte}&rdquo;
+                          </p>
+                        </blockquote>
+                        <figcaption className="mt-6 flex items-center gap-4">
+                          <div
+                            className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 placeholder-block"
+                            aria-hidden="true"
+                          >
+                            {t.photo && (
+                              <Image src={t.photo} alt={t.auteur} fill sizes="40px" className="object-cover" />
+                            )}
+                          </div>
+                          <div>
+                            <p className="font-medium text-white text-small">{t.auteur}</p>
+                            <p className="text-eyebrow text-white/40 text-[10px]">
+                              {t.titre} · {t.promotion}
+                            </p>
+                          </div>
+                        </figcaption>
+                      </figure>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        )}
 
         {/* CTA devenir partenaire */}
         <section
