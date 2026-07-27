@@ -8,7 +8,7 @@ export function CardFormation({ formation }: { formation: Formation }) {
   return (
     <a
       href={`/formations/${formation.slug}`}
-      className="group block bg-white border border-soga-line rounded-md overflow-hidden hover:border-soga-gold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+      className="group card-lift block bg-white border border-soga-line rounded-md overflow-hidden hover:border-soga-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
     >
       <div className="p-6 flex flex-col gap-4 h-full">
         <div className="flex items-start justify-between gap-3">
@@ -48,7 +48,7 @@ export function CardActualite({ article }: { article: Article }) {
   return (
     <a
       href={`/actualites/${article.slug}`}
-      className="group block bg-white border border-soga-line rounded-md overflow-hidden card-img-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+      className="group block bg-white border border-soga-line rounded-md overflow-hidden card-img-hover card-lift hover:border-soga-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
     >
       <div className="aspect-[16/9] overflow-hidden bg-soga-graphite relative">
         {article.image ? (
@@ -92,7 +92,7 @@ export function CardEvenement({ evenement }: { evenement: Evenement }) {
   return (
     <a
       href={`/actualites/evenements/${evenement.slug}`}
-      className="group flex gap-5 p-5 bg-white border border-soga-line rounded-md hover:border-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+      className="group card-lift flex gap-5 p-5 bg-white border border-soga-line rounded-md hover:border-soga-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
     >
       <div className="shrink-0 w-14 text-center">
         <div className="text-h2 text-[28px] font-display text-soga-gold-deep leading-none">

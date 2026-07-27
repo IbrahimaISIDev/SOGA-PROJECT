@@ -58,6 +58,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     font-family: var(--font-sans);
     font-size: 17px;
@@ -231,6 +237,17 @@
   }
   .card-img-hover:hover img {
     transform: scale(1.02);
+  }
+
+  /* Card lift on hover — formations, actualités, événements */
+  .card-lift {
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 220ms ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-float);
   }
 
   /* Line clamp helpers */
