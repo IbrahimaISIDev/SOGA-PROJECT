@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Badge from "./Badge";
 import type { Formation } from "@/data/formations";
 import type { Article, Evenement } from "@/data/actualites";
@@ -51,11 +52,12 @@ export function CardActualite({ article }: { article: Article }) {
     >
       <div className="aspect-[16/9] overflow-hidden bg-soga-graphite relative">
         {article.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={article.image}
             alt=""
-            className="w-full h-full object-cover"
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
           />
         ) : (
           <div className="w-full h-full placeholder-block flex items-end p-4">
@@ -121,11 +123,12 @@ export function CardMembre({
     <div className="bg-white border border-soga-line rounded-md overflow-hidden">
       <div className="aspect-[3/4] overflow-hidden bg-soga-graphite relative">
         {membre.portrait ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={membre.portrait}
             alt={`Portrait de ${membre.nom}`}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            className="object-cover"
           />
         ) : (
           <div className="w-full h-full placeholder-block flex items-end p-4">
