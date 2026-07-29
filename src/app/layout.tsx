@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Source_Serif_4, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/layout/CookieBanner";
@@ -43,6 +43,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@SOGA_Dakar",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0B0C0E",
 };
 
 const organizationJsonLd = {
