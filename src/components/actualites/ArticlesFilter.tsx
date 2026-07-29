@@ -51,21 +51,23 @@ export default function ArticlesFilter({
         </div>
       </ScrollReveal>
 
-      {articlesFiltres.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articlesFiltres.map((a, i) => (
-            <ScrollReveal key={a.id} delay={i * 60}>
-              <CardActualite article={a} />
-            </ScrollReveal>
-          ))}
-        </div>
-      ) : (
-        <div className="py-16 text-center">
-          <p className="text-eyebrow text-soga-muted">
-            Aucun article dans cette catégorie pour le moment.
-          </p>
-        </div>
-      )}
+      <div aria-live="polite" aria-label="Articles filtrés">
+        {articlesFiltres.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articlesFiltres.map((a, i) => (
+              <ScrollReveal key={a.id} delay={i * 60}>
+                <CardActualite article={a} />
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div className="py-16 text-center">
+            <p className="text-eyebrow text-soga-muted">
+              Aucun article dans cette catégorie pour le moment.
+            </p>
+          </div>
+        )}
+      </div>
     </>
   );
 }
