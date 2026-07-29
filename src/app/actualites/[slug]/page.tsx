@@ -8,6 +8,9 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { articles } from "@/data/actualites";
 import ReadingProgress from "@/components/ui/ReadingProgress";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/site";
+import { institution } from "@/data/institution";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -47,15 +50,30 @@ export default async function ArticleDetail({
   const wordCount = [article.extrait, ...(article.contenu ?? [])].join(" ").trim().split(/\s+/).length;
   const readingMins = Math.max(1, Math.round(wordCount / 200));
 
-  const pageUrl = `https://senegaloilandgasacademy.com/actualites/${article.slug}`;
+  const pageUrl = `${SITE_URL}/actualites/${article.slug}`;
   const shareLinks = {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`,
     twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(article.titre)}`,
     email: `mailto:?subject=${encodeURIComponent(article.titre)}&body=${encodeURIComponent(pageUrl)}`,
   };
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.titre,
+    description: article.extrait,
+    datePublished: article.date,
+    articleSection: article.categorie,
+    url: pageUrl,
+    mainEntityOfPage: pageUrl,
+    ...(article.image ? { image: `${SITE_URL}${article.image}` } : {}),
+    author: { "@type": "EducationalOrganization", name: institution.nom, url: SITE_URL },
+    publisher: { "@type": "EducationalOrganization", name: institution.nom, url: SITE_URL },
+  };
+
   return (
     <>
+      <JsonLd data={articleJsonLd} />
       <ReadingProgress />
       <Header />
       <main id="main-content" className="bg-soga-sand min-h-screen">

@@ -10,6 +10,9 @@ import PublicationRelatedLinks from "@/components/thinktank/PublicationRelatedLi
 import CopyButton from "@/components/thinktank/CopyButton";
 import { publications } from "@/data/thinktank";
 import ReadingProgress from "@/components/ui/ReadingProgress";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/site";
+import { institution } from "@/data/institution";
 
 const TT_GREEN = "#1E6F5C";
 const TT_GREEN_LIGHT = "#3ea08a";
@@ -60,8 +63,25 @@ export default async function FichePublication({
     ? `${pages} pages`
     : `${Math.max(1, Math.round((pub.resume ?? "").split(/\s+/).length / 200))} min`;
 
+  const pageUrl = `${SITE_URL}/think-tank/publications/${pub.slug}`;
+  const publicationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    headline: pub.titre,
+    description: pub.resume,
+    datePublished: pub.date,
+    about: pub.thematique,
+    url: pageUrl,
+    mainEntityOfPage: pageUrl,
+    isAccessibleForFree: pub.telechargeable,
+    ...(pub.image ? { image: `${SITE_URL}${pub.image}` } : {}),
+    author: pub.auteurs.map((nom) => ({ "@type": "Organization", name: nom })),
+    publisher: { "@type": "EducationalOrganization", name: institution.nom, url: SITE_URL },
+  };
+
   return (
     <>
+      <JsonLd data={publicationJsonLd} />
       <ReadingProgress />
       <ThinkTankHeader activeSection="Publications" />
       <main
