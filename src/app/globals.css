@@ -198,25 +198,17 @@
     color: var(--soga-gold-light) !important;
   }
 
-  /* Provisional content placeholder (striped) */
+  /* Provisional content placeholder — soft brand wash, no hazard stripes */
   .placeholder-block {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      var(--soga-graphite) 0px,
-      var(--soga-graphite) 2px,
-      var(--soga-black) 2px,
-      var(--soga-black) 12px
-    );
+    background-image:
+      radial-gradient(120% 120% at 15% 15%, rgba(201, 150, 44, 0.08), transparent 55%),
+      linear-gradient(155deg, var(--soga-graphite) 0%, var(--soga-black) 100%);
   }
 
   .placeholder-block-light {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      var(--soga-line) 0px,
-      var(--soga-line) 2px,
-      var(--soga-sand) 2px,
-      var(--soga-sand) 12px
-    );
+    background-image:
+      radial-gradient(120% 120% at 15% 15%, rgba(201, 150, 44, 0.1), transparent 55%),
+      linear-gradient(155deg, var(--soga-sand) 0%, var(--soga-line) 100%);
   }
 
   /* Container max-width */
