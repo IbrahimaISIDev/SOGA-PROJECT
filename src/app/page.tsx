@@ -8,9 +8,6 @@ import { articles, evenements } from "@/data/actualites";
 import { institution } from "@/data/institution";
 import { publications } from "@/data/thinktank";
 
-const DUOTONE =
-  "repeating-linear-gradient(115deg,#0B0C0E,#0B0C0E 14px,#1a3040 14px,#1a3040 28px)";
-
 const HOME_STATS = [
   { valeur: "08", libelle: "filières techniques & managériales" },
   { valeur: "4", libelle: "niveaux de diplôme, du DTS au Master Pro" },
@@ -161,7 +158,7 @@ export default function HomePage() {
             className="relative overflow-hidden text-white"
             style={{ minHeight: "560px", backgroundColor: "#0D2B3E", padding: "56px" }}
           >
-            <div className="absolute inset-0" style={{ background: DUOTONE, opacity: 0.5 }} aria-hidden />
+            <div className="absolute inset-0 placeholder-block" style={{ opacity: 0.5 }} aria-hidden />
             <div className="relative z-10 flex flex-col h-full justify-between">
               <div>
                 <p className="text-eyebrow mb-4" style={{ color: "#F0C868" }}>
@@ -196,7 +193,7 @@ export default function HomePage() {
             className="relative overflow-hidden text-white"
             style={{ minHeight: "560px", backgroundColor: "#16181C", padding: "56px" }}
           >
-            <div className="absolute inset-0" style={{ background: DUOTONE, opacity: 0.5 }} aria-hidden />
+            <div className="absolute inset-0 placeholder-block" style={{ opacity: 0.5 }} aria-hidden />
             <div className="relative z-10 flex flex-col h-full justify-between">
               <div>
                 <p className="text-eyebrow mb-4" style={{ color: "#F0C868" }}>
@@ -260,7 +257,7 @@ export default function HomePage() {
                     className="group block border border-soga-line rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                   >
                     <div className="relative h-[170px]">
-                      <div className="absolute inset-0" style={{ background: DUOTONE }} />
+                      <div className="absolute inset-0 placeholder-block" />
                       <div
                         className="absolute bottom-0 left-0 right-0 h-0.5"
                         style={{ backgroundColor: "#C9962C" }}
@@ -404,8 +401,8 @@ export default function HomePage() {
           <div className="container-soga grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-16 items-center">
             <ScrollReveal>
               <div
-                className="rounded-sm overflow-hidden"
-                style={{ height: "460px", background: DUOTONE }}
+                className="rounded-sm overflow-hidden placeholder-block"
+                style={{ height: "460px" }}
                 aria-hidden
               />
             </ScrollReveal>
@@ -454,7 +451,7 @@ export default function HomePage() {
                     className="group block border border-soga-line rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                   >
                     <div className="relative h-[130px]">
-                      <div className="absolute inset-0" style={{ background: DUOTONE }} />
+                      <div className="absolute inset-0 placeholder-block" />
                     </div>
                     <div className="p-4">
                       <p className="text-eyebrow text-soga-gold-deep mb-2">

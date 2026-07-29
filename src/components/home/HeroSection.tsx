@@ -16,16 +16,8 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col justify-end bg-soga-black overflow-hidden"
       aria-label="Page d’accueil SOGA"
     >
-      {/* Duotone placeholder background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "repeating-linear-gradient(115deg,#0B0C0E,#0B0C0E 14px,#1a3040 14px,#1a3040 28px)",
-          opacity: 0.9,
-        }}
-        aria-hidden
-      />
+      {/* Placeholder background, in place of the real hero photo/video */}
+      <div className="absolute inset-0 placeholder-block" aria-hidden />
       <div
         className="absolute inset-0"
         style={{ background: "linear-gradient(to top, #0B0C0E 0%, #0B0C0E 20%, rgba(11,12,14,0.55) 60%, transparent 100%)" }}
