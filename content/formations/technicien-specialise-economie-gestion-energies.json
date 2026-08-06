@@ -1,0 +1,23 @@
+{
+  "itemId": "f11",
+  "slug": "technicien-specialise-economie-gestion-energies",
+  "code": "EGE-TS",
+  "brochureUrl": null,
+  "titre": "Technicien Spécialisé en Économie et Gestion des Énergies",
+  "pole": "technique",
+  "niveau": "Technicien Spécialisé",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de technicien supérieur spécialisé dans l'analyse économique et la gestion des ressources énergétiques, couvrant les fondamentaux de l'économie de l'énergie, la gestion des coûts et l'efficacité énergétique.",
+  "objectifs": "Former des techniciens spécialisés capables d'assister à la gestion économique et administrative des projets et activités énergétiques, et de contribuer à l'optimisation des coûts et de la performance énergétique.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (toutes séries) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers souhaitant se spécialiser dans la gestion économique et administrative des activités énergétiques.",
+  "debouches": [
+    "Technicien en gestion énergétique",
+    "Assistant économiste de l'énergie",
+    "Agent d'exploitation"
+  ],
+  "semestres": []
+}

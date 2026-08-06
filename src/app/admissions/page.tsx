@@ -37,16 +37,16 @@ const PROCESSUS = [
 
 const CONDITIONS = [
   {
-    niveau: "DTS / BTS",
-    pre: "Baccalauréat toutes séries, dossier scolaire.",
+    niveau: "Technicien Spécialisé / BTS",
+    pre: "Baccalauréat (séries scientifiques ou techniques, ou toutes séries selon la filière), dossier et/ou test de niveau.",
   },
   {
-    niveau: "Licence Pro",
-    pre: "DTS / BTS validé ou équivalent reconnu.",
+    niveau: "Licence",
+    pre: "Baccalauréat (séries scientifiques ou techniques, ou toutes séries selon la filière), dossier et/ou test de niveau.",
   },
   {
-    niveau: "Master Pro",
-    pre: "Licence validée, entretien de motivation.",
+    niveau: "Master",
+    pre: "Licence (Bac+3) en économie, gestion, ingénierie ou domaine équivalent, dossier et/ou entretien.",
   },
 ];
 

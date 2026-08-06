@@ -1,0 +1,23 @@
+{
+  "itemId": "f12",
+  "slug": "technicien-specialise-instrumentation-oil-gas",
+  "code": "IOG-TS",
+  "brochureUrl": null,
+  "titre": "Technicien Spécialisé en Instrumentation Oil & Gas",
+  "pole": "technique",
+  "niveau": "Technicien Spécialisé",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de technicien supérieur spécialisé dans l'installation, le réglage, la maintenance et le contrôle des instruments et équipements de mesure utilisés dans l'industrie pétrolière et gazière.",
+  "objectifs": "Former des techniciens spécialisés capables d'installer, de calibrer et de maintenir les systèmes d'instrumentation et de contrôle utilisés sur les sites d'exploration, de production et de raffinage.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans l'instrumentation appliquée au secteur pétrolier et gazier.",
+  "debouches": [
+    "Technicien instrumentiste",
+    "Technicien de contrôle-commande",
+    "Agent de maintenance instrumentation"
+  ],
+  "semestres": []
+}

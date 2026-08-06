@@ -1,0 +1,23 @@
+{
+  "itemId": "f01",
+  "slug": "licence-sciences-ingenieur",
+  "code": "SI-L",
+  "brochureUrl": null,
+  "titre": "Licence Sciences pour l'Ingénieur",
+  "pole": "managerial",
+  "niveau": "Licence",
+  "mode": "Temps plein",
+  "duree": "3 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation généraliste de premier cycle destinée à donner aux étudiants une solide base scientifique et technique dans les disciplines fondamentales de l'ingénierie (mathématiques, physique, mécanique, électricité, informatique), avant une spécialisation ultérieure.",
+  "objectifs": "Doter les étudiants des fondamentaux scientifiques et méthodologiques nécessaires à la poursuite d'études d'ingénieur ou à une insertion dans les métiers techniques des secteurs de l'énergie et de l'industrie.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans les métiers de l'ingénierie.",
+  "debouches": [
+    "Poursuite en cycle ingénieur ou master",
+    "Technicien supérieur",
+    "Assistant ingénieur (énergie, industrie, BTP)"
+  ],
+  "semestres": []
+}

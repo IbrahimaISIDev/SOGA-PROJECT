@@ -1,0 +1,23 @@
+{
+  "itemId": "f05",
+  "slug": "bts-structures-metalliques",
+  "code": "SM-BTS",
+  "brochureUrl": null,
+  "titre": "BTS Structures Métalliques",
+  "pole": "technique",
+  "niveau": "BTS",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation technique de premier cycle spécialisée dans la conception, la fabrication et le montage des structures métalliques (charpentes, ossatures, équipements industriels), alliant enseignement technique et pratique en atelier.",
+  "objectifs": "Former des techniciens supérieurs capables de concevoir, dimensionner, fabriquer et superviser la réalisation d'ouvrages en structures métalliques, dans le respect des normes techniques et de sécurité.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans les métiers des structures métalliques et de la construction industrielle.",
+  "debouches": [
+    "Technicien bureau d'études",
+    "Chef d'atelier",
+    "Technicien de chantier ou de fabrication"
+  ],
+  "semestres": []
+}

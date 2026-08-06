@@ -1,0 +1,23 @@
+{
+  "itemId": "f09",
+  "slug": "bts-maintenance-engins-lourds",
+  "code": "MEL-BTS",
+  "brochureUrl": null,
+  "titre": "BTS Maintenance des Engins Lourds",
+  "pole": "technique",
+  "niveau": "BTS",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation technique de premier cycle dédiée à la maintenance, au diagnostic et à la réparation des engins lourds et équipements industriels utilisés dans les secteurs du BTP, des mines et de l'énergie.",
+  "objectifs": "Former des techniciens supérieurs capables d'assurer l'entretien préventif et correctif des engins lourds, de diagnostiquer les pannes et de superviser des équipes de maintenance.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans la maintenance des engins lourds et des équipements industriels.",
+  "debouches": [
+    "Technicien de maintenance",
+    "Chef d'atelier mécanique",
+    "Responsable de parc d'engins"
+  ],
+  "semestres": []
+}

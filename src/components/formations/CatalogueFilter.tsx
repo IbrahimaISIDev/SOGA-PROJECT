@@ -7,7 +7,15 @@ import type { Formation, Niveau, Mode } from "@/data/formations";
 
 type Filtre = "Tous" | Niveau | Mode;
 
-const filtres: Filtre[] = ["Tous", "DTS", "BTS", "Licence Pro", "Master Pro", "Temps plein", "Alternance"];
+const filtres: Filtre[] = [
+  "Tous",
+  "Technicien Spécialisé",
+  "BTS",
+  "Licence",
+  "Master",
+  "Temps plein",
+  "Alternance",
+];
 
 export default function CatalogueFilter({ formations }: { formations: Formation[] }) {
   const [filtre, setFiltre] = useState<Filtre>("Tous");

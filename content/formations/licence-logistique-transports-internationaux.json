@@ -1,0 +1,24 @@
+{
+  "itemId": "f03",
+  "slug": "licence-logistique-transports-internationaux",
+  "code": "LTI-L",
+  "brochureUrl": null,
+  "titre": "Licence Logistique et Transports Internationaux",
+  "pole": "managerial",
+  "niveau": "Licence",
+  "mode": "Temps plein",
+  "duree": "3 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de premier cycle dédiée à la gestion des flux physiques et d'information, couvrant les fondamentaux de la logistique, du transport multimodal, de la chaîne d'approvisionnement (supply chain) et du commerce international.",
+  "objectifs": "Doter les étudiants des compétences techniques et opérationnelles nécessaires à la gestion des opérations logistiques et de transport, dans un contexte national et international, au service des secteurs de l'énergie, de l'industrie et du commerce.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (toutes séries) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers souhaitant se spécialiser dans les métiers de la logistique, du transport et de la chaîne d'approvisionnement.",
+  "debouches": [
+    "Poursuite en Master (logistique, supply chain, commerce international)",
+    "Assistant logistique",
+    "Agent de transit",
+    "Gestionnaire de la chaîne d'approvisionnement"
+  ],
+  "semestres": []
+}

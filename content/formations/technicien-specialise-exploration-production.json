@@ -1,0 +1,24 @@
+{
+  "itemId": "f14",
+  "slug": "technicien-specialise-exploration-production",
+  "code": "EP-TS",
+  "brochureUrl": null,
+  "titre": "Technicien Spécialisé en Exploration Production",
+  "pole": "technique",
+  "niveau": "Technicien Spécialisé",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de technicien supérieur spécialisé dans les activités d'exploration et de production pétrolière et gazière, couvrant la géologie appliquée, le forage et les opérations de production.",
+  "objectifs": "Former des techniciens spécialisés capables de participer aux opérations d'exploration, de forage et de production sur les sites pétroliers et gaziers, dans le respect des normes techniques et de sécurité.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans les métiers de l'exploration et de la production pétrolière et gazière.",
+  "debouches": [
+    "Technicien de terrain",
+    "Technicien de forage",
+    "Assistant géologue",
+    "Agent de production"
+  ],
+  "semestres": []
+}

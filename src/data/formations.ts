@@ -1,6 +1,6 @@
 import { readCollection } from "@/lib/content";
 
-export type Niveau = "DTS" | "BTS" | "Licence Pro" | "Master Pro";
+export type Niveau = "Technicien Spécialisé" | "BTS" | "Licence" | "Master";
 export type Mode = "Temps plein" | "Alternance";
 export type Pole = "technique" | "managerial" | "courte";
 
@@ -19,6 +19,9 @@ export interface Formation {
   /** Chemin public vers la brochure PDF (ex. "/brochures/genie-petrolier.pdf"), ou null si aucune n'est disponible. */
   brochureUrl: string | null;
   description: string;
+  objectifs: string;
+  conditionsAdmission: string;
+  publicConcerne: string;
   debouches: string[];
   semestres: {
     numero: number;

@@ -8,7 +8,7 @@ import { formationsCourtes } from "@/data/formations";
 export const metadata: Metadata = {
   title: "Formations courtes",
   description:
-    "Modules de perfectionnement professionnel ciblés — de 2 à 5 jours — sur les métiers du pétrole, du gaz et des énergies durables.",
+    "Modules de perfectionnement professionnel ciblés sur les métiers de l'énergie, du management et de l'industrie.",
 };
 
 const DOMAINE_COLORS: Record<string, string> = {
@@ -85,71 +85,91 @@ export default function FormationsCourtes() {
               Catalogue des formations courtes
             </h2>
 
-            {/* All modules — simple grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-              {formationsCourtes.map((f) => {
-                const badgeBg = DOMAINE_COLORS[f.domaine] ?? "#3d4148";
-                return (
-                  <div
-                    key={f.id}
-                    className="bg-white border border-soga-line rounded-lg p-6 flex flex-col gap-4"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <span
-                        className="text-eyebrow text-white px-2 py-1 rounded shrink-0"
-                        style={{ backgroundColor: badgeBg, fontSize: "11px" }}
+            {formationsCourtes.length > 0 ? (
+              <>
+                {/* All modules — simple grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                  {formationsCourtes.map((f) => {
+                    const badgeBg = DOMAINE_COLORS[f.domaine] ?? "#3d4148";
+                    return (
+                      <div
+                        key={f.id}
+                        className="bg-white border border-soga-line rounded-lg p-6 flex flex-col gap-4"
                       >
-                        {f.domaine.toUpperCase()}
-                      </span>
-                      <span
-                        className="text-eyebrow shrink-0"
-                        style={{ color: "#8C6516", fontSize: "11px" }}
-                      >
-                        {f.duree.toUpperCase()}
-                      </span>
-                    </div>
-                    <h3
-                      className="font-display font-semibold text-soga-ink leading-snug"
-                      style={{ fontSize: "18px" }}
-                    >
-                      {f.titre}
-                    </h3>
-                    <p className="text-[14px] text-soga-muted leading-relaxed flex-1">
-                      {f.description}
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="text-[14px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
-                    >
-                      Renseignements →
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
+                        <div className="flex items-start justify-between gap-4">
+                          <span
+                            className="text-eyebrow text-white px-2 py-1 rounded shrink-0"
+                            style={{ backgroundColor: badgeBg, fontSize: "11px" }}
+                          >
+                            {f.domaine.toUpperCase()}
+                          </span>
+                          <span
+                            className="text-eyebrow shrink-0"
+                            style={{ color: "#8C6516", fontSize: "11px" }}
+                          >
+                            {f.duree.toUpperCase()}
+                          </span>
+                        </div>
+                        <h3
+                          className="font-display font-semibold text-soga-ink leading-snug"
+                          style={{ fontSize: "18px" }}
+                        >
+                          {f.titre}
+                        </h3>
+                        <p className="text-[14px] text-soga-muted leading-relaxed flex-1">
+                          {f.description}
+                        </p>
+                        <Link
+                          href="/contact"
+                          className="text-[14px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                        >
+                          Renseignements →
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
 
-            {/* By domaine summary */}
-            <div className="mt-16 border-t border-soga-line pt-12">
-              <p className="text-eyebrow text-soga-gold-deep mb-6">PAR DOMAINE</p>
-              <div className="flex flex-wrap gap-4">
-                {Object.entries(byDomaine).map(([domaine, modules]) => (
-                  <div
-                    key={domaine}
-                    className="flex items-center gap-2 px-4 py-2 border border-soga-line bg-white rounded"
-                  >
-                    <span
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: DOMAINE_COLORS[domaine] ?? "#3d4148" }}
-                      aria-hidden
-                    />
-                    <span className="text-[14px] font-medium text-soga-ink">{domaine}</span>
-                    <span className="text-eyebrow text-soga-muted" style={{ fontSize: "11px" }}>
-                      {modules.length} module{modules.length > 1 ? "s" : ""}
-                    </span>
+                {/* By domaine summary */}
+                <div className="mt-16 border-t border-soga-line pt-12">
+                  <p className="text-eyebrow text-soga-gold-deep mb-6">PAR DOMAINE</p>
+                  <div className="flex flex-wrap gap-4">
+                    {Object.entries(byDomaine).map(([domaine, modules]) => (
+                      <div
+                        key={domaine}
+                        className="flex items-center gap-2 px-4 py-2 border border-soga-line bg-white rounded"
+                      >
+                        <span
+                          className="w-2 h-2 rounded-full"
+                          style={{ backgroundColor: DOMAINE_COLORS[domaine] ?? "#3d4148" }}
+                          aria-hidden
+                        />
+                        <span className="text-[14px] font-medium text-soga-ink">{domaine}</span>
+                        <span className="text-eyebrow text-soga-muted" style={{ fontSize: "11px" }}>
+                          {modules.length} module{modules.length > 1 ? "s" : ""}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+              </>
+            ) : (
+              <div className="border border-soga-line bg-white rounded-lg p-8 text-center">
+                <p className="text-body text-soga-ink mb-4">
+                  Le catalogue détaillé des modules courts est en cours de finalisation.
+                </p>
+                <p className="text-small text-soga-muted mb-6">
+                  Domaines prévus : Leadership · QHSE · Maintenance · Forage — et d&apos;autres à
+                  venir.
+                </p>
+                <Link
+                  href="/contact"
+                  className="text-[14px] font-semibold text-soga-gold-deep border-b border-soga-gold-deep hover:border-soga-gold hover:text-soga-gold transition-colors"
+                >
+                  Être informé de l&apos;ouverture du catalogue →
+                </Link>
               </div>
-            </div>
+            )}
           </div>
         </section>
 

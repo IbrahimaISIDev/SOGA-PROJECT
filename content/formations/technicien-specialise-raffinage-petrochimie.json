@@ -1,0 +1,23 @@
+{
+  "itemId": "f13",
+  "slug": "technicien-specialise-raffinage-petrochimie",
+  "code": "RP-TS",
+  "brochureUrl": null,
+  "titre": "Technicien Spécialisé en Raffinage et Pétrochimie",
+  "pole": "technique",
+  "niveau": "Technicien Spécialisé",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de technicien supérieur spécialisé dans les procédés de raffinage du pétrole et de transformation pétrochimique, couvrant la conduite d'installations, le contrôle qualité et la sécurité des procédés.",
+  "objectifs": "Former des techniciens spécialisés capables de conduire et de superviser des unités de raffinage et de pétrochimie, dans le respect des normes de qualité, de sécurité et d'environnement.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans les métiers du raffinage et de la pétrochimie.",
+  "debouches": [
+    "Technicien de production",
+    "Opérateur de procédés",
+    "Technicien de contrôle qualité"
+  ],
+  "semestres": []
+}

@@ -1,0 +1,23 @@
+{
+  "itemId": "f10",
+  "slug": "bts-electrotechnique",
+  "code": "ELT-BTS",
+  "brochureUrl": null,
+  "titre": "BTS Électrotechnique",
+  "pole": "technique",
+  "niveau": "BTS",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation technique de premier cycle portant sur la conception, l'installation, l'exploitation et la maintenance des systèmes électriques et électrotechniques industriels.",
+  "objectifs": "Former des techniciens supérieurs capables de concevoir, installer et maintenir des installations électriques, ainsi que de diagnostiquer et résoudre les pannes électriques dans un contexte industriel.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers issus des filières scientifiques et techniques souhaitant se spécialiser dans l'électrotechnique et les systèmes électriques industriels.",
+  "debouches": [
+    "Technicien électrotechnicien",
+    "Technicien de maintenance électrique",
+    "Responsable d'installations électriques"
+  ],
+  "semestres": []
+}

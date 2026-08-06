@@ -1,0 +1,23 @@
+{
+  "itemId": "f08",
+  "slug": "bts-hygiene-securite-environnement",
+  "code": "HSE-BTS",
+  "brochureUrl": null,
+  "titre": "BTS Hygiène, Sécurité, Environnement",
+  "pole": "technique",
+  "niveau": "BTS",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation technique de premier cycle centrée sur la prévention des risques professionnels, la gestion de la sécurité au travail et la maîtrise des enjeux environnementaux au sein des entreprises industrielles.",
+  "objectifs": "Former des techniciens supérieurs capables de mettre en œuvre des politiques d'hygiène, de sécurité et de protection de l'environnement, et de veiller à la conformité réglementaire des sites industriels.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (série scientifique ou technique) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers souhaitant se spécialiser dans les métiers de la sécurité au travail, de la prévention des risques et de la gestion environnementale.",
+  "debouches": [
+    "Technicien HSE",
+    "Animateur sécurité",
+    "Agent de prévention des risques"
+  ],
+  "semestres": []
+}

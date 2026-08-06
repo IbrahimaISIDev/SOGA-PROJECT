@@ -1,0 +1,24 @@
+{
+  "itemId": "f02",
+  "slug": "licence-business-management",
+  "code": "BM-L",
+  "brochureUrl": null,
+  "titre": "Licence Business Management",
+  "pole": "managerial",
+  "niveau": "Licence",
+  "mode": "Temps plein",
+  "duree": "3 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de premier cycle en gestion d'entreprise, couvrant les fondamentaux du management, de la finance, du marketing et des ressources humaines, avec une approche pratique orientée vers les réalités du monde professionnel.",
+  "objectifs": "Doter les étudiants des compétences fondamentales en gestion et management nécessaires pour piloter des projets, des équipes et des activités au sein d'entreprises ou d'organisations, dans les secteurs de l'énergie, de l'industrie et au-delà.",
+  "conditionsAdmission": "Être titulaire du Baccalauréat (toutes séries) ou d'un diplôme équivalent ; admission sur étude de dossier et/ou test de niveau.",
+  "publicConcerne": "Bacheliers souhaitant se spécialiser dans les métiers du management, de la gestion d'entreprise et de l'administration des affaires.",
+  "debouches": [
+    "Poursuite en Master (management, finance, MBA)",
+    "Assistant de gestion",
+    "Chargé de projet",
+    "Responsable administratif et commercial"
+  ],
+  "semestres": []
+}

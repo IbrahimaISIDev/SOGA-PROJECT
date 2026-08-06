@@ -123,7 +123,7 @@ export default async function FicheFormation({
                 { label: "RYTHME", value: formation.mode },
                 { label: "LANGUE", value: "Français" },
                 { label: "RENTRÉE", value: formation.rentree },
-                { label: "LIEU", value: "Dakar" },
+                { label: "LIEU", value: "Dakar, Ziguinchor, Saint-Louis" },
                 ...(formation.placesLimitees && formation.capacite
                   ? [{ label: "CAPACITÉ", value: `${formation.capacite} places` }]
                   : []),
@@ -170,6 +170,45 @@ export default async function FicheFormation({
                   Présentation
                 </h2>
                 <p className="text-body text-soga-ink leading-relaxed">{formation.description}</p>
+              </section>
+
+              <StratigraphicSeparator />
+
+              {/* Objectifs */}
+              <section aria-labelledby="objectifs-title">
+                <h2
+                  id="objectifs-title"
+                  className="text-h3 text-soga-ink pb-4 mb-6 border-b border-soga-line"
+                >
+                  Objectifs de la formation
+                </h2>
+                <p className="text-body text-soga-ink leading-relaxed">{formation.objectifs}</p>
+              </section>
+
+              <StratigraphicSeparator />
+
+              {/* Admission */}
+              <section aria-labelledby="admission-title">
+                <h2
+                  id="admission-title"
+                  className="text-h3 text-soga-ink pb-4 mb-6 border-b border-soga-line"
+                >
+                  Admission
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div>
+                    <p className="text-eyebrow text-soga-muted mb-2">CONDITIONS D&apos;ADMISSION</p>
+                    <p className="text-body text-soga-ink leading-relaxed">
+                      {formation.conditionsAdmission}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-eyebrow text-soga-muted mb-2">PUBLIC CONCERNÉ</p>
+                    <p className="text-body text-soga-ink leading-relaxed">
+                      {formation.publicConcerne}
+                    </p>
+                  </div>
+                </div>
               </section>
 
               <StratigraphicSeparator />
@@ -254,8 +293,7 @@ export default async function FicheFormation({
                   { label: "Mode", value: formation.mode },
                   { label: "Rentrée", value: formation.rentree },
                   { label: "Frais de formation", value: "Sur demande" },
-                  { label: "Date limite de dépôt", value: "15 sept. 2025" },
-                  { label: "Lieu", value: "Dakar, Sénégal" },
+                  { label: "Campus", value: "Dakar, Ziguinchor, Saint-Louis" },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between gap-4">
                     <dt className="text-soga-muted">{label}</dt>

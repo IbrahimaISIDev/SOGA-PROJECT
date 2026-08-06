@@ -1,0 +1,24 @@
+{
+  "itemId": "f04",
+  "slug": "master-economie-electricite-energie-transports",
+  "code": "EEET-M",
+  "brochureUrl": null,
+  "titre": "Master Économie de l'Électricité, de l'Énergie et des Transports",
+  "pole": "managerial",
+  "niveau": "Master",
+  "mode": "Temps plein",
+  "duree": "2 ans",
+  "rentree": "Octobre 2025",
+  "placesLimitees": false,
+  "description": "Formation de deuxième cycle approfondissant l'analyse économique appliquée aux secteurs de l'électricité, de l'énergie et des transports, incluant la régulation, les politiques énergétiques, l'économie des infrastructures et les enjeux de la transition énergétique.",
+  "objectifs": "Former des cadres et experts capables d'analyser, de piloter et de conseiller sur les problématiques économiques, réglementaires et stratégiques des secteurs de l'électricité, de l'énergie et des transports.",
+  "conditionsAdmission": "Être titulaire d'une Licence (Bac+3) en économie, gestion, ingénierie ou domaine équivalent ; admission sur étude de dossier et/ou entretien.",
+  "publicConcerne": "Titulaires d'une licence souhaitant se spécialiser dans l'économie des secteurs énergétiques et des transports.",
+  "debouches": [
+    "Cadre ou expert en compagnie d'électricité, d'énergie ou de transport",
+    "Organisme de régulation",
+    "Bureau d'études",
+    "Institution publique ou internationale"
+  ],
+  "semestres": []
+}
