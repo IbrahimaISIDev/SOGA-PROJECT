@@ -4,24 +4,25 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "@/components/ui/Button";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 const formationsNav = [
   {
     label: "Pôle Technique",
     items: [
-      { label: "Génie Pétrolier", href: "/formations/genie-petrolier" },
-      { label: "Génie du Gaz", href: "/formations/genie-gaz" },
-      { label: "Énergies Renouvelables", href: "/formations/energies-renouvelables" },
-      { label: "Maintenance Industrielle", href: "/formations/maintenance-industrielle" },
-      { label: "Hygiène, Sécurité, Environnement", href: "/formations/hse-environnement" },
+      { label: "Technicien Spécialisé en Exploration Production", href: "/formations/technicien-specialise-exploration-production" },
+      { label: "Technicien Spécialisé en Raffinage et Pétrochimie", href: "/formations/technicien-specialise-raffinage-petrochimie" },
+      { label: "Technicien Spécialisé en Instrumentation Oil & Gas", href: "/formations/technicien-specialise-instrumentation-oil-gas" },
+      { label: "BTS Électrotechnique", href: "/formations/bts-electrotechnique" },
+      { label: "BTS Hygiène, Sécurité, Environnement", href: "/formations/bts-hygiene-securite-environnement" },
     ],
   },
   {
     label: "Pôle Managérial",
     items: [
-      { label: "Management des Projets Énergétiques", href: "/formations/management-projets-energetiques" },
-      { label: "Économie et Droit du Pétrole", href: "/formations/economie-droit-petrole" },
-      { label: "Logistique & Supply Chain", href: "/formations/logistique-supply-chain" },
+      { label: "Licence Sciences pour l'Ingénieur", href: "/formations/licence-sciences-ingenieur" },
+      { label: "Licence Business Management", href: "/formations/licence-business-management" },
+      { label: "Master Économie de l'Électricité, de l'Énergie et des Transports", href: "/formations/master-economie-electricite-energie-transports" },
     ],
   },
   {
@@ -139,7 +140,7 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
     ? "bg-soga-black/95 backdrop-blur-md border-b border-soga-graphite shadow-menu"
     : variant === "dark"
     ? "bg-transparent"
-    : "bg-white border-b border-soga-line";
+    : "bg-soga-surface border-b border-soga-line";
 
   const linkColor = isDark || scrolled
     ? "text-white/90 hover:text-white"
@@ -225,26 +226,30 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
             </nav>
 
             {/* Right actions */}
-            <div className="hidden lg:flex items-center gap-4">
-              <Button as="a" href="/admissions/candidature" variant="primary" size="sm">
+            <div className="hidden lg:flex items-center gap-2">
+              <ThemeToggle className={isDark || scrolled ? "text-white/90 hover:text-white" : "text-soga-ink hover:text-soga-ink"} />
+              <Button as="a" href="/admissions/candidature" variant="primary" size="sm" className="ml-2">
                 Candidater
               </Button>
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              className={`lg:hidden flex flex-col gap-1.5 p-2 min-h-[44px] min-w-[44px] items-center justify-center transition-colors ${
-                isDark || scrolled ? "text-white" : "text-soga-ink"
-              }`}
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-expanded={mobileOpen}
-              aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-controls="mobile-menu"
-            >
-              <span className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
-              <span className={`block w-5 h-0.5 bg-current transition-opacity duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
-            </button>
+            {/* Mobile actions */}
+            <div className="lg:hidden flex items-center">
+              <ThemeToggle className={isDark || scrolled ? "text-white/90 hover:text-white" : "text-soga-ink hover:text-soga-ink"} />
+              <button
+                className={`flex flex-col gap-1.5 p-2 min-h-[44px] min-w-[44px] items-center justify-center transition-colors ${
+                  isDark || scrolled ? "text-white" : "text-soga-ink"
+                }`}
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-expanded={mobileOpen}
+                aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-controls="mobile-menu"
+              >
+                <span className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
+                <span className={`block w-5 h-0.5 bg-current transition-opacity duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
+                <span className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -315,20 +320,12 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
                   </ul>
                 </div>
                 <div>
-                  <p className="text-eyebrow text-soga-muted mb-4">Dernière publication</p>
+                  <p className="text-eyebrow text-soga-muted mb-4">Le Think Tank SOGA</p>
                   <div className="bg-soga-graphite rounded-md p-4">
-                    <p className="text-small text-soga-muted mb-1">Rapport · 2025</p>
-                    <p className="text-[14px] text-white font-medium leading-snug">
-                      Scénarios de transition énergétique pour le Sénégal à l&apos;horizon 2035
+                    <p className="text-[14px] text-white/70 leading-snug">
+                      En cours de lancement — les premières publications seront mises en ligne
+                      dès leur parution.
                     </p>
-                    <Link
-                      href="/think-tank/publications/transition-energetique-senegal-2035"
-                      className="text-[13px] mt-3 block transition-colors hover:opacity-80"
-                      style={{ color: "#3ea08a" }}
-                      onClick={() => setOpenMega(null)}
-                    >
-                      Lire la publication →
-                    </Link>
                   </div>
                 </div>
               </div>
