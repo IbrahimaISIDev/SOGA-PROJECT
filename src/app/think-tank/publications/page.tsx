@@ -36,7 +36,18 @@ export default function PublicationsPage() {
           </div>
         </div>
 
-        <PublicationsFilter publications={publications} thematiques={thematiques} />
+        {publications.length > 0 ? (
+          <PublicationsFilter publications={publications} thematiques={thematiques} />
+        ) : (
+          <div className="container-soga py-20 text-center">
+            <p className="text-lead text-white/60 mb-2">
+              Le Think Tank SOGA est en cours de lancement.
+            </p>
+            <p className="text-body text-white/40">
+              Les premières publications seront mises en ligne dès leur parution.
+            </p>
+          </div>
+        )}
 
         <StratigraphicSeparator className="mx-16 md:mx-24 opacity-30" />
 

@@ -32,7 +32,18 @@ export default function ActualitesPage() {
               </h2>
             </ScrollReveal>
 
-            <ArticlesFilter articles={articles} categories={categories} />
+            {articles.length > 0 ? (
+              <ArticlesFilter articles={articles} categories={categories} />
+            ) : (
+              <div className="py-16 text-center">
+                <p className="text-body text-soga-ink mb-2">
+                  Aucune actualité publiée pour le moment.
+                </p>
+                <p className="text-small text-soga-muted">
+                  Revenez bientôt pour suivre la vie du campus et de l&apos;académie.
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -49,29 +60,39 @@ export default function ActualitesPage() {
                     Prochains événements.
                   </h2>
                 </div>
-                <Link
-                  href="/actualites/evenements"
-                  className="hidden sm:inline-flex items-center gap-1 text-small font-medium text-soga-gold-deep hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
-                >
-                  Voir l&apos;agenda complet →
-                </Link>
+                {evenements.length > 0 && (
+                  <Link
+                    href="/actualites/evenements"
+                    className="hidden sm:inline-flex items-center gap-1 text-small font-medium text-soga-gold-deep hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                  >
+                    Voir l&apos;agenda complet →
+                  </Link>
+                )}
               </div>
             </ScrollReveal>
-            <div className="max-w-2xl space-y-4">
-              {evenements.map((e, i) => (
-                <ScrollReveal key={e.id} delay={i * 60}>
-                  <CardEvenement evenement={e} />
-                </ScrollReveal>
-              ))}
-            </div>
-            <div className="mt-6 sm:hidden">
-              <Link
-                href="/actualites/evenements"
-                className="text-small font-medium text-soga-gold-deep hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
-              >
-                Voir l&apos;agenda complet →
-              </Link>
-            </div>
+            {evenements.length > 0 ? (
+              <>
+                <div className="max-w-2xl space-y-4">
+                  {evenements.map((e, i) => (
+                    <ScrollReveal key={e.id} delay={i * 60}>
+                      <CardEvenement evenement={e} />
+                    </ScrollReveal>
+                  ))}
+                </div>
+                <div className="mt-6 sm:hidden">
+                  <Link
+                    href="/actualites/evenements"
+                    className="text-small font-medium text-soga-gold-deep hover:text-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                  >
+                    Voir l&apos;agenda complet →
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <p className="text-body text-soga-muted">
+                Aucun événement programmé pour le moment.
+              </p>
+            )}
           </div>
         </section>
 

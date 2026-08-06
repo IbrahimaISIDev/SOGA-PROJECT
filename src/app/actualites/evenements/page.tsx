@@ -33,6 +33,14 @@ export default function AgendaPage() {
               Liste des événements
             </h2>
 
+            {evenements.length === 0 && (
+              <div className="bg-white border border-soga-line rounded-lg p-8 text-center">
+                <p className="text-body text-soga-ink">
+                  Aucun événement programmé pour le moment.
+                </p>
+              </div>
+            )}
+
             <div
               className="flex flex-col"
               style={{ gap: "1px", backgroundColor: "#E2DED5" }}
