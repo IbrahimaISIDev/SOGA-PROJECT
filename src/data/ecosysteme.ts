@@ -1,11 +1,8 @@
 import { readCollection } from "@/lib/content";
 
 export type CategoriePartenaire =
-  | "Ministères sectoriels"
-  | "Universités & écoles d'ingénieurs"
-  | "Entreprises pétrolières & gazières"
-  | "ONG & bailleurs internationaux"
-  | "Énergies renouvelables";
+  | "Accréditation & qualité académique"
+  | "Institutions publiques & appui à la formation";
 
 export interface Partenaire {
   id: string;
@@ -29,9 +26,6 @@ export const partenaires: Partenaire[] = readCollection<Partenaire>("partenaires
 export const temoignages: Temoignage[] = readCollection<Temoignage>("temoignages");
 
 export const categoriesPartenaires: CategoriePartenaire[] = [
-  "Ministères sectoriels",
-  "Universités & écoles d'ingénieurs",
-  "Entreprises pétrolières & gazières",
-  "ONG & bailleurs internationaux",
-  "Énergies renouvelables",
+  "Accréditation & qualité académique",
+  "Institutions publiques & appui à la formation",
 ];

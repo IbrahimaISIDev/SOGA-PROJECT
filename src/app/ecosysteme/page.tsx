@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const SECTIONS = [
   {
     titre: "Partenariats stratégiques",
-    desc: "Ministères, universités, entreprises pétrolières et organisations internationales.",
+    desc: "Institutions d'accréditation académique et organismes publics d'appui à la formation.",
     href: "/ecosysteme/partenariats",
     cta: "Voir nos partenaires →",
   },

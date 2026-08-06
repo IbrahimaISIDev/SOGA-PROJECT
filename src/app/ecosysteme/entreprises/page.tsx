@@ -72,9 +72,9 @@ export default function EntreprisesPage() {
                       Recruter nos diplômés
                     </h3>
                     <p className="text-body text-soga-muted leading-relaxed">
-                      Accédez directement aux profils de nos diplômés du DTS au Master Pro.
-                      Le service carrières organise des rencontres employeurs sur le campus
-                      et vous accompagne dans vos recherches de profils.
+                      Accédez directement aux profils de nos diplômés, du Technicien Spécialisé
+                      au Master. Le service carrières organise des rencontres employeurs sur le
+                      campus et vous accompagne dans vos recherches de profils.
                     </p>
                   </div>
                   <Link
@@ -91,30 +91,36 @@ export default function EntreprisesPage() {
 
         <StratigraphicSeparator className="mx-16 md:mx-24" />
 
-        {/* Taux d'insertion */}
-        <section aria-labelledby="stats-title" className="section-gap bg-soga-sand">
+        {/* Pourquoi recruter nos diplômés */}
+        <section aria-labelledby="pourquoi-title" className="section-gap bg-soga-sand">
           <div className="container-soga">
             <ScrollReveal>
-              <p className="text-eyebrow text-soga-muted mb-4">EN CHIFFRES</p>
-              <h2 id="stats-title" className="text-h2 text-soga-ink mb-10">
-                Nos diplômés sur le marché
+              <p className="text-eyebrow text-soga-muted mb-4">POURQUOI RECRUTER NOS DIPLÔMÉS</p>
+              <h2 id="pourquoi-title" className="text-h2 text-soga-ink mb-10">
+                Une pédagogie ancrée dans le terrain
               </h2>
             </ScrollReveal>
-            <div className="flex flex-wrap gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
               {[
-                { val: "95%", lib: "Taux d'insertion" },
-                { val: "< 3 mois", lib: "Délai moyen d'embauche" },
-                { val: "40+", lib: "Entreprises partenaires" },
+                {
+                  titre: "Accréditée",
+                  texte: "Formations habilitées par l'ANAQ-Sup et accréditées par l'AUF.",
+                },
+                {
+                  titre: "Pédagogie par la pratique",
+                  texte: "Bancs didactiques, simulateurs et équipements industriels réels.",
+                },
+                {
+                  titre: "14 filières",
+                  texte: "Du Technicien Spécialisé au Master, dans l'énergie, le management et l'industrie.",
+                },
               ].map((s, i) => (
-                <ScrollReveal key={s.lib} delay={i * 70}>
-                  <div>
-                    <p
-                      className="font-display font-semibold leading-none mb-2"
-                      style={{ fontSize: "clamp(32px,5vw,48px)", color: "#C9962C" }}
-                    >
-                      {s.val}
+                <ScrollReveal key={s.titre} delay={i * 70}>
+                  <div className="border-t-2 border-soga-gold pt-4">
+                    <p className="font-display font-semibold text-soga-ink text-[18px] mb-2">
+                      {s.titre}
                     </p>
-                    <p className="text-small text-soga-muted">{s.lib}</p>
+                    <p className="text-small text-soga-muted">{s.texte}</p>
                   </div>
                 </ScrollReveal>
               ))}

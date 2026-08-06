@@ -1,6 +1,7 @@
 {
   "itemId": "pt01",
-  "nom": "Ministère du Pétrole et des Énergies",
-  "categorie": "Ministères sectoriels",
-  "logo": null
+  "nom": "AUF",
+  "categorie": "Accréditation & qualité académique",
+  "logo": null,
+  "description": "Agence Universitaire de la Francophonie — accrédite les formations de SOGA."
 }
