@@ -9,7 +9,7 @@ export default function HeroSection() {
   const revealed = useRevealOnMount(80);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const titleLines = ["Former l’élite africaine", "de l’énergie. Ici,"];
+  const titleLines = ["L’Académie de"];
 
   return (
     <section
@@ -45,7 +45,7 @@ export default function HeroSection() {
           style={{ opacity: revealed ? 1 : 0, transform: revealed ? "none" : "translateY(12px)" }}
         >
           <p className="text-eyebrow" style={{ color: "#F0C868" }}>
-            SENEGAL OIL AND GAS ACADEMY · DAKAR
+            SENEGAL OIL AND GAS ACADEMY
           </p>
         </div>
 
@@ -82,7 +82,7 @@ export default function HeroSection() {
                 color: "#C9962C",
               }}
             >
-              au Sénégal.
+              Toutes les Énergies.
             </span>
           </span>
         </h1>
@@ -97,7 +97,7 @@ export default function HeroSection() {
             transform: revealed ? "none" : "translateY(12px)",
           }}
         >
-          Une école supérieure dédiée aux métiers du pétrole, du gaz et des énergies durables — pensée pour l&apos;industrie réelle.
+          École supérieure professionnelle spécialisée dans les métiers de l&apos;énergie, du management et de l&apos;industrie — sur les campus de Dakar, Ziguinchor et Saint-Louis.
         </p>
 
         {/* CTAs */}

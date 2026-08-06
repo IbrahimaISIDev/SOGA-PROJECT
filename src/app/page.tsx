@@ -9,10 +9,10 @@ import { institution } from "@/data/institution";
 import { publications } from "@/data/thinktank";
 
 const HOME_STATS = [
-  { valeur: "08", libelle: "filières techniques & managériales" },
-  { valeur: "4", libelle: "niveaux de diplôme, du DTS au Master Pro" },
-  { valeur: "20", libelle: "partenariats stratégiques visés — 2025–2027" },
-  { valeur: "2026", libelle: "lancement du Think Tank SOGA" },
+  { valeur: "14", libelle: "filières techniques & managériales" },
+  { valeur: "3", libelle: "campus — Dakar, Ziguinchor, Saint-Louis" },
+  { valeur: "2018", libelle: "année de création de SOGA" },
+  { valeur: "2", libelle: "accréditations — ANAQ-Sup, AUF" },
 ];
 
 const METHODE_PILLIERS = [
@@ -33,7 +33,7 @@ const METHODE_PILLIERS = [
   {
     titre: "Experts du secteur",
     texte:
-      "Interventions régulières de professionnels en poste dans l'industrie pétrolière et gazière.",
+      "Interventions régulières de professionnels en poste dans l'énergie, le management et l'industrie.",
   },
 ];
 
@@ -42,13 +42,13 @@ const TEMOIGNAGES = [
     citation:
       "« Les bancs didactiques nous mettent face aux mêmes équipements qu'on trouve sur un site de production. »",
     auteur: "Témoignage provisoire",
-    role: "Étudiante, DTS Instrumentation & Contrôle",
+    role: "Étudiante, Technicien Spécialisé en Instrumentation Oil & Gas",
   },
   {
     citation:
       "« Ce que je retiens : ici, on ne nous prépare pas à un examen, on nous prépare à un poste. »",
     auteur: "Témoignage provisoire",
-    role: "Étudiant, BTS QHSE",
+    role: "Étudiant, BTS Hygiène, Sécurité, Environnement",
   },
   {
     citation:
@@ -63,26 +63,25 @@ const TEMOIGNAGES = [
 const TEMOIGNAGES_REELS = TEMOIGNAGES.filter((t) => t.auteur !== "Témoignage provisoire");
 
 const POLE_TECHNIQUE = [
-  "DTS Exploration & Production Pétrolière",
-  "DTS Raffinage & Pétrochimie",
-  "DTS Instrumentation & Contrôle Oil & Gas",
-  "BTS Électrotechnique et Maintenance industrielle",
-  "BTS QHSE",
+  "Technicien Spécialisé en Exploration Production",
+  "Technicien Spécialisé en Raffinage et Pétrochimie",
+  "Technicien Spécialisé en Instrumentation Oil & Gas",
+  "BTS Électrotechnique",
+  "BTS Hygiène, Sécurité, Environnement",
+  "BTS Maintenance des Engins Lourds",
 ];
 
 const POLE_MANAGERIAL = [
   "Licence Sciences pour l'Ingénieur",
   "Licence Business Management",
   "Licence Logistique et Transports Internationaux",
-  "Master Économie de l'Électricité, de l'Environnement et des Transports",
+  "Master Économie de l'Électricité, de l'Énergie et des Transports",
 ];
 
-const FORMATIONS_PHARES_IDS = ["f01", "f02", "f05", "f04", "f07", "f06"];
+const FORMATIONS_PHARES_IDS = ["f01", "f04", "f08", "f10", "f12", "f14"];
 
 function getLevelBadgeLabel(niveau: string) {
-  if (niveau === "Licence Pro") return "LICENCE PRO";
-  if (niveau === "Master Pro") return "MASTER PRO";
-  return niveau;
+  return niveau.toUpperCase();
 }
 
 export default function HomePage() {
@@ -122,7 +121,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="text-eyebrow px-10 pb-5 pt-1" style={{ color: "#B0ADA4" }} aria-hidden>
-            SOURCE : PROJECTIONS SOGA — CONTENU PROVISOIRE
+            SENEGAL OIL AND GAS ACADEMY
           </p>
         </section>
 
@@ -139,8 +138,9 @@ export default function HomePage() {
                 style={{ fontSize: "clamp(24px,2.5vw,32px)", lineHeight: 1.3 }}
               >
                 SOGA forme des techniciens, ingénieurs et managers immédiatement opérationnels
-                pour l&apos;industrie énergétique africaine — et prépare, dès 2026, un think tank
-                sur les politiques énergétiques du continent.
+                dans les secteurs de l&apos;énergie, du management et de l&apos;industrie — et
+                prépare le lancement d&apos;un Think Tank sur les politiques énergétiques
+                africaines.
               </p>
               <Link
                 href="/institution"
@@ -367,32 +367,38 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[pub1, pub2].map((pub) => (
-                <Link
-                  key={pub.slug}
-                  href={`/think-tank/publications/${pub.slug}`}
-                  className="block border rounded-lg p-6 transition-colors hover:bg-[#1E6F5C]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                  style={{ borderColor: "#1E6F5C", outlineColor: "#1E6F5C" }}
-                >
-                  <span
-                    className="text-eyebrow text-white px-2 py-1 rounded inline-block mb-4"
-                    style={{ backgroundColor: "#1E6F5C", fontSize: "11px" }}
+            {pub1 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[pub1, pub2].filter(Boolean).map((pub) => (
+                  <Link
+                    key={pub!.slug}
+                    href={`/think-tank/publications/${pub!.slug}`}
+                    className="block border rounded-lg p-6 transition-colors hover:bg-[#1E6F5C]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                    style={{ borderColor: "#1E6F5C", outlineColor: "#1E6F5C" }}
                   >
-                    {pub.type.toUpperCase()}
-                  </span>
-                  <h3
-                    className="font-display font-semibold text-white mb-3 leading-snug"
-                    style={{ fontSize: "19px" }}
-                  >
-                    {pub.titre}
-                  </h3>
-                  <p className="text-eyebrow" style={{ color: "#7a9a92", fontSize: "11px" }}>
-                    {pub.auteurs.join(", ").toUpperCase()}
-                  </p>
-                </Link>
-              ))}
-            </div>
+                    <span
+                      className="text-eyebrow text-white px-2 py-1 rounded inline-block mb-4"
+                      style={{ backgroundColor: "#1E6F5C", fontSize: "11px" }}
+                    >
+                      {pub!.type.toUpperCase()}
+                    </span>
+                    <h3
+                      className="font-display font-semibold text-white mb-3 leading-snug"
+                      style={{ fontSize: "19px" }}
+                    >
+                      {pub!.titre}
+                    </h3>
+                    <p className="text-eyebrow" style={{ color: "#7a9a92", fontSize: "11px" }}>
+                      {pub!.auteurs.join(", ").toUpperCase()}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p className="text-body text-white/50">
+                Le Think Tank SOGA est en cours de lancement — premières publications à venir.
+              </p>
+            )}
           </div>
         </section>
 
@@ -430,6 +436,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Actualités & Événements ───────────────────────── */}
+        {(featuredArticles.length > 0 || nextEvent) && (
         <section aria-labelledby="actu-title" className="section-gap bg-soga-sand">
           <div className="container-soga">
             <ScrollReveal>
@@ -526,6 +533,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        )}
 
         {/* ── Témoignages ───────────────────────────────────── */}
         {/* Masqué tant qu'aucun témoignage réel n'est disponible — voir
@@ -595,7 +603,7 @@ export default function HomePage() {
                 Les inscriptions sont ouvertes
               </h2>
               <p className="mb-8" style={{ color: "#B8B4A8", fontSize: "16px" }}>
-                Rentrée octobre 2026 — places limitées par filière.
+                Rentrée octobre 2025 — sur les campus de Dakar, Ziguinchor et Saint-Louis.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-7">
                 <Link

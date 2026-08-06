@@ -96,7 +96,7 @@ export default function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            Former l&apos;élite africaine de l&apos;énergie · Dakar, Sénégal
+            L&apos;Académie de Toutes les Énergies · Dakar, Ziguinchor, Saint-Louis
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | SOGA",
   },
   description:
-    "L'académie supérieure dédiée aux métiers du pétrole, du gaz et des énergies durables. Former l'élite africaine de l'énergie, ici, au Sénégal.",
+    "École supérieure professionnelle spécialisée dans les métiers de l'énergie, du management et de l'industrie. Campus à Dakar, Ziguinchor et Saint-Louis.",
   metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
@@ -41,7 +41,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@SOGA_Dakar",
   },
 };
 
@@ -58,11 +57,12 @@ const organizationJsonLd = {
   url: SITE_URL,
   email: institution.email,
   telephone: institution.telephone,
-  address: {
+  address: institution.campuses.map((c) => ({
     "@type": "PostalAddress",
-    addressLocality: "Dakar",
+    addressLocality: c.ville,
+    streetAddress: c.adresse,
     addressCountry: "SN",
-  },
+  })),
 };
 
 export default function RootLayout({
