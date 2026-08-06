@@ -254,7 +254,7 @@ export default function HomePage() {
                 <ScrollReveal key={f.id} delay={i * 50}>
                   <Link
                     href={`/formations/${f.slug}`}
-                    className="group block border border-soga-line rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
+                    className="group block border border-soga-line rounded-lg overflow-hidden bg-soga-surface hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                   >
                     <div className="relative h-[170px]">
                       <div className="absolute inset-0 placeholder-block" />
@@ -300,7 +300,7 @@ export default function HomePage() {
         <section
           aria-labelledby="methode-title"
           className="section-gap"
-          style={{ backgroundColor: "#F0EDE3" }}
+          style={{ backgroundColor: "var(--soga-sand-alt)" }}
         >
           <div className="container-soga">
             <ScrollReveal>
@@ -455,7 +455,7 @@ export default function HomePage() {
                 <ScrollReveal key={a.id} delay={i * 50}>
                   <Link
                     href={`/actualites/${a.slug}`}
-                    className="group block border border-soga-line rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
+                    className="group block border border-soga-line rounded-lg overflow-hidden bg-soga-surface hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                   >
                     <div className="relative h-[130px]">
                       <div className="absolute inset-0 placeholder-block" />
@@ -485,12 +485,12 @@ export default function HomePage() {
                 <ScrollReveal delay={150}>
                   <Link
                     href={`/actualites/evenements/${nextEvent.slug}`}
-                    className="group block border rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
+                    className="group block border rounded-lg overflow-hidden bg-soga-surface hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                     style={{ borderColor: "#C9962C" }}
                   >
                     <div
                       className="h-[130px] flex flex-col items-center justify-center border-b border-soga-line"
-                      style={{ backgroundColor: "#F6F4EF" }}
+                      style={{ backgroundColor: "var(--soga-sand)" }}
                     >
                       <p className="text-eyebrow text-soga-gold-deep">
                         {new Date(nextEvent.date)
@@ -545,7 +545,7 @@ export default function HomePage() {
           <section
             aria-labelledby="temoignages-title"
             className="section-gap"
-            style={{ backgroundColor: "#F0EDE3" }}
+            style={{ backgroundColor: "var(--soga-sand-alt)" }}
           >
             <div className="container-soga">
               <ScrollReveal>
@@ -561,7 +561,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {TEMOIGNAGES_REELS.map((t, i) => (
                   <ScrollReveal key={t.role} delay={i * 60}>
-                    <div className="bg-white border border-soga-line rounded-lg p-7">
+                    <div className="bg-soga-surface border border-soga-line rounded-lg p-7">
                       <p
                         className="font-display italic text-soga-ink mb-5"
                         style={{ fontSize: "18px", lineHeight: 1.5 }}
@@ -571,7 +571,7 @@ export default function HomePage() {
                       <div className="flex items-center gap-3">
                         <div
                           className="w-10 h-10 rounded-full shrink-0"
-                          style={{ backgroundColor: "#E2DED5" }}
+                          style={{ backgroundColor: "var(--soga-line)" }}
                           aria-hidden
                         />
                         <div>

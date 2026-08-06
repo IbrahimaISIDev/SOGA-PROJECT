@@ -44,7 +44,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         ref={ref}
         id={inputId}
         className={
-          `w-full px-4 py-3 bg-white border rounded-sm text-soga-ink placeholder:text-soga-muted ` +
+          `w-full px-4 py-3 bg-soga-surface border rounded-sm text-soga-ink placeholder:text-soga-muted ` +
           `transition-colors duration-150 font-sans text-[15px] min-h-[44px] ` +
           `focus-visible:outline-none ` +
           `${stateClasses[state]} ${className}`
@@ -98,7 +98,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={inputId}
           className={
-            `w-full px-4 py-3 bg-white border rounded-sm text-soga-ink placeholder:text-soga-muted ` +
+            `w-full px-4 py-3 bg-soga-surface border rounded-sm text-soga-ink placeholder:text-soga-muted ` +
             `transition-colors duration-150 font-sans text-[15px] resize-y ` +
             `focus-visible:outline-none ` +
             `${stateClasses[state]} ${className}`
@@ -160,7 +160,7 @@ export function Select({
       <select
         id={inputId}
         className={
-          `w-full px-4 py-3 bg-white border rounded-sm text-soga-ink ` +
+          `w-full px-4 py-3 bg-soga-surface border rounded-sm text-soga-ink ` +
           `transition-colors duration-150 font-sans text-[15px] min-h-[44px] ` +
           `focus-visible:outline-none appearance-none ` +
           `${stateClasses[state]} ${className}`

@@ -151,7 +151,7 @@ export default function CandidatureWizard({ formations }: { formations: Formatio
               className="flex-1 rounded-sm transition-colors duration-300"
               style={{
                 height: "6px",
-                backgroundColor: e.num <= etape ? "#C9962C" : "#E2DED5",
+                backgroundColor: e.num <= etape ? "#C9962C" : "var(--soga-line)",
               }}
               aria-hidden="true"
             />
@@ -258,7 +258,7 @@ export default function CandidatureWizard({ formations }: { formations: Formatio
                       className="text-left rounded-md p-4 border-2 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
                       style={{
                         borderColor:
-                          formationChoisie === f.slug ? "#C9962C" : "#E2DED5",
+                          formationChoisie === f.slug ? "#C9962C" : "var(--soga-line)",
                         backgroundColor:
                           formationChoisie === f.slug
                             ? "rgba(201,150,44,0.06)"

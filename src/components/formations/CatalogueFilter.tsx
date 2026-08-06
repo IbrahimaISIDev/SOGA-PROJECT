@@ -43,7 +43,7 @@ export default function CatalogueFilter({ formations }: { formations: Formation[
                 className={`shrink-0 px-4 py-2 text-[14px] font-medium border transition-colors min-h-[44px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 ${
                   filtre === f
                     ? "bg-soga-black text-white border-soga-black"
-                    : "bg-white text-soga-ink border-soga-line hover:border-soga-gold"
+                    : "bg-soga-surface text-soga-ink border-soga-line hover:border-soga-gold"
                 }`}
                 aria-pressed={filtre === f}
               >
@@ -52,7 +52,7 @@ export default function CatalogueFilter({ formations }: { formations: Formation[
             ))}
             <Link
               href="/formations/courtes"
-              className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 text-[14px] font-medium border border-soga-line bg-white text-soga-ink hover:border-soga-gold transition-colors min-h-[44px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+              className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 text-[14px] font-medium border border-soga-line bg-soga-surface text-soga-ink hover:border-soga-gold transition-colors min-h-[44px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
             >
               Formations courtes <span className="text-soga-gold-deep text-[12px]">↗</span>
             </Link>

@@ -67,7 +67,7 @@ export default function SemesterTimeline({ semestres }: SemesterTimelineProps) {
             <div className="flex items-baseline gap-3 min-w-0">
               <span
                 className="text-eyebrow shrink-0 transition-colors duration-150"
-                style={{ color: activeIndex === i ? strateColor(i, semestres.length) : "#6B6B6B" }}
+                style={{ color: activeIndex === i ? strateColor(i, semestres.length) : "var(--soga-muted)" }}
               >
                 S{s.numero}
               </span>
@@ -82,7 +82,7 @@ export default function SemesterTimeline({ semestres }: SemesterTimelineProps) {
       {/* UEs tooltip on active */}
       {activeIndex !== null && (
         <div
-          className="hidden lg:block w-52 shrink-0 border border-soga-line rounded-md bg-white p-4 self-start"
+          className="hidden lg:block w-52 shrink-0 border border-soga-line rounded-md bg-soga-surface p-4 self-start"
           style={{ marginTop: `${activeIndex * 44 + activeIndex * 6}px` }}
         >
           <p className="text-eyebrow text-soga-muted mb-2">

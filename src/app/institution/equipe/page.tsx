@@ -103,7 +103,7 @@ export default function EquipePage() {
         <StratigraphicSeparator />
 
         {/* Équipe grid */}
-        <section aria-labelledby="team-title" className="section-gap bg-soga-ink">
+        <section aria-labelledby="team-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-6">L&apos;ÉQUIPE</p>

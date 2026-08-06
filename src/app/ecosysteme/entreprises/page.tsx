@@ -41,7 +41,7 @@ export default function EntreprisesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
               {/* Déposer une offre */}
               <ScrollReveal delay={0}>
-                <article className="bg-white border border-soga-line rounded-md p-8 flex flex-col gap-5">
+                <article className="bg-soga-surface border border-soga-line rounded-md p-8 flex flex-col gap-5">
                   <div>
                     <p className="text-eyebrow text-soga-muted mb-3">STAGES & EMPLOIS</p>
                     <h3 className="font-display font-semibold text-[22px] text-soga-ink mb-3 leading-snug">
@@ -65,7 +65,7 @@ export default function EntreprisesPage() {
 
               {/* Recruter nos diplômés */}
               <ScrollReveal delay={80}>
-                <article className="bg-white border border-soga-line rounded-md p-8 flex flex-col gap-5">
+                <article className="bg-soga-surface border border-soga-line rounded-md p-8 flex flex-col gap-5">
                   <div>
                     <p className="text-eyebrow text-soga-muted mb-3">DIPLÔMÉS</p>
                     <h3 className="font-display font-semibold text-[22px] text-soga-ink mb-3 leading-snug">

@@ -57,7 +57,7 @@ export default function PartenariatsPage() {
                       <ScrollReveal key={p.id} delay={i * 50}>
                         <div
                           className="border border-soga-line flex flex-col items-center justify-center gap-2 p-5 text-center"
-                          style={{ height: "64px", backgroundColor: "#F0EDE3" }}
+                          style={{ height: "64px", backgroundColor: "var(--soga-sand-alt)" }}
                           aria-label={p.nom}
                         >
                           {p.logo ? (

@@ -94,7 +94,7 @@ export default function ThinkTankPage() {
                 <ScrollReveal key={pub.id} delay={i * 50}>
                   <Link
                     href={`/think-tank/publications/${pub.slug}`}
-                    className="group flex flex-col md:flex-row gap-5 p-6 bg-white border border-soga-line rounded-md hover:border-soga-transition transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                    className="group flex flex-col md:flex-row gap-5 p-6 bg-soga-surface border border-soga-line rounded-md hover:border-soga-transition transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                     style={{ "--tw-ring-color": TT_GREEN } as React.CSSProperties}
                   >
                     <div className="md:w-24 shrink-0">

@@ -94,7 +94,7 @@ export default function FormationsCourtes() {
                     return (
                       <div
                         key={f.id}
-                        className="bg-white border border-soga-line rounded-lg p-6 flex flex-col gap-4"
+                        className="bg-soga-surface border border-soga-line rounded-lg p-6 flex flex-col gap-4"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <span
@@ -137,7 +137,7 @@ export default function FormationsCourtes() {
                     {Object.entries(byDomaine).map(([domaine, modules]) => (
                       <div
                         key={domaine}
-                        className="flex items-center gap-2 px-4 py-2 border border-soga-line bg-white rounded"
+                        className="flex items-center gap-2 px-4 py-2 border border-soga-line bg-soga-surface rounded"
                       >
                         <span
                           className="w-2 h-2 rounded-full"
@@ -154,7 +154,7 @@ export default function FormationsCourtes() {
                 </div>
               </>
             ) : (
-              <div className="border border-soga-line bg-white rounded-lg p-8 text-center">
+              <div className="border border-soga-line bg-soga-surface rounded-lg p-8 text-center">
                 <p className="text-body text-soga-ink mb-4">
                   Le catalogue détaillé des modules courts est en cours de finalisation.
                 </p>

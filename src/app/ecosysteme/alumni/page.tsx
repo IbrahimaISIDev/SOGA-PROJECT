@@ -18,7 +18,7 @@ export default function AlumniPage() {
       >
         <span
           className="text-eyebrow text-[11px] px-3 py-1.5 mb-8 inline-block"
-          style={{ backgroundColor: "#E2DED5", color: "#6B6B6B" }}
+          style={{ backgroundColor: "var(--soga-line)", color: "var(--soga-muted)" }}
         >
           PHASE FUTURE
         </span>

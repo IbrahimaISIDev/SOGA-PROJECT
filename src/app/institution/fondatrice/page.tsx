@@ -29,7 +29,7 @@ export default function FondatricePage() {
           ]}
         />
 
-        <section className="section-gap bg-soga-ink">
+        <section className="section-gap bg-soga-black">
           <div className="container-soga">
             <div className="grid grid-cols-1 lg:grid-cols-[440px_1fr] gap-14 lg:gap-20 items-start">
               {/* Portrait */}

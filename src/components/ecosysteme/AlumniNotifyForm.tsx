@@ -50,7 +50,7 @@ export default function AlumniNotifyForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="votre@email.com"
-          className="flex-1 px-4 py-3 border border-soga-line text-[15px] text-soga-ink bg-white focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
+          className="flex-1 px-4 py-3 border border-soga-line text-[15px] text-soga-ink bg-soga-surface focus:border-soga-gold focus:outline-none focus:ring-2 focus:ring-soga-gold/20 transition-colors"
         />
         <button
           type="submit"

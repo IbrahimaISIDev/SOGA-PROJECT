@@ -36,7 +36,7 @@ export default function ArticlesFilter({
               className={`text-eyebrow text-[12px] px-4 py-2 border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soga-gold min-h-[36px] ${
                 categorieActive === cat
                   ? "bg-soga-ink text-soga-gold-light border-soga-ink"
-                  : "bg-white text-soga-graphite border-soga-line hover:border-soga-gold"
+                  : "bg-soga-surface text-soga-ink border-soga-line hover:border-soga-gold"
               }`}
             >
               {cat}

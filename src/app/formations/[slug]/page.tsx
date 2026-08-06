@@ -279,7 +279,7 @@ export default async function FicheFormation({
 
             {/* ── Right sticky sidebar ─────────────────────── */}
             <aside
-              className="lg:sticky lg:top-20 h-fit border border-soga-line rounded-md bg-white p-6 space-y-5"
+              className="lg:sticky lg:top-20 h-fit border border-soga-line rounded-md bg-soga-surface p-6 space-y-5"
               aria-label="Récapitulatif de la formation"
             >
               <h2 className="text-h3 text-[18px] text-soga-ink pb-4 border-b border-soga-line">
@@ -314,7 +314,7 @@ export default async function FicheFormation({
               >
                 Candidater à cette formation
               </Link>
-              <button className="block w-full text-center px-5 py-3 bg-white text-soga-ink border border-soga-ink text-[14px] font-medium hover:border-soga-gold hover:text-soga-gold-deep transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]">
+              <button className="block w-full text-center px-5 py-3 bg-soga-surface text-soga-ink border border-soga-ink text-[14px] font-medium hover:border-soga-gold hover:text-soga-gold-deep transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 min-h-[44px]">
                 Parler à un conseiller
               </button>
 
@@ -353,7 +353,7 @@ export default async function FicheFormation({
                     <Link
                       key={f.id}
                       href={`/formations/${f.slug}`}
-                      className="group block p-5 bg-white border border-soga-line rounded-md hover:border-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                      className="group block p-5 bg-soga-surface border border-soga-line rounded-md hover:border-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
                     >
                       <p className="text-eyebrow text-soga-muted mb-2">{f.code}</p>
                       <h3 className="text-[17px] font-medium text-soga-ink line-clamp-2 mb-3 group-hover:text-soga-gold-deep transition-colors">

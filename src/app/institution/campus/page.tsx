@@ -57,7 +57,7 @@ export default function CampusPage() {
         </div>
 
         {/* Description */}
-        <section className="section-gap bg-soga-ink">
+        <section className="section-gap bg-soga-black">
           <div className="container-soga max-w-3xl">
             <ScrollReveal>
               <p className="text-lead text-white/80 leading-relaxed">{campus.description}</p>
@@ -68,7 +68,7 @@ export default function CampusPage() {
         <StratigraphicSeparator />
 
         {/* Trois campus */}
-        <section aria-labelledby="campuses-title" className="section-gap bg-soga-ink">
+        <section aria-labelledby="campuses-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-6">NOS IMPLANTATIONS</p>
@@ -97,7 +97,7 @@ export default function CampusPage() {
         <StratigraphicSeparator />
 
         {/* Infrastructure cards */}
-        <section aria-labelledby="infra-title" className="section-gap bg-soga-ink">
+        <section aria-labelledby="infra-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-6">INFRASTRUCTURES</p>
@@ -152,7 +152,7 @@ export default function CampusPage() {
         </section>
 
         {/* Gallery placeholder */}
-        <section aria-labelledby="gallery-title" className="section-gap bg-soga-ink">
+        <section aria-labelledby="gallery-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-6">GALERIE</p>
@@ -167,7 +167,7 @@ export default function CampusPage() {
                 className="aspect-[21/9] placeholder-block-light flex items-center justify-center"
                 aria-label="Galerie photos à venir"
               >
-                <p className="text-eyebrow text-soga-graphite">Galerie photos à venir</p>
+                <p className="text-eyebrow text-soga-ink">Galerie photos à venir</p>
               </div>
             </ScrollReveal>
           </div>

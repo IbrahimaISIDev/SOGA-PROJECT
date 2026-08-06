@@ -80,7 +80,7 @@ export default async function ArticleDetail({
         {/* Breadcrumb */}
         <div
           className="border-b border-soga-line"
-          style={{ backgroundColor: "#F6F4EF" }}
+          style={{ backgroundColor: "var(--soga-sand)" }}
         >
           <div className="container-soga py-4">
             <nav aria-label="Fil d'Ariane">
@@ -181,7 +181,7 @@ export default async function ArticleDetail({
                         <Link
                           key={a.id}
                           href={`/actualites/${a.slug}`}
-                          className="group block border border-soga-line rounded-md p-4 bg-white hover:border-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                          className="group block border border-soga-line rounded-md p-4 bg-soga-surface hover:border-soga-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
                         >
                           <p className="text-eyebrow text-soga-muted mb-2 text-[10px]">
                             {a.categorie.toUpperCase()}

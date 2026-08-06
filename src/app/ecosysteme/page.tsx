@@ -74,12 +74,12 @@ export default function EcosystemePage() {
                 <ScrollReveal key={s.href} delay={i * 60}>
                   <Link
                     href={s.href}
-                    className="group flex flex-col gap-4 p-6 bg-white border border-soga-line hover:border-soga-gold transition-colors h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                    className="group flex flex-col gap-4 p-6 bg-soga-surface border border-soga-line hover:border-soga-gold transition-colors h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
                   >
                     {s.futur && (
                       <span
                         className="text-eyebrow text-[10px] px-2 py-1 self-start"
-                        style={{ backgroundColor: "#E2DED5", color: "#6B6B6B" }}
+                        style={{ backgroundColor: "var(--soga-line)", color: "var(--soga-muted)" }}
                       >
                         PHASE FUTURE
                       </span>
@@ -125,7 +125,7 @@ export default function EcosystemePage() {
                   <ScrollReveal key={p.id} delay={i * 50}>
                     <div
                       className="border border-soga-line flex items-center justify-center p-5"
-                      style={{ height: "64px", backgroundColor: "#F0EDE3" }}
+                      style={{ height: "64px", backgroundColor: "var(--soga-sand-alt)" }}
                       aria-label={p.nom}
                     >
                       {p.logo ? (

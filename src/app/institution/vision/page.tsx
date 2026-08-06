@@ -52,7 +52,7 @@ export default function VisionMissionPage() {
         <StratigraphicSeparator />
 
         {/* Mission */}
-        <section aria-labelledby="mission-title" className="section-gap bg-soga-ink">
+        <section aria-labelledby="mission-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-6">NOTRE MISSION</p>
@@ -87,7 +87,7 @@ export default function VisionMissionPage() {
         <section
           aria-labelledby="valeurs-title"
           className="section-gap"
-          style={{ backgroundColor: "#F0EDE3" }}
+          style={{ backgroundColor: "var(--soga-sand-alt)" }}
         >
           <div className="container-soga">
             <ScrollReveal>
@@ -103,14 +103,14 @@ export default function VisionMissionPage() {
               {institution.valeurs.map((valeur, i) => (
                 <ScrollReveal key={valeur.titre} delay={i * 70}>
                   <article
-                    className="border border-soga-ink/20 bg-white p-6 h-full"
+                    className="border border-soga-ink/20 bg-soga-surface p-6 h-full"
                     aria-label={valeur.titre}
                   >
                     <h3 className="text-h3 text-soga-ink mb-1">{valeur.titre}</h3>
                     <p className="text-eyebrow text-soga-gold-deep mb-4 text-[11px]">
                       {valeur.sousTitre.toUpperCase()}
                     </p>
-                    <p className="text-small text-soga-graphite leading-relaxed">
+                    <p className="text-small text-soga-ink leading-relaxed">
                       {valeur.description}
                     </p>
                   </article>
@@ -121,7 +121,7 @@ export default function VisionMissionPage() {
         </section>
 
         {/* CTA */}
-        <section className="section-gap bg-soga-ink">
+        <section className="section-gap bg-soga-black">
           <div className="container-soga flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             <p className="text-lead text-white">
               Découvrir l&apos;équipe qui porte cette vision

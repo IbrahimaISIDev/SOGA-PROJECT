@@ -98,7 +98,7 @@ export default function AdmissionsPage() {
         <section
           aria-labelledby="conditions-title"
           className="section-gap"
-          style={{ backgroundColor: "#F0EDE3" }}
+          style={{ backgroundColor: "var(--soga-sand-alt)" }}
         >
           <div className="container-soga">
             <ScrollReveal>
@@ -112,11 +112,11 @@ export default function AdmissionsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {CONDITIONS.map((c, i) => (
                 <ScrollReveal key={c.niveau} delay={i * 70}>
-                  <article className="bg-white border border-soga-line rounded-md p-5">
+                  <article className="bg-soga-surface border border-soga-line rounded-md p-5">
                     <h3 className="font-display font-semibold text-[16px] text-soga-ink mb-2">
                       {c.niveau}
                     </h3>
-                    <p className="text-small text-soga-graphite leading-relaxed">{c.pre}</p>
+                    <p className="text-small text-soga-ink leading-relaxed">{c.pre}</p>
                   </article>
                 </ScrollReveal>
               ))}
@@ -125,7 +125,7 @@ export default function AdmissionsPage() {
         </section>
 
         {/* CTA */}
-        <section className="section-gap bg-soga-ink">
+        <section className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-4">CANDIDATURE</p>
@@ -161,7 +161,7 @@ export default function AdmissionsPage() {
               <h2 id="frais-title" className="text-h2 text-soga-ink mb-6">
                 Financer sa formation.
               </h2>
-              <p className="text-lead text-soga-graphite max-w-xl mb-8">
+              <p className="text-lead text-soga-ink max-w-xl mb-8">
                 Des dispositifs d&apos;aides financières sont disponibles pour les
                 candidats méritants. Contactez-nous pour connaître les conditions
                 d&apos;attribution.

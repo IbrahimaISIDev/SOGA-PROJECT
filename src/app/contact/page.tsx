@@ -44,7 +44,7 @@ export default function ContactPage() {
                     <p className="text-small font-semibold text-soga-ink mb-1">Nos campus</p>
                     <ul className="space-y-2">
                       {institution.campuses.map((c) => (
-                        <li key={c.ville} className="text-body text-soga-graphite">
+                        <li key={c.ville} className="text-body text-soga-ink">
                           <span className="font-medium text-soga-ink">{c.ville}</span> — {c.adresse}
                         </li>
                       ))}
@@ -63,7 +63,7 @@ export default function ContactPage() {
                     <p className="text-small font-semibold text-soga-ink mb-1">Téléphone</p>
                     <a
                       href={`tel:${institution.telephone.replace(/\s/g, "")}`}
-                      className="text-body text-soga-graphite hover:text-soga-gold-deep transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+                      className="text-body text-soga-ink hover:text-soga-gold-deep transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
                     >
                       {institution.telephone}
                     </a>
@@ -88,7 +88,7 @@ export default function ContactPage() {
         </section>
 
         {/* Autres contacts */}
-        <section aria-labelledby="autres-contacts-title" className="section-gap bg-soga-ink">
+        <section aria-labelledby="autres-contacts-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-6">SERVICES</p>

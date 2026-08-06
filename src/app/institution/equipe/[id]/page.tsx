@@ -39,7 +39,7 @@ export default async function FicheMembre({
   return (
     <>
       <Header />
-      <main id="main-content" className="min-h-screen bg-soga-ink">
+      <main id="main-content" className="min-h-screen bg-soga-black">
         {/* Breadcrumb */}
         <div className="container-soga pt-28 pb-4">
           <nav aria-label="Fil d'Ariane">

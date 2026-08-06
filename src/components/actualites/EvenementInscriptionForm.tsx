@@ -40,7 +40,7 @@ export default function EvenementInscriptionForm({ titre, inscriptionOuverte }: 
 
   return (
     <aside
-      className="lg:sticky lg:top-20 h-fit rounded-md border border-soga-line bg-white p-6"
+      className="lg:sticky lg:top-20 h-fit rounded-md border border-soga-line bg-soga-surface p-6"
       aria-label="Formulaire d'inscription"
     >
       {submitted ? (

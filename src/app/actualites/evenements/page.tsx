@@ -34,7 +34,7 @@ export default function AgendaPage() {
             </h2>
 
             {evenements.length === 0 && (
-              <div className="bg-white border border-soga-line rounded-lg p-8 text-center">
+              <div className="bg-soga-surface border border-soga-line rounded-lg p-8 text-center">
                 <p className="text-body text-soga-ink">
                   Aucun événement programmé pour le moment.
                 </p>
@@ -43,7 +43,7 @@ export default function AgendaPage() {
 
             <div
               className="flex flex-col"
-              style={{ gap: "1px", backgroundColor: "#E2DED5" }}
+              style={{ gap: "1px", backgroundColor: "var(--soga-line)" }}
             >
               {evenements.map((ev) => {
                 const date = new Date(ev.date);
@@ -56,7 +56,7 @@ export default function AgendaPage() {
                 return (
                   <article
                     key={ev.id}
-                    className="bg-white grid items-center gap-4 md:gap-6 px-5 py-5 md:px-8 md:py-6"
+                    className="bg-soga-surface grid items-center gap-4 md:gap-6 px-5 py-5 md:px-8 md:py-6"
                     style={{
                       gridTemplateColumns: "80px 1fr",
                       gridTemplateRows: "auto",

@@ -3,6 +3,7 @@ import { Source_Serif_4, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/layout/CookieBanner";
 import BackToTop from "@/components/ui/BackToTop";
+import ThemeScript from "@/components/layout/ThemeScript";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
 import { institution } from "@/data/institution";
@@ -45,7 +46,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0C0E",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F6F4EF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0C0E" },
+  ],
 };
 
 const organizationJsonLd = {
@@ -76,6 +80,7 @@ export default function RootLayout({
       className={`${sourceSerif.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col font-sans text-soga-ink bg-soga-sand">
+        <ThemeScript />
         <JsonLd data={organizationJsonLd} />
         {children}
         <CookieBanner />

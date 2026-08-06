@@ -146,7 +146,7 @@ export default function MentionsLegalesPage() {
             {/* Jump nav */}
             <nav
               aria-label="Sommaire"
-              className="mb-12 p-5 border border-soga-line bg-white"
+              className="mb-12 p-5 border border-soga-line bg-soga-surface"
             >
               <p className="text-eyebrow text-soga-muted mb-3">SOMMAIRE</p>
               <ul className="space-y-1">
