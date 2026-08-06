@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function CampusPage() {
-  const { campus } = institution;
+  const { campus, campuses } = institution;
 
   return (
     <>
@@ -62,6 +62,35 @@ export default function CampusPage() {
             <ScrollReveal>
               <p className="text-lead text-white/80 leading-relaxed">{campus.description}</p>
             </ScrollReveal>
+          </div>
+        </section>
+
+        <StratigraphicSeparator />
+
+        {/* Trois campus */}
+        <section aria-labelledby="campuses-title" className="section-gap bg-soga-ink">
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold mb-6">NOS IMPLANTATIONS</p>
+            </ScrollReveal>
+            <ScrollReveal delay={60}>
+              <h2 id="campuses-title" className="text-h2 text-white mb-12">
+                Trois campus au Sénégal
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {campuses.map((c, i) => (
+                <ScrollReveal key={c.ville} delay={i * 70}>
+                  <div
+                    className="border-t-2 pt-4"
+                    style={{ borderColor: "#C9962C" }}
+                  >
+                    <h3 className="text-white font-semibold text-[18px] mb-2">{c.ville}</h3>
+                    <p className="text-small text-white/50 leading-relaxed">{c.adresse}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
 

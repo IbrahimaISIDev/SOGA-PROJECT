@@ -41,8 +41,14 @@ export default function ContactPage() {
 
                 <address className="not-italic space-y-5 mb-10">
                   <div>
-                    <p className="text-small font-semibold text-soga-ink mb-1">Adresse</p>
-                    <p className="text-body text-soga-graphite">{institution.adresse}</p>
+                    <p className="text-small font-semibold text-soga-ink mb-1">Nos campus</p>
+                    <ul className="space-y-2">
+                      {institution.campuses.map((c) => (
+                        <li key={c.ville} className="text-body text-soga-graphite">
+                          <span className="font-medium text-soga-ink">{c.ville}</span> — {c.adresse}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <div>
                     <p className="text-small font-semibold text-soga-ink mb-1">E-mail</p>
@@ -63,13 +69,6 @@ export default function ContactPage() {
                     </a>
                   </div>
                 </address>
-
-                <div className="mb-8">
-                  <p className="text-eyebrow text-soga-gold-deep mb-3">HORAIRES</p>
-                  <p className="text-body text-soga-graphite">
-                    Lundi – Vendredi · 8h30 – 17h30
-                  </p>
-                </div>
 
                 {/* Map placeholder */}
                 <div

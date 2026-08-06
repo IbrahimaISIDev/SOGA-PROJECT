@@ -19,6 +19,10 @@ interface InstitutionDoc {
   adresse: string;
   email: string;
   telephone: string;
+  campuses: {
+    ville: string;
+    adresse: string;
+  }[];
   mission: string[];
   vision: string;
   valeurs: {

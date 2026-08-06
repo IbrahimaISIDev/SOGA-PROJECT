@@ -11,6 +11,8 @@ export const metadata = {
 };
 
 export default function InstitutionPage() {
+  const equipeReelle = institution.equipe.filter((m) => m.nom !== "Contenu provisoire");
+
   return (
     <>
       <Header variant="dark" />
@@ -119,23 +121,25 @@ export default function InstitutionPage() {
         <StratigraphicSeparator className="mx-16 md:mx-24" />
 
         {/* Équipe */}
-        <section aria-labelledby="equipe-title" className="section-gap bg-soga-sand">
-          <div className="container-soga">
-            <ScrollReveal>
-              <p className="text-eyebrow text-soga-muted mb-4">GOUVERNANCE & ÉQUIPE</p>
-              <h2 id="equipe-title" className="text-h2 text-soga-ink mb-10">
-                Nos équipes.
-              </h2>
-            </ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {institution.equipe.map((membre, i) => (
-                <ScrollReveal key={membre.id} delay={i * 60}>
-                  <CardMembre membre={membre} />
-                </ScrollReveal>
-              ))}
+        {equipeReelle.length > 0 && (
+          <section aria-labelledby="equipe-title" className="section-gap bg-soga-sand">
+            <div className="container-soga">
+              <ScrollReveal>
+                <p className="text-eyebrow text-soga-muted mb-4">GOUVERNANCE & ÉQUIPE</p>
+                <h2 id="equipe-title" className="text-h2 text-soga-ink mb-10">
+                  Nos équipes.
+                </h2>
+              </ScrollReveal>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {equipeReelle.map((membre, i) => (
+                  <ScrollReveal key={membre.id} delay={i * 60}>
+                    <CardMembre membre={membre} />
+                  </ScrollReveal>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Campus */}
         <section aria-labelledby="campus-title" className="section-gap bg-soga-black">
@@ -143,7 +147,7 @@ export default function InstitutionPage() {
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-4">CAMPUS</p>
               <h2 id="campus-title" className="text-h2 text-white mb-6">
-                Nos infrastructures à Dakar.
+                Nos infrastructures, sur trois campus.
               </h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

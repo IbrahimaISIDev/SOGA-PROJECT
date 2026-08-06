@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function EquipePage() {
-  const { equipe, organigramme, fondatrice } = institution;
+  const { organigramme, fondatrice } = institution;
+  const equipe = institution.equipe.filter((m) => m.nom !== "Contenu provisoire");
 
   return (
     <>
@@ -137,6 +138,13 @@ export default function EquipePage() {
               </ScrollReveal>
 
               {/* Team members */}
+              {equipe.length === 0 && (
+                <article className="text-center sm:col-span-2 lg:col-span-3 flex items-center justify-center">
+                  <p className="text-small text-white/40">
+                    La composition complète de l&apos;équipe sera publiée prochainement.
+                  </p>
+                </article>
+              )}
               {equipe.map((membre, i) => (
                 <ScrollReveal key={membre.id} delay={(i + 1) * 70}>
                   <article className="group text-center">

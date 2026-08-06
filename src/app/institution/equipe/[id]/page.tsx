@@ -7,8 +7,10 @@ import Footer from "@/components/layout/Footer";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { institution } from "@/data/institution";
 
+const equipeReelle = institution.equipe.filter((m) => m.nom !== "Contenu provisoire");
+
 export function generateStaticParams() {
-  return institution.equipe.map((m) => ({ id: m.slug }));
+  return equipeReelle.map((m) => ({ id: m.slug }));
 }
 
 export async function generateMetadata({
@@ -17,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const membre = institution.equipe.find((m) => m.slug === id);
+  const membre = equipeReelle.find((m) => m.slug === id);
   if (!membre) return {};
   return {
     title: `${membre.nom} — Équipe SOGA`,
@@ -31,7 +33,7 @@ export default async function FicheMembre({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const membre = institution.equipe.find((m) => m.slug === id);
+  const membre = equipeReelle.find((m) => m.slug === id);
   if (!membre) notFound();
 
   return (
