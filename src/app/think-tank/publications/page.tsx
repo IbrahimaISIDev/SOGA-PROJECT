@@ -17,7 +17,7 @@ export default function PublicationsPage() {
         <div className="pt-24 pb-12 md:pt-32 md:pb-16">
           <div className="container-soga">
             <nav aria-label="Fil d'Ariane" className="mb-6">
-              <ol className="flex items-center gap-2 text-eyebrow text-white/40">
+              <ol className="flex items-center gap-2 text-eyebrow text-white/50">
                 <li>
                   <Link href="/think-tank" className="hover:text-white/60 transition-colors">
                     Think Tank
@@ -43,7 +43,7 @@ export default function PublicationsPage() {
             <p className="text-lead text-white/60 mb-2">
               Le Think Tank SOGA est en cours de lancement.
             </p>
-            <p className="text-body text-white/40">
+            <p className="text-body text-white/50">
               Les premières publications seront mises en ligne dès leur parution.
             </p>
           </div>

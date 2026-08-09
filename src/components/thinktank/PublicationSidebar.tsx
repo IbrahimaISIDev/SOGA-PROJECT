@@ -43,21 +43,21 @@ export default function PublicationSidebar({
         style={{ borderColor: TT_BORDER }}
       >
         <div>
-          <p className="text-eyebrow text-white/40 mb-2">AUTEUR(S)</p>
+          <p className="text-eyebrow text-white/50 mb-2">AUTEUR(S)</p>
           <p className="text-[15px] text-white">{auteurs.join(", ")}</p>
         </div>
         <div>
-          <p className="text-eyebrow text-white/40 mb-2">DATE</p>
+          <p className="text-eyebrow text-white/50 mb-2">DATE</p>
           <p className="text-[15px] text-white">{dateFormatted}</p>
         </div>
         <div>
-          <p className="text-eyebrow text-white/40 mb-2">THÉMATIQUE</p>
+          <p className="text-eyebrow text-white/50 mb-2">THÉMATIQUE</p>
           <p className="text-[15px]" style={{ color: TT_GREEN_LIGHT }}>
             {thematique}
           </p>
         </div>
         <div>
-          <p className="text-eyebrow text-white/40 mb-2">TYPE</p>
+          <p className="text-eyebrow text-white/50 mb-2">TYPE</p>
           <span
             className="text-eyebrow text-[11px] px-2.5 py-1"
             style={{ backgroundColor: TT_GREEN + "20", color: TT_GREEN_LIGHT }}
@@ -69,7 +69,7 @@ export default function PublicationSidebar({
 
       {/* Share */}
       <div className="border-t pt-5" style={{ borderColor: TT_BORDER }}>
-        <p className="text-eyebrow text-white/40 mb-3">PARTAGER</p>
+        <p className="text-eyebrow text-white/50 mb-3">PARTAGER</p>
         <div className="flex gap-3">
           {["LinkedIn", "X", "E-mail"].map((s) => (
             <button

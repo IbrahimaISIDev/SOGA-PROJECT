@@ -95,7 +95,7 @@ export default async function FichePublication({
             <article>
               {/* Breadcrumb */}
               <nav aria-label="Fil d'Ariane" className="mb-8">
-                <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/40">
+                <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
                   <li>
                     <Link href="/think-tank" className="hover:text-white/60 transition-colors">
                       Think Tank
@@ -130,7 +130,7 @@ export default async function FichePublication({
 
               <h1 className="text-h1 text-white mb-5">{pub.titre}</h1>
 
-              <p className="text-eyebrow text-white/40 mb-10 leading-relaxed">
+              <p className="text-eyebrow text-white/50 mb-10 leading-relaxed">
                 {pub.auteurs.join(", ")} · {dateFormatted} ·{" "}
                 THÉMATIQUE : {pub.thematique.toUpperCase()} · {readingMins.toUpperCase()}
               </p>
@@ -144,7 +144,7 @@ export default async function FichePublication({
                     className="w-full h-full placeholder-block flex items-end p-6"
                     style={{ opacity: 0.4 }}
                   >
-                    <span className="text-eyebrow text-white/40">Visuel provisoire</span>
+                    <span className="text-eyebrow text-white/50">Visuel provisoire</span>
                   </div>
                 )}
               </div>

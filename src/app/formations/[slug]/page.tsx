@@ -77,7 +77,7 @@ export default async function FicheFormation({
           <div className="container-soga">
             {/* Breadcrumb */}
             <nav aria-label="Fil d'Ariane" className="mb-6">
-              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/40">
+              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
                 <li>
                   <Link href="/" className="hover:text-white/70 transition-colors">
                     Accueil
@@ -129,7 +129,7 @@ export default async function FicheFormation({
                   : []),
               ].map(({ label, value }) => (
                 <div key={label}>
-                  <dt className="text-eyebrow text-white/40 mb-1">{label}</dt>
+                  <dt className="text-eyebrow text-white/50 mb-1">{label}</dt>
                   <dd className="text-[15px] text-white">{value}</dd>
                 </div>
               ))}

@@ -43,7 +43,7 @@ export default async function FicheMembre({
         {/* Breadcrumb */}
         <div className="container-soga pt-28 pb-4">
           <nav aria-label="Fil d'Ariane">
-            <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/40">
+            <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
               <li>
                 <Link href="/" className="hover:text-white/60 transition-colors">
                   Accueil
@@ -97,7 +97,7 @@ export default async function FicheMembre({
               {/* Filieres */}
               {membre.filieres.length > 0 && (
                 <div className="w-full">
-                  <p className="text-eyebrow text-white/30 mb-3 text-center lg:text-left">
+                  <p className="text-eyebrow text-white/50 mb-3 text-center lg:text-left">
                     FILIÈRES ENSEIGNÉES
                   </p>
                   <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
@@ -120,7 +120,7 @@ export default async function FicheMembre({
 
               <Link
                 href="/institution/equipe"
-                className="text-small text-white/40 hover:text-white/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soga-gold mt-2"
+                className="text-small text-white/50 hover:text-white/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soga-gold mt-2"
               >
                 ← Retour à l&apos;équipe
               </Link>
@@ -137,7 +137,7 @@ export default async function FicheMembre({
 
               {/* Direction badge */}
               <div>
-                <p className="text-eyebrow text-white/30 mb-3">DIRECTION</p>
+                <p className="text-eyebrow text-white/50 mb-3">DIRECTION</p>
                 <span
                   className="text-small px-4 py-2 inline-block"
                   style={{

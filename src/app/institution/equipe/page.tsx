@@ -140,7 +140,7 @@ export default function EquipePage() {
               {/* Team members */}
               {equipe.length === 0 && (
                 <article className="text-center sm:col-span-2 lg:col-span-3 flex items-center justify-center">
-                  <p className="text-small text-white/40">
+                  <p className="text-small text-white/50">
                     La composition complète de l&apos;équipe sera publiée prochainement.
                   </p>
                 </article>

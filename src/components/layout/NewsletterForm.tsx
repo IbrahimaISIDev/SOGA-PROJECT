@@ -67,7 +67,7 @@ export default function NewsletterForm() {
           aria-required="true"
           aria-invalid={!!error}
           aria-describedby={error ? "footer-email-err" : undefined}
-          className={`flex-1 min-w-0 px-3 py-2 bg-soga-graphite text-white text-[14px] placeholder:text-white/40 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 border ${
+          className={`flex-1 min-w-0 px-3 py-2 bg-soga-graphite text-white text-[14px] placeholder:text-white/50 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2 border ${
             error ? "border-red-400" : "border-soga-graphite"
           }`}
         />

@@ -48,7 +48,7 @@ export default function FondatricePage() {
                         className="object-cover"
                       />
                     ) : (
-                      <span className="text-eyebrow text-white/30 text-center px-4">
+                      <span className="text-eyebrow text-white/50 text-center px-4">
                         Portrait à venir
                       </span>
                     )}

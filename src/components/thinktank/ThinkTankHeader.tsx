@@ -77,7 +77,7 @@ export default function ThinkTankHeader({
               ))}
               <Link
                 href="/"
-                className="text-[14px] text-white/40 hover:text-white/70 transition-colors"
+                className="text-[14px] text-white/50 hover:text-white/70 transition-colors"
               >
                 Retour au site SOGA
               </Link>

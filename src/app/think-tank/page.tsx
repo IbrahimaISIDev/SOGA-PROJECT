@@ -21,7 +21,7 @@ export default function ThinkTankPage() {
         <div className="pt-24 pb-16 md:pt-32 md:pb-20 bg-soga-black">
           <div className="container-soga">
             <nav aria-label="Fil d'Ariane" className="mb-6">
-              <ol className="flex items-center gap-2 text-eyebrow text-white/40">
+              <ol className="flex items-center gap-2 text-eyebrow text-white/50">
                 <li><Link href="/" className="hover:text-white/70 transition-colors">Accueil</Link></li>
                 <li aria-hidden>/</li>
                 <li aria-current="page">Think Tank</li>

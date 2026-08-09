@@ -64,7 +64,7 @@ export default async function FicheEvenement({
           {/* Content at bottom */}
           <div className="absolute inset-0 flex flex-col justify-end container-soga pb-10">
             <nav aria-label="Fil d'Ariane" className="mb-4">
-              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/40">
+              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
                 <li>
                   <Link href="/" className="hover:text-white/60 transition-colors">
                     Accueil

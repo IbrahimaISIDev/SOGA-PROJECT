@@ -185,7 +185,7 @@ export default function EcosystemePage() {
                           </div>
                           <div>
                             <p className="font-medium text-white text-small">{t.auteur}</p>
-                            <p className="text-eyebrow text-white/40 text-[10px]">
+                            <p className="text-eyebrow text-white/50 text-[10px]">
                               {t.titre} · {t.promotion}
                             </p>
                           </div>

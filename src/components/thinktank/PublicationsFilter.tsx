@@ -95,7 +95,7 @@ export default function PublicationsFilter({
         className="container-soga py-12"
       >
         {filtered.length === 0 ? (
-          <p className="text-lead text-white/40 text-center py-20">
+          <p className="text-lead text-white/50 text-center py-20">
             Aucune publication ne correspond à ces filtres.
           </p>
         ) : (

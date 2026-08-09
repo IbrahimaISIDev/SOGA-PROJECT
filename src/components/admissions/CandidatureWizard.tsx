@@ -124,7 +124,7 @@ export default function CandidatureWizard({ formations }: { formations: Formatio
         >
           SOGA
         </Link>
-        <span className="text-eyebrow text-white/40 text-[11px] hidden sm:block">
+        <span className="text-eyebrow text-white/50 text-[11px] hidden sm:block">
           CANDIDATURE EN COURS
         </span>
         <Link

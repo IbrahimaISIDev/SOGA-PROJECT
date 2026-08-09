@@ -32,7 +32,7 @@ export default function PageHeader({
         {/* Breadcrumb */}
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav aria-label="Fil d'Ariane" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/40">
+            <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
               {breadcrumbs.map((crumb, i) => (
                 <li key={i} className="flex items-center gap-2">
                   {i > 0 && <span aria-hidden>/</span>}

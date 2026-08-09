@@ -33,7 +33,7 @@ export default function CampusPage() {
           {/* Title bottom-left */}
           <div className="absolute bottom-0 left-0 right-0 container-soga pb-10">
             <nav aria-label="Fil d'Ariane" className="mb-4">
-              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/40">
+              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
                 <li>
                   <Link href="/" className="hover:text-white/60 transition-colors">
                     Accueil
