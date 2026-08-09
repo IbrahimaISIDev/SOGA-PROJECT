@@ -25,7 +25,17 @@ function toIdShape<T>(raw: WithItemId): T {
  */
 export function readCollection<T extends { id: string }>(dir: string): T[] {
   const full = join(CONTENT_ROOT, dir);
-  return readdirSync(full)
+  let files: string[];
+  try {
+    files = readdirSync(full);
+  } catch (err) {
+    // Git doesn't track empty directories, so a collection with zero
+    // entries simply won't exist after a fresh clone (e.g. on Vercel),
+    // even though it exists locally as a leftover empty folder.
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw err;
+  }
+  return files
     .filter((f) => f.endsWith(".json"))
     .map((f) => toIdShape<T>(JSON.parse(readFileSync(join(full, f), "utf-8"))))
     .sort((a, b) => a.id.localeCompare(b.id));
