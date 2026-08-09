@@ -43,3 +43,7 @@ next-env.d.ts
 
 # TinaCMS — generated at dev/build time, not source
 tina/__generated__/
+
+# Raw media exports — source material, not committed. Processed assets
+# actually used by the site live in public/media/.
+/SOGA-medias/

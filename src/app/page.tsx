@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -35,6 +36,15 @@ const METHODE_PILLIERS = [
     texte:
       "Interventions régulières de professionnels en poste dans l'énergie, le management et l'industrie.",
   },
+];
+
+const TERRAIN_PHOTOS = [
+  { src: "/media/terrain-02-derrick.jpg", alt: "Étudiants SOGA devant un appareil de forage lors d'une visite de site" },
+  { src: "/media/terrain-01-chantier-groupe.jpg", alt: "Groupe d'étudiants SOGA en visite sur un chantier industriel" },
+  { src: "/media/terrain-03-equipement-closeup.jpg", alt: "Étudiant SOGA examinant un équipement industriel avec un encadrant" },
+  { src: "/media/terrain-04-tete-de-puits.jpg", alt: "Encadrants SOGA devant une tête de puits sur site industriel" },
+  { src: "/media/terrain-06-groupe-site.jpg", alt: "Étudiants SOGA en visite de terrain, casques de sécurité" },
+  { src: "/media/terrain-05-vanne.jpg", alt: "Étudiantes SOGA près d'un équipement de vannage industriel" },
 ];
 
 const TEMOIGNAGES = [
@@ -102,7 +112,7 @@ export default function HomePage() {
         <HeroSection />
 
         {/* ── Stats band ────────────────────────────────────── */}
-        <section aria-label="Chiffres clés SOGA" className="bg-soga-cream border-b border-soga-line">
+        <section aria-label="Chiffres clés SOGA" className="bg-soga-sand border-b border-soga-line">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-soga-line">
             {HOME_STATS.map((s) => (
               <div key={s.libelle} className="py-12 px-10">
@@ -120,7 +130,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <p className="text-eyebrow px-10 pb-5 pt-1" style={{ color: "#B0ADA4" }} aria-hidden>
+          <p className="text-eyebrow px-10 pb-5 pt-1 text-soga-muted" aria-hidden>
             SENEGAL OIL AND GAS ACADEMY
           </p>
         </section>
@@ -333,6 +343,41 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* ── Vie académique — photos de terrain ─────────────── */}
+        <section aria-labelledby="terrain-title" className="section-gap bg-soga-sand">
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold-deep mb-3">VIE ACADÉMIQUE</p>
+              <h2
+                id="terrain-title"
+                className="font-display font-semibold text-soga-ink mb-3 max-w-[700px]"
+                style={{ fontSize: "clamp(28px,2.8vw,40px)" }}
+              >
+                Nos étudiants sur le terrain
+              </h2>
+              <p className="text-lead text-soga-muted mb-12 max-w-xl">
+                Visites de sites industriels et d&apos;institutions publiques — l&apos;apprentissage
+                SOGA ne s&apos;arrête pas à la salle de cours.
+              </p>
+            </ScrollReveal>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {TERRAIN_PHOTOS.map((photo, i) => (
+                <ScrollReveal key={photo.src} delay={i * 50}>
+                  <div className="relative aspect-[4/5] rounded-lg overflow-hidden border border-soga-line">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Think Tank Band ───────────────────────────────── */}
         <section
           aria-labelledby="thinktank-title"
@@ -458,7 +503,11 @@ export default function HomePage() {
                     className="group block border border-soga-line rounded-lg overflow-hidden bg-soga-surface hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                   >
                     <div className="relative h-[130px]">
-                      <div className="absolute inset-0 placeholder-block" />
+                      {a.image ? (
+                        <Image src={a.image} alt="" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 placeholder-block" />
+                      )}
                     </div>
                     <div className="p-4">
                       <p className="text-eyebrow text-soga-gold-deep mb-2">

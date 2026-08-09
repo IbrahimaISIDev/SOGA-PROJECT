@@ -1,14 +1,8 @@
-"use client";
-
-import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import StratigraphicColumn from "@/components/signature/StratigraphicColumn";
-import { useRevealOnMount } from "@/hooks/useRevealOnMount";
 
 export default function HeroSection() {
-  const revealed = useRevealOnMount(80);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
   const titleLines = ["L’Académie de"];
 
   return (
@@ -16,21 +10,21 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col justify-end bg-soga-black overflow-hidden"
       aria-label="Page d’accueil SOGA"
     >
-      {/* Placeholder background, in place of the real hero photo/video */}
-      <div className="absolute inset-0 placeholder-block" aria-hidden />
+      {/* Étudiants SOGA en visite pédagogique à l'Assemblée Nationale, juillet 2026 */}
+      <Image
+        src="/media/hero-assemblee-nationale.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+        style={{ objectPosition: "50% 30%" }}
+      />
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(to top, #0B0C0E 0%, #0B0C0E 20%, rgba(11,12,14,0.55) 60%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to top, #0B0C0E 0%, #0B0C0E 20%, rgba(11,12,14,0.75) 55%, rgba(11,12,14,0.35) 100%)" }}
         aria-hidden
       />
-      {/* Provisional label */}
-      <p
-        className="absolute top-4 left-[88px] text-eyebrow z-10"
-        style={{ color: "#F0C868", fontSize: "11px", backgroundColor: "rgba(0,0,0,0.45)", padding: "4px 8px" }}
-        aria-hidden
-      >
-        PHOTO / VIDÉO PROVISOIRE — À REMPLACER
-      </p>
 
       {/* Stratigraphic column — left edge */}
       <div className="absolute left-0 top-0 bottom-0 flex items-stretch z-10" aria-hidden>
@@ -40,10 +34,7 @@ export default function HeroSection() {
       {/* Hero content */}
       <div className="relative z-10 container-soga pb-20 md:pb-28">
         {/* Eyebrow */}
-        <div
-          className="mb-5 transition-all duration-500"
-          style={{ opacity: revealed ? 1 : 0, transform: revealed ? "none" : "translateY(12px)" }}
-        >
+        <div className="mb-5 hero-fade-up">
           <p className="text-eyebrow" style={{ color: "#F0C868" }}>
             SENEGAL OIL AND GAS ACADEMY
           </p>
@@ -57,14 +48,8 @@ export default function HeroSection() {
           {titleLines.map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <span
-                className="block transition-all"
-                style={{
-                  transitionDuration: "420ms",
-                  transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
-                  transitionDelay: `${i * 80}ms`,
-                  clipPath: revealed ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
-                  transform: revealed ? "none" : "translateY(100%)",
-                }}
+                className="block hero-clip-up"
+                style={{ animationDelay: `${i * 80}ms` }}
               >
                 {line}
               </span>
@@ -72,15 +57,8 @@ export default function HeroSection() {
           ))}
           <span className="block overflow-hidden">
             <span
-              className="block transition-all"
-              style={{
-                transitionDuration: "420ms",
-                transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
-                transitionDelay: "160ms",
-                clipPath: revealed ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
-                transform: revealed ? "none" : "translateY(100%)",
-                color: "#C9962C",
-              }}
+              className="block hero-clip-up"
+              style={{ animationDelay: "160ms", color: "#C9962C" }}
             >
               Toutes les Énergies.
             </span>
@@ -89,25 +67,16 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p
-          className="text-lead max-w-[560px] mb-10 transition-all duration-500"
-          style={{
-            color: "#D8D4C8",
-            transitionDelay: "260ms",
-            opacity: revealed ? 1 : 0,
-            transform: revealed ? "none" : "translateY(12px)",
-          }}
+          className="text-lead max-w-[560px] mb-10 hero-fade-up"
+          style={{ color: "#D8D4C8", animationDelay: "260ms" }}
         >
           École supérieure professionnelle spécialisée dans les métiers de l&apos;énergie, du management et de l&apos;industrie — sur les campus de Dakar, Ziguinchor et Saint-Louis.
         </p>
 
         {/* CTAs */}
         <div
-          className="flex flex-col sm:flex-row gap-4 transition-all duration-500"
-          style={{
-            transitionDelay: "340ms",
-            opacity: revealed ? 1 : 0,
-            transform: revealed ? "none" : "translateY(12px)",
-          }}
+          className="flex flex-col sm:flex-row gap-4 hero-fade-up"
+          style={{ animationDelay: "340ms" }}
         >
           <Link
             href="/formations"
@@ -127,14 +96,10 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <div ref={scrollRef} className="absolute bottom-8 z-10" style={{ left: "clamp(20px, 6vw, 88px)" }}>
+      <div className="absolute bottom-8 z-10" style={{ left: "clamp(20px, 6vw, 88px)" }}>
         <p
-          className="text-eyebrow transition-all duration-700"
-          style={{
-            color: "#8a8a8a",
-            transitionDelay: "600ms",
-            opacity: revealed ? 1 : 0,
-          }}
+          className="text-eyebrow hero-fade-up"
+          style={{ color: "#8a8a8a", animationDelay: "600ms" }}
           aria-hidden
         >
           FAIRE DÉFILER ↓

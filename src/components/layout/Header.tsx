@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "@/components/ui/Button";
@@ -168,11 +169,12 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
             {/* Logo */}
             <Link
               href="/"
-              className={`text-eyebrow text-[14px] font-semibold tracking-widest transition-colors ${
+              className={`flex items-center gap-2 text-eyebrow text-[14px] font-semibold tracking-widest transition-colors ${
                 isDark || scrolled ? "text-white" : "text-soga-ink"
               } focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2`}
               aria-label="SOGA — Retour à l'accueil"
             >
+              <Image src="/media/icon-soga.png" alt="" width={28} height={25} className="h-6 w-auto" priority />
               SOGA
             </Link>
 
@@ -435,9 +437,10 @@ export default function Header({ variant = "dark" }: { variant?: "dark" | "light
         <div className="flex items-center justify-between px-5 h-16 border-b border-soga-graphite">
           <Link
             href="/"
-            className="text-eyebrow text-[14px] font-semibold tracking-widest text-white"
+            className="flex items-center gap-2 text-eyebrow text-[14px] font-semibold tracking-widest text-white"
             onClick={() => setMobileOpen(false)}
           >
+            <Image src="/media/icon-soga.png" alt="" width={28} height={25} className="h-6 w-auto" />
             SOGA
           </Link>
           <button

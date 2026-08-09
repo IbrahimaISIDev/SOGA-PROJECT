@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import NewsletterForm from "./NewsletterForm";
@@ -45,8 +46,9 @@ export default function Footer() {
           <div>
             <Link
               href="/"
-              className="text-eyebrow text-[14px] font-semibold tracking-widest text-white block mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
+              className="flex items-center gap-2 text-eyebrow text-[14px] font-semibold tracking-widest text-white mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold focus-visible:outline-offset-2"
             >
+              <Image src="/media/icon-soga.png" alt="" width={28} height={25} className="h-6 w-auto" />
               SOGA
             </Link>
             <p className="text-small text-white/60 leading-relaxed mb-4">
@@ -96,25 +98,25 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-small text-white/40">
+          <p className="text-small text-white/50">
             © {year} Senegal Oil and Gas Academy. Tous droits réservés.
           </p>
           <div className="flex gap-6">
             <Link
               href="/mentions-legales"
-              className="text-small text-white/40 hover:text-white/70 transition-colors"
+              className="text-small text-white/50 hover:text-white/70 transition-colors"
             >
               Mentions légales
             </Link>
             <Link
               href="/mentions-legales#cookies"
-              className="text-small text-white/40 hover:text-white/70 transition-colors"
+              className="text-small text-white/50 hover:text-white/70 transition-colors"
             >
               Cookies
             </Link>
             <Link
               href="/contact"
-              className="text-small text-white/40 hover:text-white/70 transition-colors"
+              className="text-small text-white/50 hover:text-white/70 transition-colors"
             >
               Contact
             </Link>
