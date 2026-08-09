@@ -78,6 +78,7 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${sourceSerif.variable} ${inter.variable} ${ibmPlexMono.variable}`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col font-sans text-soga-ink bg-soga-sand">
         <ThemeScript />
