@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | SOGA",
   },
   description:
-    "École supérieure professionnelle spécialisée dans les métiers de l'énergie, du management et de l'industrie. Campus à Dakar, Ziguinchor et Saint-Louis.",
+    "École supérieure professionnelle spécialisée dans les métiers de l'énergie, du management et de l'industrie. Campus à Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda.",
   metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",

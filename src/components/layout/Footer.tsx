@@ -52,8 +52,8 @@ export default function Footer() {
               SOGA
             </Link>
             <p className="text-small text-white/60 leading-relaxed mb-4">
-              Senegal Oil and Gas Academy<br />
-              Dakar, Sénégal
+              SOGA<br />
+              Sénégal
             </p>
             <div className="space-y-1 text-small text-white/60 mb-8">
               <p>

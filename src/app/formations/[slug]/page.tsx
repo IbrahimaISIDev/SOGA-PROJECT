@@ -123,7 +123,7 @@ export default async function FicheFormation({
                 { label: "RYTHME", value: formation.mode },
                 { label: "LANGUE", value: "Français" },
                 { label: "RENTRÉE", value: formation.rentree },
-                { label: "LIEU", value: "Dakar, Ziguinchor, Saint-Louis" },
+                { label: "LIEU", value: "Dakar, Ziguinchor, Saint-Louis, Thiès, Kolda" },
                 ...(formation.placesLimitees && formation.capacite
                   ? [{ label: "CAPACITÉ", value: `${formation.capacite} places` }]
                   : []),
@@ -293,7 +293,7 @@ export default async function FicheFormation({
                   { label: "Mode", value: formation.mode },
                   { label: "Rentrée", value: formation.rentree },
                   { label: "Frais de formation", value: "Sur demande" },
-                  { label: "Campus", value: "Dakar, Ziguinchor, Saint-Louis" },
+                  { label: "Campus", value: "Dakar, Ziguinchor, Saint-Louis, Thiès, Kolda" },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between gap-4">
                     <dt className="text-soga-muted">{label}</dt>

@@ -62,6 +62,7 @@ const mainNav = [
   { label: "Actualités", href: "/actualites" },
   { label: "Admissions", href: "/admissions" },
   { label: "Écosystème", href: "/ecosysteme", hasMega: true, megaKey: "ecosysteme" },
+  { label: "Partenaires", href: "/ecosysteme/partenariats" },
 ];
 
 function getMobileSubItems(megaKey: string) {

@@ -96,7 +96,7 @@ export default function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            L&apos;Académie de Toutes les Énergies · Dakar, Ziguinchor, Saint-Louis
+            L&apos;Académie de Toutes les Énergies · Dakar, Ziguinchor, Saint-Louis, Thiès, Kolda
           </div>
         </div>
       </div>

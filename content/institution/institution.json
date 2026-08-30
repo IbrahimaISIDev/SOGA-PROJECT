@@ -2,7 +2,7 @@
   "nom": "Senegal Oil and Gas Academy",
   "sigle": "SOGA",
   "tagline": "L'Académie de Toutes les Énergies",
-  "adresse": "Dakar, Ziguinchor et Saint-Louis, Sénégal",
+  "adresse": "Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda, Sénégal",
   "email": "direction@senegaloilandgasacademy.com",
   "telephone": "+221 78 103 23 70",
   "campuses": [
@@ -17,6 +17,14 @@
     {
       "ville": "Saint-Louis",
       "adresse": "Rond-point ARD, Route de Khor, Saint-Louis, Sénégal"
+    },
+    {
+      "ville": "Thiès",
+      "adresse": "Thiès, Sénégal"
+    },
+    {
+      "ville": "Kolda",
+      "adresse": "Kolda, Sénégal"
     }
   ],
   "mission": [
@@ -40,8 +48,8 @@
     },
     {
       "titre": "Proximité",
-      "sousTitre": "Trois campus, un accompagnement",
-      "description": "Accompagnement des étudiants à travers les campus de Dakar, Ziguinchor et Saint-Louis."
+      "sousTitre": "Cinq campus, un accompagnement",
+      "description": "Accompagnement des étudiants à travers les campus de Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda."
     },
     {
       "titre": "Innovation",
@@ -60,8 +68,8 @@
       "libelle": "Filières de formation"
     },
     {
-      "valeur": "3",
-      "libelle": "Campus — Dakar, Ziguinchor, Saint-Louis"
+      "valeur": "5",
+      "libelle": "Campus — Dakar, Ziguinchor, Saint-Louis, Thiès, Kolda"
     },
     {
       "valeur": "2018",
@@ -73,14 +81,14 @@
     }
   ],
   "fondatrice": {
-    "nom": "Dr. Aïssatou Cissoko",
+    "nom": "Dr. Aïssatou Niasse",
     "titre": "Fondatrice & Directrice Générale",
     "qualifications": "Docteure en Énergie",
     "citation": "Notre pays regorge de talents qui ne demandent qu'à être formés aux meilleurs standards pour porter le développement de secteurs stratégiques comme l'énergie, le management et l'industrie.",
     "biographie": [
       "C'est avec une grande fierté que je vous accueille sur le site de SOGA, l'Académie de Toutes les Énergies.",
       "Après plusieurs années d'expérience à l'international, j'ai fait le choix de revenir au Sénégal avec une conviction profonde : notre pays regorge de talents qui ne demandent qu'à être formés aux meilleurs standards pour porter le développement de secteurs stratégiques comme l'énergie, le management et l'industrie.",
-      "C'est cette conviction qui a donné naissance à SOGA en 2018. Aujourd'hui présente à Dakar, Ziguinchor et Saint-Louis, notre académie s'engage chaque jour à offrir une formation d'excellence, ancrée dans les réalités du terrain et reconnue par nos accréditations ANAQ-Sup et AUF.",
+      "C'est cette conviction qui a donné naissance à SOGA en 2018. Aujourd'hui présente à Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda, notre académie s'engage chaque jour à offrir une formation d'excellence, ancrée dans les réalités du terrain et reconnue par nos accréditations ANAQ-Sup et AUF.",
       "Je vous invite à découvrir nos formations et à rejoindre une communauté d'étudiants et de professionnels engagés à faire de leurs ambitions une réalité."
     ],
     "portrait": null
@@ -108,7 +116,7 @@
     }
   ],
   "campus": {
-    "description": "SOGA dispose de trois campus — Dakar (Almadies), Ziguinchor (HLM Néma) et Saint-Louis (Rond-point ARD, Route de Khor) — afin de garantir une meilleure proximité avec ses étudiants. Chaque campus offre un environnement d'apprentissage professionnel, combinant théorie et pratique sur équipements industriels réels.",
+    "description": "SOGA dispose de cinq campus — Dakar (Almadies), Ziguinchor (HLM Néma), Saint-Louis (Rond-point ARD, Route de Khor), Thiès et Kolda — afin de garantir une meilleure proximité avec ses étudiants. Chaque campus offre un environnement d'apprentissage professionnel, combinant théorie et pratique sur équipements industriels réels.",
     "infrastructures": [
       {
         "titre": "Laboratoires techniques",

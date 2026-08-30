@@ -42,7 +42,7 @@ export default function HeroSection() {
         {/* Eyebrow */}
         <div className="mb-5 hero-fade-up">
           <p className="text-eyebrow" style={{ color: "#F0C868" }}>
-            SENEGAL OIL AND GAS ACADEMY
+            SOGA
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export default function HeroSection() {
           className="text-lead max-w-[560px] mb-10 hero-fade-up"
           style={{ color: "#D8D4C8", animationDelay: "260ms" }}
         >
-          École supérieure professionnelle spécialisée dans les métiers de l&apos;énergie, du management et de l&apos;industrie — sur les campus de Dakar, Ziguinchor et Saint-Louis.
+          École supérieure professionnelle spécialisée dans les métiers de l&apos;énergie, du management et de l&apos;industrie — sur les campus de Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda.
         </p>
 
         {/* CTAs */}

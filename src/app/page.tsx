@@ -11,7 +11,7 @@ import { publications } from "@/data/thinktank";
 
 const HOME_STATS = [
   { valeur: "14", libelle: "filières techniques & managériales" },
-  { valeur: "3", libelle: "campus — Dakar, Ziguinchor, Saint-Louis" },
+  { valeur: "5", libelle: "campus — Dakar, Ziguinchor, Saint-Louis, Thiès, Kolda" },
   { valeur: "2018", libelle: "année de création de SOGA" },
   { valeur: "2", libelle: "accréditations — ANAQ-Sup, AUF" },
 ];
@@ -131,7 +131,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="text-eyebrow px-10 pb-5 pt-1 text-soga-muted" aria-hidden>
-            SENEGAL OIL AND GAS ACADEMY
+            SOGA
           </p>
         </section>
 
@@ -652,7 +652,7 @@ export default function HomePage() {
                 Les inscriptions sont ouvertes
               </h2>
               <p className="mb-8" style={{ color: "#B8B4A8", fontSize: "16px" }}>
-                Rentrée octobre 2025 — sur les campus de Dakar, Ziguinchor et Saint-Louis.
+                Rentrée octobre 2027 — sur les campus de Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-7">
                 <Link

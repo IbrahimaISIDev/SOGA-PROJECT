@@ -67,7 +67,7 @@ export default function CampusPage() {
 
         <StratigraphicSeparator />
 
-        {/* Trois campus */}
+        {/* Cinq campus */}
         <section aria-labelledby="campuses-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
@@ -75,7 +75,7 @@ export default function CampusPage() {
             </ScrollReveal>
             <ScrollReveal delay={60}>
               <h2 id="campuses-title" className="text-h2 text-white mb-12">
-                Trois campus au Sénégal
+                Cinq campus au Sénégal
               </h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

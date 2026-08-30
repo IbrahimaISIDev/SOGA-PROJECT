@@ -22,7 +22,7 @@ const SECTIONS = [
         <strong>Siège social :</strong> Dakar, Sénégal
       </>,
       <>
-        <strong>Directrice de publication :</strong> Dr. Aïssatou Cissoko
+        <strong>Directrice de publication :</strong> Dr. Aïssatou Niasse
       </>,
       <>
         <strong>Contact :</strong>{" "}

@@ -147,7 +147,7 @@ export default function InstitutionPage() {
             <ScrollReveal>
               <p className="text-eyebrow text-soga-gold mb-4">CAMPUS</p>
               <h2 id="campus-title" className="text-h2 text-white mb-6">
-                Nos infrastructures, sur trois campus.
+                Nos infrastructures, sur cinq campus.
               </h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
