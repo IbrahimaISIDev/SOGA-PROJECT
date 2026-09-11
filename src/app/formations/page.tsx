@@ -13,7 +13,7 @@ export default function CatalogueFormations() {
         <PageHeader
           eyebrow="FORMATIONS"
           title="Catalogue des formations"
-          subtitle="8 filières techniques et managériales, du DTS au Master Pro."
+          subtitle={`${formations.length} filières techniques et managériales, du Technicien Spécialisé au Master.`}
           breadcrumbs={[
             { label: "Accueil", href: "/" },
             { label: "Formations", href: "/formations" },
