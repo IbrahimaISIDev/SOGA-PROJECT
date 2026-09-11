@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -263,12 +264,16 @@ export default async function FicheFormation({
                 >
                   Équipements & laboratoires
                 </h2>
-                <div className="aspect-[16/7] bg-soga-graphite rounded-md overflow-hidden mb-6">
-                  <div className="w-full h-full placeholder-block flex items-end p-6">
-                    <span className="text-eyebrow text-soga-line/60">
-                      Photo laboratoire — Contenu provisoire
-                    </span>
-                  </div>
+                <div className="relative aspect-[16/7] bg-soga-graphite rounded-md overflow-hidden mb-6">
+                  {formation.image ? (
+                    <Image src={formation.image} alt="" fill sizes="(min-width: 1024px) 66vw, 100vw" className="object-cover" />
+                  ) : (
+                    <div className="w-full h-full placeholder-block flex items-end p-6">
+                      <span className="text-eyebrow text-soga-line/60">
+                        Photo laboratoire — Contenu provisoire
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <p className="text-body text-soga-muted">
                   Les étudiants accèdent aux équipements du campus SOGA et aux installations

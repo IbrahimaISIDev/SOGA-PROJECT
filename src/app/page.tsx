@@ -267,7 +267,11 @@ export default function HomePage() {
                     className="group block border border-soga-line rounded-lg overflow-hidden bg-soga-surface hover:shadow-md transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-soga-gold"
                   >
                     <div className="relative h-[170px]">
-                      <div className="absolute inset-0 placeholder-block" />
+                      {f.image ? (
+                        <Image src={f.image} alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+                      ) : (
+                        <div className="absolute inset-0 placeholder-block" />
+                      )}
                       <div
                         className="absolute bottom-0 left-0 right-0 h-0.5"
                         style={{ backgroundColor: "#C9962C" }}

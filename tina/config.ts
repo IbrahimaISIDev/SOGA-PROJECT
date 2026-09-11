@@ -59,6 +59,7 @@ export default defineConfig({
           { type: "boolean", name: "placesLimitees", label: "Places limitées" },
           { type: "number", name: "capacite", label: "Capacité (places)" },
           { type: "string", name: "brochureUrl", label: "Brochure PDF (chemin public)" },
+          { type: "image", name: "image", label: "Photo" },
           { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
           { type: "string", name: "objectifs", label: "Objectifs", ui: { component: "textarea" } },
           { type: "string", name: "conditionsAdmission", label: "Conditions d'admission", ui: { component: "textarea" } },

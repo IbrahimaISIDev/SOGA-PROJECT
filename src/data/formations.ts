@@ -18,6 +18,8 @@ export interface Formation {
   capacite?: number;
   /** Chemin public vers la brochure PDF (ex. "/brochures/genie-petrolier.pdf"), ou null si aucune n'est disponible. */
   brochureUrl: string | null;
+  /** Chemin public vers une photo illustrant la formation, ou null si aucune n'est disponible. */
+  image: string | null;
   description: string;
   objectifs: string;
   conditionsAdmission: string;
