@@ -49,7 +49,6 @@ const institutionNav = [
 ];
 
 const ecosystemeNav = [
-  { label: "Partenariats", href: "/ecosysteme/partenariats" },
   { label: "Entreprises & Recrutement", href: "/ecosysteme/entreprises" },
   { label: "Devenir partenaire", href: "/ecosysteme/devenir-partenaire" },
   { label: "Alumni", href: "/ecosysteme/alumni" },
