@@ -70,6 +70,11 @@ export default function ContactPage() {
                   </div>
                 </address>
 
+                <div className="mb-8">
+                  <p className="text-eyebrow text-soga-gold-deep mb-3">HORAIRES</p>
+                  <p className="text-body text-soga-ink">{institution.horaires}</p>
+                </div>
+
                 {/* Map placeholder */}
                 <div
                   className="overflow-hidden"

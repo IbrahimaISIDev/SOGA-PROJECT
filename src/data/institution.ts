@@ -21,6 +21,14 @@ interface InstitutionDoc {
   adresse: string;
   email: string;
   telephone: string;
+  horaires: string;
+  reseauxSociaux: {
+    facebook: string | null;
+    linkedin: string | null;
+    instagram: string | null;
+    youtube: string | null;
+    twitter: string | null;
+  };
   campuses: {
     ville: string;
     adresse: string;

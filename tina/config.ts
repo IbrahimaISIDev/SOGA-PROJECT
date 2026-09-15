@@ -270,6 +270,19 @@ export default defineConfig({
           { type: "string", name: "adresse", label: "Adresse (résumé)", required: true },
           { type: "string", name: "email", label: "Email", required: true },
           { type: "string", name: "telephone", label: "Téléphone", required: true },
+          { type: "string", name: "horaires", label: "Horaires d'ouverture", required: true },
+          {
+            type: "object",
+            name: "reseauxSociaux",
+            label: "Réseaux sociaux",
+            fields: [
+              { type: "string", name: "facebook", label: "Facebook (URL)" },
+              { type: "string", name: "linkedin", label: "LinkedIn (URL)" },
+              { type: "string", name: "instagram", label: "Instagram (URL)" },
+              { type: "string", name: "youtube", label: "YouTube (URL)" },
+              { type: "string", name: "twitter", label: "X / Twitter (URL)" },
+            ],
+          },
           {
             type: "object",
             name: "campuses",

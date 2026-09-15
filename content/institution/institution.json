@@ -6,7 +6,15 @@
   "historique": "SOGA a été créée en 2018 par Dr Aïssatou Niasse. Après des études supérieures à l'étranger et une expérience professionnelle avérée à travers le monde, Dr Aïssatou Niasse a fait le pari de revenir au Sénégal pour y créer SOGA, avec pour ambition de mettre son expérience internationale au service du développement du Sénégal, en formant une élite locale de qualité dans les secteurs porteurs.",
   "adresse": "Dakar, Ziguinchor, Saint-Louis, Thiès et Kolda, Sénégal",
   "email": "direction@senegaloilandgasacademy.com",
-  "telephone": "+221 78 103 23 70",
+  "telephone": "+221 77 263 16 63",
+  "horaires": "Du lundi au vendredi, de 8h00 à 18h00",
+  "reseauxSociaux": {
+    "facebook": "https://www.facebook.com/p/Senegal-Oil-and-Gas-Academy-100063936999659/",
+    "linkedin": "https://sn.linkedin.com/company/senegaloilandgasacademy",
+    "instagram": null,
+    "youtube": null,
+    "twitter": null
+  },
   "campuses": [
     {
       "ville": "Dakar",

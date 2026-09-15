@@ -332,7 +332,7 @@ export default async function FicheFormation({
                 >
                   direction@senegaloilandgasacademy.com
                 </a>
-                <p className="text-small text-soga-muted mt-1">+221 78 103 23 70</p>
+                <p className="text-small text-soga-muted mt-1">{institution.telephone}</p>
               </div>
             </aside>
           </div>
