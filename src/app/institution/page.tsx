@@ -27,6 +27,21 @@ export default function InstitutionPage() {
           ]}
         />
 
+        {/* Présentation */}
+        <section aria-labelledby="presentation-title" className="section-gap bg-soga-sand">
+          <div className="container-soga max-w-3xl">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-muted mb-4">PRÉSENTATION</p>
+              <h2 id="presentation-title" className="sr-only">
+                Présentation de SOGA
+              </h2>
+              <p className="text-lead text-soga-ink leading-relaxed">{institution.presentation}</p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        <StratigraphicSeparator className="mx-16 md:mx-24" />
+
         {/* Mission */}
         <section aria-labelledby="mission-title" className="section-gap bg-soga-sand">
           <div className="container-soga">
