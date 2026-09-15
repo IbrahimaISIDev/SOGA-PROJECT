@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -10,6 +11,17 @@ export const metadata: Metadata = {
   title: "Campus — SOGA",
   description: institution.campus.description,
 };
+
+const GALERIE_PHOTOS = [
+  { src: "/media/terrain-02-derrick.jpg", alt: "Étudiants SOGA devant un appareil de forage lors d'une visite de site" },
+  { src: "/media/formations/licence-sciences-ingenieur.jpg", alt: "Étudiants en atelier pratique" },
+  { src: "/media/terrain-01-chantier-groupe.jpg", alt: "Groupe d'étudiants SOGA en visite sur un chantier industriel" },
+  { src: "/media/formations/bts-electrotechnique.jpg", alt: "Étudiants sur banc didactique électrotechnique" },
+  { src: "/media/terrain-04-tete-de-puits.jpg", alt: "Encadrants SOGA devant une tête de puits sur site industriel" },
+  { src: "/media/formations/technicien-specialise-instrumentation-oil-gas.jpg", alt: "Étudiants sur site industriel, instrumentation" },
+  { src: "/media/terrain-06-groupe-site.jpg", alt: "Étudiants SOGA en visite de terrain, casques de sécurité" },
+  { src: "/media/formations/bts-hygiene-securite-environnement.jpg", alt: "Étudiants en formation sécurité sur site" },
+];
 
 export default function CampusPage() {
   const { campus, campuses } = institution;
@@ -151,7 +163,7 @@ export default function CampusPage() {
           </div>
         </section>
 
-        {/* Gallery placeholder */}
+        {/* Galerie */}
         <section aria-labelledby="gallery-title" className="section-gap bg-soga-black">
           <div className="container-soga">
             <ScrollReveal>
@@ -159,17 +171,24 @@ export default function CampusPage() {
             </ScrollReveal>
             <ScrollReveal delay={60}>
               <h2 id="gallery-title" className="text-h2 text-white mb-8">
-                Visite virtuelle
+                La vie sur nos campus
               </h2>
             </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <div
-                className="aspect-[21/9] placeholder-block-light flex items-center justify-center"
-                aria-label="Galerie photos à venir"
-              >
-                <p className="text-eyebrow text-soga-ink">Galerie photos à venir</p>
-              </div>
-            </ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {GALERIE_PHOTOS.map((photo, i) => (
+                <ScrollReveal key={photo.src} delay={i * 40}>
+                  <div className="relative aspect-square rounded-md overflow-hidden">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(min-width: 768px) 25vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
       </main>
