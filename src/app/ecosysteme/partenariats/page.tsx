@@ -57,7 +57,7 @@ export default function PartenariatsPage() {
                       <ScrollReveal key={p.id} delay={i * 50}>
                         <div
                           className="border border-soga-line flex flex-col items-center justify-center gap-2 p-5 text-center"
-                          style={{ height: "64px", backgroundColor: "var(--soga-sand-alt)" }}
+                          style={{ height: "64px", backgroundColor: p.logo ? "#FFFFFF" : "var(--soga-sand-alt)" }}
                           aria-label={p.nom}
                         >
                           {p.logo ? (
@@ -91,11 +91,13 @@ export default function PartenariatsPage() {
               );
             })}
 
-            <ScrollReveal>
-              <p className="text-eyebrow text-soga-muted text-center">
-                LOGOS PROVISOIRES — À FOURNIR PAR LE CLIENT
-              </p>
-            </ScrollReveal>
+            {partenaires.some((p) => !p.logo) && (
+              <ScrollReveal>
+                <p className="text-eyebrow text-soga-muted text-center">
+                  CERTAINS LOGOS RESTENT À FOURNIR
+                </p>
+              </ScrollReveal>
+            )}
           </div>
         </div>
       </main>

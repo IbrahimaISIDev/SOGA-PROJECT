@@ -125,7 +125,7 @@ export default function EcosystemePage() {
                   <ScrollReveal key={p.id} delay={i * 50}>
                     <div
                       className="border border-soga-line flex items-center justify-center p-5"
-                      style={{ height: "64px", backgroundColor: "var(--soga-sand-alt)" }}
+                      style={{ height: "64px", backgroundColor: p.logo ? "#FFFFFF" : "var(--soga-sand-alt)" }}
                       aria-label={p.nom}
                     >
                       {p.logo ? (
