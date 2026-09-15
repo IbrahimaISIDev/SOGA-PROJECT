@@ -17,6 +17,7 @@ interface InstitutionDoc {
   sigle: string;
   tagline: string;
   presentation: string;
+  historique: string;
   adresse: string;
   email: string;
   telephone: string;

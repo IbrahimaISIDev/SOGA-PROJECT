@@ -266,6 +266,7 @@ export default defineConfig({
           { type: "string", name: "sigle", label: "Sigle", required: true },
           { type: "string", name: "tagline", label: "Tagline", required: true },
           { type: "string", name: "presentation", label: "Présentation complète", ui: { component: "textarea" }, required: true },
+          { type: "string", name: "historique", label: "Historique de l'établissement", ui: { component: "textarea" }, required: true },
           { type: "string", name: "adresse", label: "Adresse (résumé)", required: true },
           { type: "string", name: "email", label: "Email", required: true },
           { type: "string", name: "telephone", label: "Téléphone", required: true },

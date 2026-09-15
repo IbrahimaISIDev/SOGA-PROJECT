@@ -96,6 +96,21 @@ export default function InstitutionPage() {
 
         <StratigraphicSeparator className="mx-16 md:mx-24" />
 
+        {/* Historique */}
+        <section aria-labelledby="historique-title" className="section-gap bg-soga-sand">
+          <div className="container-soga max-w-3xl">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-muted mb-4">NOTRE HISTOIRE</p>
+              <h2 id="historique-title" className="text-h2 text-soga-ink mb-6">
+                Une académie née d&apos;une conviction.
+              </h2>
+              <p className="text-lead text-soga-ink leading-relaxed">{institution.historique}</p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        <StratigraphicSeparator className="mx-16 md:mx-24" />
+
         {/* Mot de la fondatrice */}
         <section aria-labelledby="fondatrice-title" className="section-gap bg-soga-petrol">
           <div className="container-soga">
