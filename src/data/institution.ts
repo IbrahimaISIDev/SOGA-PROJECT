@@ -24,7 +24,7 @@ interface InstitutionDoc {
     ville: string;
     adresse: string;
   }[];
-  mission: string[];
+  mission: string;
   vision: string;
   valeurs: {
     titre: string;

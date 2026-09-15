@@ -58,26 +58,13 @@ export default function VisionMissionPage() {
               <p className="text-eyebrow text-soga-gold mb-6">NOTRE MISSION</p>
             </ScrollReveal>
             <ScrollReveal delay={80}>
-              <h2 id="mission-title" className="text-h2 text-white mb-12">
+              <h2 id="mission-title" className="text-h2 text-white mb-8">
                 Ce que nous faisons — et pourquoi
               </h2>
+              <p className="text-lead text-white/80 leading-relaxed max-w-2xl">
+                {institution.mission}
+              </p>
             </ScrollReveal>
-
-            <ol className="space-y-6 max-w-2xl">
-              {institution.mission.map((item, i) => (
-                <ScrollReveal key={i} delay={i * 60}>
-                  <li className="flex gap-5 items-start">
-                    <span
-                      className="font-mono text-[11px] font-semibold shrink-0 mt-1 w-6 text-center"
-                      style={{ color: "#C9962C" }}
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="text-body text-white/80 leading-relaxed">{item}</p>
-                  </li>
-                </ScrollReveal>
-              ))}
-            </ol>
           </div>
         </section>
 

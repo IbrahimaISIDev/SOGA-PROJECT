@@ -44,25 +44,14 @@ export default function InstitutionPage() {
 
         {/* Mission */}
         <section aria-labelledby="mission-title" className="section-gap bg-soga-sand">
-          <div className="container-soga">
+          <div className="container-soga max-w-3xl">
             <ScrollReveal>
               <p className="text-eyebrow text-soga-muted mb-4">MISSION</p>
-              <h2 id="mission-title" className="text-h2 text-soga-ink mb-10">
+              <h2 id="mission-title" className="text-h2 text-soga-ink mb-6">
                 Notre raison d&apos;être.
               </h2>
+              <p className="text-lead text-soga-ink leading-relaxed">{institution.mission}</p>
             </ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              {institution.mission.map((point, i) => (
-                <ScrollReveal key={i} delay={i * 50}>
-                  <div className="flex gap-4 items-start">
-                    <span className="text-eyebrow text-soga-gold mt-1 shrink-0">
-                      0{i + 1}
-                    </span>
-                    <p className="text-body text-soga-ink">{point}</p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
           </div>
         </section>
 

@@ -280,7 +280,7 @@ export default defineConfig({
               { type: "string", name: "adresse", label: "Adresse complète", required: true },
             ],
           },
-          { type: "string", name: "mission", label: "Mission (une phrase par ligne)", list: true },
+          { type: "string", name: "mission", label: "Mission", ui: { component: "textarea" }, required: true },
           { type: "string", name: "vision", label: "Vision", ui: { component: "textarea" }, required: true },
           {
             type: "object",
