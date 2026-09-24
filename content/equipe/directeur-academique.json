@@ -1,0 +1,14 @@
+{
+  "itemId": "m01",
+  "slug": "directeur-academique",
+  "nom": "Contenu provisoire",
+  "titre": "Directeur Académique",
+  "direction": "pedagogique",
+  "specialite": "Génie pétrolier",
+  "biographie": "Biographie provisoire — à compléter dès réception des informations du directeur académique.",
+  "filieres": [
+    "Génie Pétrolier",
+    "Génie du Gaz"
+  ],
+  "portrait": null
+}
