@@ -63,6 +63,29 @@
   /* Spacing (base 8px) */
   --spacing-section-desktop: 120px;
   --spacing-section-mobile:  72px;
+
+  /* Admin-only neutrals — distinct from the public site's --color-soga-graphite/muted,
+     which have different hex values. Brand tokens (gold, black, sand) are shared. */
+  --color-admin-graphite: #3D4148;
+  --color-admin-muted:    #B8B4A8;
+
+  /* Admin panel entrance animations */
+  --animate-fade-in:  admin-fade-in 0.3s ease-in-out;
+  --animate-slide-in: admin-slide-in 0.3s ease-out;
+  --animate-scale-in: admin-scale-in 0.2s ease-out;
+}
+
+@keyframes admin-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes admin-slide-in {
+  from { transform: translateX(-20px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes admin-scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
 /* ─── Base styles ────────────────────────────────────────────── */
@@ -307,5 +330,37 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+}
+
+/* ─── Admin panel component classes ─────────────────────────── */
+@layer components {
+  .admin-btn-primary {
+    @apply bg-soga-gold text-soga-black px-6 py-2.5 rounded-lg font-semibold
+           hover:bg-soga-gold-light transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-soga-gold focus:ring-offset-2 focus:ring-offset-soga-black
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .admin-card {
+    @apply bg-admin-graphite/50 backdrop-blur-sm rounded-xl border border-admin-muted/20
+           shadow-xl overflow-hidden;
+  }
+
+  .admin-input-field {
+    @apply w-full px-4 py-3 bg-soga-black/50 border border-admin-muted/30 rounded-lg
+           text-soga-sand placeholder-admin-muted/50
+           focus:outline-none focus:ring-2 focus:ring-soga-gold focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .admin-sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
+           hover:bg-soga-gold/10 hover:text-soga-gold
+           focus:outline-none focus:ring-2 focus:ring-soga-gold/50;
+  }
+
+  .admin-sidebar-link-active {
+    @apply bg-soga-gold/20 text-soga-gold font-semibold;
   }
 }
