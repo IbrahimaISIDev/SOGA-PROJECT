@@ -1,6 +1,7 @@
-import { formations } from "@/data/formations";
+import { getFormations } from "@/lib/api/formations";
 import CandidatureWizard from "@/components/admissions/CandidatureWizard";
 
-export default function CandidaturePage() {
+export default async function CandidaturePage() {
+  const formations = await getFormations();
   return <CandidatureWizard formations={formations} />;
 }

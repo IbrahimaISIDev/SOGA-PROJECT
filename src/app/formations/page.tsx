@@ -3,9 +3,10 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import CatalogueFilter from "@/components/formations/CatalogueFilter";
-import { formations } from "@/data/formations";
+import { getFormations } from "@/lib/api/formations";
 
-export default function CatalogueFormations() {
+export default async function CatalogueFormations() {
+  const formations = await getFormations();
   return (
     <>
       <Header variant="dark" />

@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ScrollReveal from "@/components/home/ScrollReveal";
-import { formations } from "@/data/formations";
+import { getFormations } from "@/lib/api/formations";
 import { articles, evenements } from "@/data/actualites";
 import { institution } from "@/data/institution";
 import { publications } from "@/data/thinktank";
@@ -88,15 +88,23 @@ const POLE_MANAGERIAL = [
   "Master Économie de l'Électricité, de l'Énergie et des Transports",
 ];
 
-const FORMATIONS_PHARES_IDS = ["f01", "f04", "f08", "f10", "f12", "f14"];
+const FORMATIONS_PHARES_SLUGS = [
+  "licence-sciences-ingenieur",
+  "master-economie-electricite-energie-transports",
+  "bts-hygiene-securite-environnement",
+  "bts-electrotechnique",
+  "technicien-specialise-instrumentation-oil-gas",
+  "technicien-specialise-exploration-production",
+];
 
 function getLevelBadgeLabel(niveau: string) {
   return niveau.toUpperCase();
 }
 
-export default function HomePage() {
-  const formationsPhares = FORMATIONS_PHARES_IDS.map(
-    (id) => formations.find((f) => f.id === id)!
+export default async function HomePage() {
+  const formations = await getFormations();
+  const formationsPhares = FORMATIONS_PHARES_SLUGS.map(
+    (slug) => formations.find((f) => f.slug === slug)!
   ).filter(Boolean);
 
   const featuredArticles = articles.slice(0, 3);

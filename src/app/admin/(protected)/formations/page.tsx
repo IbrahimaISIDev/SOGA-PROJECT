@@ -26,8 +26,15 @@ export default function FormationsPage() {
         { key: 'niveau', label: 'Niveau' },
         { key: 'rythme', label: 'Rythme' },
         { key: 'duree', label: 'Durée' },
+        { key: 'rentree', label: 'Rentrée' },
+        { key: 'placesLimitees', label: 'Places limitées', type: 'boolean' },
+        { key: 'capacite', label: 'Capacité' },
         { key: 'description', label: 'Description' },
+        { key: 'objectifs', label: 'Objectifs' },
+        { key: 'conditionsAdmission', label: "Conditions d'admission" },
+        { key: 'publicConcerne', label: 'Public concerné' },
         { key: 'image', label: 'Image' },
+        { key: 'brochureUrl', label: 'Brochure' },
         { key: 'published', label: 'Publié', type: 'boolean' },
       ]}
     />

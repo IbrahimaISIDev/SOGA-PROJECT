@@ -7,12 +7,13 @@ import Footer from "@/components/layout/Footer";
 import Badge from "@/components/ui/Badge";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import SemesterTimeline, { SemesterList } from "@/components/formations/SemesterTimeline";
-import { formations } from "@/data/formations";
+import { getFormations } from "@/lib/api/formations";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
 import { institution } from "@/data/institution";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const formations = await getFormations();
   return formations.map((f) => ({ slug: f.slug }));
 }
 
@@ -22,6 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const formations = await getFormations();
   const formation = formations.find((f) => f.slug === slug);
   if (!formation) return {};
   return {
@@ -42,6 +44,7 @@ export default async function FicheFormation({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const formations = await getFormations();
   const formation = formations.find((f) => f.slug === slug);
   if (!formation) notFound();
 
