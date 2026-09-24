@@ -6,13 +6,14 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { articles } from "@/data/actualites";
+import { getArticles } from "@/lib/api/actualites";
 import ReadingProgress from "@/components/ui/ReadingProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
 import { institution } from "@/data/institution";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const articles = await getArticles();
   return articles.map((a) => ({ slug: a.slug }));
 }
 
@@ -22,6 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const articles = await getArticles();
   const article = articles.find((a) => a.slug === slug);
   if (!article) return {};
   return {
@@ -36,6 +38,7 @@ export default async function ArticleDetail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const articles = await getArticles();
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
 

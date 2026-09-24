@@ -17,6 +17,7 @@ export default function ArticleForm({ initialData, onSubmit, onCancel, error, is
     slug: initialData?.slug || '',
     resume: initialData?.resume || '',
     contenu: initialData?.contenu || '',
+    categorie: initialData?.categorie || '',
     image: initialData?.image || '',
     date: initialData?.date || new Date().toISOString().split('T')[0],
     published: initialData?.published ?? false,
@@ -97,16 +98,33 @@ export default function ArticleForm({ initialData, onSubmit, onCancel, error, is
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-soga-black mb-2">Image URL</label>
-          <input
-            type="text"
-            name="image"
-            value={formData.image}
+          <label className="block text-sm font-semibold text-soga-black mb-2">Catégorie</label>
+          <select
+            name="categorie"
+            value={formData.categorie}
             onChange={handleChange}
-            placeholder="https://exemple.com/image.jpg"
-            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
-          />
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black"
+          >
+            <option value="">— Sélectionner —</option>
+            <option value="Admissions">Admissions</option>
+            <option value="Partenariats">Partenariats</option>
+            <option value="Think Tank">Think Tank</option>
+            <option value="Campus">Campus</option>
+            <option value="Institutionnel">Institutionnel</option>
+          </select>
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-soga-black mb-2">Image URL</label>
+        <input
+          type="text"
+          name="image"
+          value={formData.image}
+          onChange={handleChange}
+          placeholder="https://exemple.com/image.jpg"
+          className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+        />
       </div>
 
       <div className="space-y-2">

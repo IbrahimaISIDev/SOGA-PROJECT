@@ -5,7 +5,8 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { getFormations } from "@/lib/api/formations";
-import { articles, evenements } from "@/data/actualites";
+import { getArticles } from "@/lib/api/actualites";
+import { evenements } from "@/data/actualites";
 import { institution } from "@/data/institution";
 import { publications } from "@/data/thinktank";
 
@@ -107,6 +108,7 @@ export default async function HomePage() {
     (slug) => formations.find((f) => f.slug === slug)!
   ).filter(Boolean);
 
+  const articles = await getArticles();
   const featuredArticles = articles.slice(0, 3);
   const nextEvent = evenements[0];
   const pub1 = publications[0];

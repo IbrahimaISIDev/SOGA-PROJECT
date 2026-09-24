@@ -14,12 +14,14 @@ export default function ArticlesPage() {
       FormComponent={ArticleForm}
       columns={[
         { key: 'titre', label: 'Titre' },
+        { key: 'categorie', label: 'Catégorie' },
         { key: 'date', label: 'Date' },
         { key: 'published', label: 'Publié' },
       ]}
       detailFields={[
         { key: 'titre', label: 'Titre' },
         { key: 'slug', label: 'Slug' },
+        { key: 'categorie', label: 'Catégorie' },
         { key: 'resume', label: 'Résumé' },
         { key: 'contenu', label: 'Contenu' },
         { key: 'image', label: 'Image' },
