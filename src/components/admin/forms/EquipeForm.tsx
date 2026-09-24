@@ -17,7 +17,10 @@ export default function EquipeForm({ initialData, onSubmit, onCancel, error, isL
     prenom: initialData?.prenom || '',
     slug: initialData?.slug || '',
     role: initialData?.role || '',
+    direction: initialData?.direction || '',
+    specialite: initialData?.specialite || '',
     bio: initialData?.bio || '',
+    filieres: (initialData?.filieres || []).join('\n'),
     email: initialData?.email || '',
     image: initialData?.image || '',
     linkedin: initialData?.linkedin || '',
@@ -33,7 +36,13 @@ export default function EquipeForm({ initialData, onSubmit, onCancel, error, isL
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit({
+      ...formData,
+      filieres: formData.filieres
+        .split('\n')
+        .map((f: string) => f.trim())
+        .filter(Boolean),
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -109,6 +118,49 @@ export default function EquipeForm({ initialData, onSubmit, onCancel, error, isL
             className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
           />
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Direction</label>
+          <select
+            name="direction"
+            value={formData.direction}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black"
+          >
+            <option value="">— Sélectionner —</option>
+            <option value="fondation">Fondation</option>
+            <option value="pedagogique">Pédagogique</option>
+            <option value="administrative">Administrative</option>
+            <option value="thinktank">Think Tank</option>
+            <option value="admissions">Admissions</option>
+          </select>
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Spécialité</label>
+          <input
+            type="text"
+            name="specialite"
+            value={formData.specialite}
+            onChange={handleChange}
+            placeholder="Ex: Génie pétrolier"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-soga-black mb-2">Filières (une par ligne)</label>
+        <textarea
+          name="filieres"
+          value={formData.filieres}
+          onChange={handleChange}
+          rows={3}
+          placeholder={'Génie Pétrolier\nGénie du Gaz'}
+          className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50 resize-none"
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

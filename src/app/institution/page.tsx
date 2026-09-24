@@ -5,13 +5,15 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { CardMembre } from "@/components/ui/Card";
 import { institution } from "@/data/institution";
+import { getEquipe } from "@/lib/api/equipe";
 
 export const metadata = {
   title: "Institution — À propos",
 };
 
-export default function InstitutionPage() {
-  const equipeReelle = institution.equipe.filter((m) => m.nom !== "Contenu provisoire");
+export default async function InstitutionPage() {
+  const equipeAll = await getEquipe();
+  const equipeReelle = equipeAll.filter((m) => m.nom !== "Contenu provisoire");
 
   return (
     <>

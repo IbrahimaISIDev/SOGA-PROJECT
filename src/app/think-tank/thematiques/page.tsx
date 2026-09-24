@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
-import { thematiquesListe, publications } from "@/data/thinktank";
+import { getThematiquesListe, getPublications } from "@/lib/api/thinktank";
 
 export const metadata: Metadata = {
   title: "Thématiques de Recherche — SOGA Think Tank",
@@ -15,7 +15,9 @@ const TT_GREEN_LIGHT = "#3ea08a";
 const TT_BG = "#16181C";
 const TT_BORDER = "#2a2d33";
 
-export default function ThematiquesPage() {
+export default async function ThematiquesPage() {
+  const thematiquesListe = await getThematiquesListe();
+  const publications = await getPublications();
   return (
     <>
       <ThinkTankHeader activeSection="Thématiques" />

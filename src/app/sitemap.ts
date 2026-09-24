@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getFormations } from "@/lib/api/formations";
-import { getArticles } from "@/lib/api/actualites";
-import { evenements } from "@/data/actualites";
-import { publications } from "@/data/thinktank";
+import { getArticles, getEvenements } from "@/lib/api/actualites";
+import { getPublications } from "@/lib/api/thinktank";
 import { SITE_URL as BASE } from "@/lib/site";
 
 const now = new Date();
@@ -10,6 +9,8 @@ const now = new Date();
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const formations = await getFormations();
   const articles = await getArticles();
+  const evenements = await getEvenements();
+  const publications = await getPublications();
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE,                                          lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE}/formations`,                          lastModified: now, changeFrequency: "monthly", priority: 0.9 },

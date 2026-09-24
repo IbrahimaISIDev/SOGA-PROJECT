@@ -15,6 +15,7 @@ export default function PartenaireForm({ initialData, onSubmit, onCancel, error,
   const [formData, setFormData] = useState({
     nom: initialData?.nom || '',
     slug: initialData?.slug || '',
+    categorie: initialData?.categorie || '',
     logo: initialData?.logo || '',
     description: initialData?.description || '',
     published: initialData?.published ?? false,
@@ -79,6 +80,20 @@ export default function PartenaireForm({ initialData, onSubmit, onCancel, error,
             className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
           />
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-soga-black mb-2">Catégorie</label>
+        <select
+          name="categorie"
+          value={formData.categorie}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black"
+        >
+          <option value="">— Sélectionner —</option>
+          <option value="Accréditation & qualité académique">Accréditation &amp; qualité académique</option>
+          <option value="Institutions publiques & appui à la formation">Institutions publiques &amp; appui à la formation</option>
+        </select>
       </div>
 
       <div className="space-y-2">

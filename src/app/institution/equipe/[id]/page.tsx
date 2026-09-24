@@ -5,11 +5,11 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { institution } from "@/data/institution";
+import { getEquipe } from "@/lib/api/equipe";
 
-const equipeReelle = institution.equipe.filter((m) => m.nom !== "Contenu provisoire");
-
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const equipe = await getEquipe();
+  const equipeReelle = equipe.filter((m) => m.nom !== "Contenu provisoire");
   return equipeReelle.map((m) => ({ id: m.slug }));
 }
 
@@ -19,6 +19,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const equipe = await getEquipe();
+  const equipeReelle = equipe.filter((m) => m.nom !== "Contenu provisoire");
   const membre = equipeReelle.find((m) => m.slug === id);
   if (!membre) return {};
   return {
@@ -33,6 +35,8 @@ export default async function FicheMembre({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const equipe = await getEquipe();
+  const equipeReelle = equipe.filter((m) => m.nom !== "Contenu provisoire");
   const membre = equipeReelle.find((m) => m.slug === id);
   if (!membre) notFound();
 

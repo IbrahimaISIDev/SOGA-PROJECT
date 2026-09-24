@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { partenaires, temoignages } from "@/data/ecosysteme";
+import { getPartenaires, getTemoignages } from "@/lib/api/ecosysteme";
 
 export const metadata: Metadata = {
   title: "Écosystème SOGA",
@@ -42,7 +42,9 @@ const SECTIONS = [
   },
 ];
 
-export default function EcosystemePage() {
+export default async function EcosystemePage() {
+  const partenaires = await getPartenaires();
+  const temoignages = await getTemoignages();
   /* Afficher 4 partenaires en vitrine */
   const vitrine = partenaires.filter((p) => p.nom !== "Contenu provisoire").slice(0, 4);
   /* Ne garder que les témoignages réels — masqué tant qu'aucun n'a

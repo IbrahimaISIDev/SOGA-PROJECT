@@ -5,10 +5,9 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { getFormations } from "@/lib/api/formations";
-import { getArticles } from "@/lib/api/actualites";
-import { evenements } from "@/data/actualites";
+import { getArticles, getEvenements } from "@/lib/api/actualites";
 import { institution } from "@/data/institution";
-import { publications } from "@/data/thinktank";
+import { getPublications } from "@/lib/api/thinktank";
 
 const HOME_STATS = [
   { valeur: "14", libelle: "filières techniques & managériales" },
@@ -110,7 +109,9 @@ export default async function HomePage() {
 
   const articles = await getArticles();
   const featuredArticles = articles.slice(0, 3);
+  const evenements = await getEvenements();
   const nextEvent = evenements[0];
+  const publications = await getPublications();
   const pub1 = publications[0];
   const pub2 = publications[1];
 

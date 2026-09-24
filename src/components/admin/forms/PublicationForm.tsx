@@ -16,9 +16,13 @@ export default function PublicationForm({ initialData, onSubmit, onCancel, error
     titre: initialData?.titre || '',
     slug: initialData?.slug || '',
     date: initialData?.date || new Date().toISOString().split('T')[0],
-    auteur: initialData?.auteur || '',
+    type: initialData?.type || '',
+    auteurs: (initialData?.auteurs || []).join('\n'),
+    thematique: initialData?.thematique || '',
     description: initialData?.description || '',
+    image: initialData?.image || '',
     fichier: initialData?.fichier || '',
+    telechargeable: initialData?.telechargeable ?? false,
     published: initialData?.published ?? false,
   });
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
@@ -31,7 +35,13 @@ export default function PublicationForm({ initialData, onSubmit, onCancel, error
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit({
+      ...formData,
+      auteurs: formData.auteurs
+        .split('\n')
+        .map((a: string) => a.trim())
+        .filter(Boolean),
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -97,28 +107,72 @@ export default function PublicationForm({ initialData, onSubmit, onCancel, error
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-semibold text-soga-black mb-2">Auteur</label>
+          <label className="block text-sm font-semibold text-soga-black mb-2">Type</label>
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black"
+          >
+            <option value="">— Sélectionner —</option>
+            <option value="rapport">Rapport</option>
+            <option value="note">Note</option>
+            <option value="article">Article</option>
+            <option value="tribune">Tribune</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Auteurs (un par ligne)</label>
+          <textarea
+            name="auteurs"
+            value={formData.auteurs}
+            onChange={handleChange}
+            rows={3}
+            placeholder={'Dr. Aïssatou Niasse\nSOGA Think Tank'}
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50 resize-none"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Thématique</label>
           <input
             type="text"
-            name="auteur"
-            value={formData.auteur}
+            name="thematique"
+            value={formData.thematique}
             onChange={handleChange}
-            placeholder="Nom de l'auteur"
+            placeholder="Ex: Gouvernance des ressources naturelles"
             className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
           />
         </div>
       </div>
 
-      <div className="space-y-2">
-        <label className="block text-sm font-semibold text-soga-black mb-2">Fichier URL</label>
-        <input
-          type="text"
-          name="fichier"
-          value={formData.fichier}
-          onChange={handleChange}
-          placeholder="https://exemple.com/document.pdf"
-          className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Image URL</label>
+          <input
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            placeholder="https://exemple.com/image.jpg"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Fichier URL</label>
+          <input
+            type="text"
+            name="fichier"
+            value={formData.fichier}
+            onChange={handleChange}
+            placeholder="https://exemple.com/document.pdf"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
       </div>
 
       <div className="space-y-2">
@@ -133,18 +187,34 @@ export default function PublicationForm({ initialData, onSubmit, onCancel, error
         />
       </div>
 
-      <div className="flex items-center p-4 bg-soga-gold/10 rounded-lg border border-soga-gold/30">
-        <input
-          type="checkbox"
-          name="published"
-          id="published"
-          checked={formData.published}
-          onChange={handleChange}
-          className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
-        />
-        <label htmlFor="published" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
-          Publier cette publication
-        </label>
+      <div className="flex items-center gap-6 p-4 bg-soga-gold/10 rounded-lg border border-soga-gold/30 flex-wrap">
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            name="telechargeable"
+            id="telechargeable"
+            checked={formData.telechargeable}
+            onChange={handleChange}
+            className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
+          />
+          <label htmlFor="telechargeable" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
+            Téléchargeable
+          </label>
+        </div>
+
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            name="published"
+            id="published"
+            checked={formData.published}
+            onChange={handleChange}
+            className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
+          />
+          <label htmlFor="published" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
+            Publier cette publication
+          </label>
+        </div>
       </div>
 
       <div className="flex justify-end space-x-4 pt-6 border-t border-admin-muted/20">

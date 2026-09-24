@@ -3,7 +3,7 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
-import { evenements } from "@/data/actualites";
+import { getEvenements } from "@/lib/api/actualites";
 
 export const metadata: Metadata = {
   title: "Agenda des événements — SOGA",
@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     "Retrouvez tous les événements à venir de la Senegal Oil and Gas Academy : journées portes ouvertes, conférences, cérémonies.",
 };
 
-export default function AgendaPage() {
+export default async function AgendaPage() {
+  const evenements = await getEvenements();
   return (
     <>
       <Header />

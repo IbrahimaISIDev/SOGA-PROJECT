@@ -16,6 +16,8 @@ export default function ExpertForm({ initialData, onSubmit, onCancel, error, isL
     nom: initialData?.nom || '',
     prenom: initialData?.prenom || '',
     slug: initialData?.slug || '',
+    titre: initialData?.titre || '',
+    institution: initialData?.institution || '',
     specialite: initialData?.specialite || '',
     bio: initialData?.bio || '',
     image: initialData?.image || '',
@@ -104,6 +106,32 @@ export default function ExpertForm({ initialData, onSubmit, onCancel, error, isL
             value={formData.specialite}
             onChange={handleChange}
             placeholder="Ex: Intelligence Artificielle"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Titre</label>
+          <input
+            type="text"
+            name="titre"
+            value={formData.titre}
+            onChange={handleChange}
+            placeholder="Ex: Fondatrice & Directrice Générale"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Institution</label>
+          <input
+            type="text"
+            name="institution"
+            value={formData.institution}
+            onChange={handleChange}
+            placeholder="Ex: SOGA Think Tank"
             className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
           />
         </div>

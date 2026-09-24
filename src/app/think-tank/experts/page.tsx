@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
-import { experts } from "@/data/thinktank";
+import { getExperts } from "@/lib/api/thinktank";
 
 export const metadata: Metadata = {
   title: "Nos Experts — SOGA Think Tank",
@@ -15,7 +15,8 @@ const TT_GREEN_LIGHT = "#3ea08a";
 const TT_BG_CARD = "#16181C";
 const TT_BORDER = "#2a2d33";
 
-export default function ExpertsPage() {
+export default async function ExpertsPage() {
+  const experts = await getExperts();
   return (
     <>
       <ThinkTankHeader activeSection="Nos experts" />

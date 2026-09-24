@@ -16,6 +16,7 @@ export default function TemoignageForm({ initialData, onSubmit, onCancel, error,
     nom: initialData?.nom || '',
     slug: initialData?.slug || '',
     role: initialData?.role || '',
+    promotion: initialData?.promotion || '',
     contenu: initialData?.contenu || '',
     image: initialData?.image || '',
     published: initialData?.published ?? false,
@@ -82,7 +83,7 @@ export default function TemoignageForm({ initialData, onSubmit, onCancel, error,
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="space-y-2">
           <label className="block text-sm font-semibold text-soga-black mb-2">Rôle</label>
           <input
@@ -91,6 +92,18 @@ export default function TemoignageForm({ initialData, onSubmit, onCancel, error,
             value={formData.role}
             onChange={handleChange}
             placeholder="Ex: Ancien étudiant"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Promotion</label>
+          <input
+            type="text"
+            name="promotion"
+            value={formData.promotion}
+            onChange={handleChange}
+            placeholder="Ex: Promotion 2024"
             className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
           />
         </div>

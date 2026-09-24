@@ -8,7 +8,7 @@ import { StratigraphicSeparator } from "@/components/signature/StratigraphicColu
 import PublicationSidebar from "@/components/thinktank/PublicationSidebar";
 import PublicationRelatedLinks from "@/components/thinktank/PublicationRelatedLinks";
 import CopyButton from "@/components/thinktank/CopyButton";
-import { publications } from "@/data/thinktank";
+import { getPublications } from "@/lib/api/thinktank";
 import ReadingProgress from "@/components/ui/ReadingProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -19,7 +19,8 @@ const TT_GREEN_LIGHT = "#3ea08a";
 const TT_BG_CARD = "#16181C";
 const TT_BORDER = "#2a2d33";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const publications = await getPublications();
   return publications.map((p) => ({ slug: p.slug }));
 }
 
@@ -29,6 +30,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const publications = await getPublications();
   const pub = publications.find((p) => p.slug === slug);
   if (!pub) return {};
   return {
@@ -43,6 +45,7 @@ export default async function FichePublication({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const publications = await getPublications();
   const pub = publications.find((p) => p.slug === slug);
   if (!pub) notFound();
 

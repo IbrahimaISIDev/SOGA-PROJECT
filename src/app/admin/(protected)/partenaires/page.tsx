@@ -14,11 +14,12 @@ export default function PartenairesPage() {
       FormComponent={PartenaireForm}
       columns={[
         { key: 'nom', label: 'Nom' },
+        { key: 'categorie', label: 'Catégorie' },
         { key: 'published', label: 'Publié' },
       ]}
       detailFields={[
         { key: 'nom', label: 'Nom' },
-        { key: 'slug', label: 'Slug' },
+        { key: 'categorie', label: 'Catégorie' },
         { key: 'logo', label: 'Logo' },
         { key: 'description', label: 'Description' },
         { key: 'published', label: 'Publié', type: 'boolean' },

@@ -5,7 +5,8 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { partenaires, categoriesPartenaires } from "@/data/ecosysteme";
+import { categoriesPartenaires } from "@/data/ecosysteme";
+import { getPartenaires } from "@/lib/api/ecosysteme";
 
 export const metadata: Metadata = {
   title: "Partenariats stratégiques — SOGA",
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
     "Les partenaires institutionnels, industriels et académiques de la Senegal Oil and Gas Academy.",
 };
 
-export default function PartenariatsPage() {
+export default async function PartenariatsPage() {
+  const partenaires = await getPartenaires();
   return (
     <>
       <Header />

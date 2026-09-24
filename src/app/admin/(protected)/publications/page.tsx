@@ -20,10 +20,13 @@ export default function PublicationsPage() {
       detailFields={[
         { key: 'titre', label: 'Titre' },
         { key: 'slug', label: 'Slug' },
+        { key: 'type', label: 'Type' },
         { key: 'date', label: 'Date', type: 'date' },
-        { key: 'auteur', label: 'Auteur' },
+        { key: 'thematique', label: 'Thématique' },
         { key: 'description', label: 'Description' },
+        { key: 'image', label: 'Image' },
         { key: 'fichier', label: 'Fichier' },
+        { key: 'telechargeable', label: 'Téléchargeable', type: 'boolean' },
         { key: 'published', label: 'Publié', type: 'boolean' },
       ]}
     />

@@ -21,9 +21,13 @@ export default function EvenementsPage() {
         { key: 'titre', label: 'Titre' },
         { key: 'slug', label: 'Slug' },
         { key: 'date', label: 'Date', type: 'date' },
+        { key: 'heure', label: 'Heure' },
         { key: 'lieu', label: 'Lieu' },
+        { key: 'type', label: 'Type' },
         { key: 'description', label: 'Description' },
         { key: 'image', label: 'Image' },
+        { key: 'inscriptionOuverte', label: 'Inscription ouverte', type: 'boolean' },
+        { key: 'placesLimitees', label: 'Places limitées', type: 'boolean' },
         { key: 'published', label: 'Publié', type: 'boolean' },
       ]}
     />

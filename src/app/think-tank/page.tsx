@@ -2,7 +2,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { publications, thematiques, experts } from "@/data/thinktank";
+import { thematiques } from "@/data/thinktank";
+import { getPublications, getExperts } from "@/lib/api/thinktank";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,7 +13,9 @@ export const metadata = {
 
 const TT_GREEN = "#1E6F5C";
 
-export default function ThinkTankPage() {
+export default async function ThinkTankPage() {
+  const publications = await getPublications();
+  const experts = await getExperts();
   return (
     <>
       <Header variant="dark" />

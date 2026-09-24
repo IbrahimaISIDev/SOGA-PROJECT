@@ -4,9 +4,10 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import EvenementInscriptionForm from "@/components/actualites/EvenementInscriptionForm";
-import { evenements } from "@/data/actualites";
+import { getEvenements } from "@/lib/api/actualites";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const evenements = await getEvenements();
   return evenements.map((e) => ({ slug: e.slug }));
 }
 
@@ -16,6 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const evenements = await getEvenements();
   const ev = evenements.find((e) => e.slug === slug);
   if (!ev) return {};
   return {
@@ -30,6 +32,7 @@ export default async function FicheEvenement({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const evenements = await getEvenements();
   const ev = evenements.find((e) => e.slug === slug);
   if (!ev) notFound();
 

@@ -7,6 +7,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { institution } from "@/data/institution";
+import { getEquipe } from "@/lib/api/equipe";
 
 export const metadata: Metadata = {
   title: "Gouvernance & Équipe — SOGA",
@@ -14,9 +15,10 @@ export const metadata: Metadata = {
     "Découvrez l'équipe dirigeante et les membres de la Senegal Oil and Gas Academy.",
 };
 
-export default function EquipePage() {
+export default async function EquipePage() {
   const { organigramme, fondatrice } = institution;
-  const equipe = institution.equipe.filter((m) => m.nom !== "Contenu provisoire");
+  const equipeAll = await getEquipe();
+  const equipe = equipeAll.filter((m) => m.nom !== "Contenu provisoire");
 
   return (
     <>

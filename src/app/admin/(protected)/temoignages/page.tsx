@@ -21,6 +21,7 @@ export default function TemoignagesPage() {
         { key: 'nom', label: 'Nom' },
         { key: 'slug', label: 'Slug' },
         { key: 'role', label: 'Rôle' },
+        { key: 'promotion', label: 'Promotion' },
         { key: 'contenu', label: 'Contenu' },
         { key: 'image', label: 'Image' },
         { key: 'published', label: 'Publié', type: 'boolean' },

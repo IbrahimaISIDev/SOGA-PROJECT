@@ -21,6 +21,8 @@ export default function ExpertsPage() {
         { key: 'nom', label: 'Nom' },
         { key: 'prenom', label: 'Prénom' },
         { key: 'slug', label: 'Slug' },
+        { key: 'titre', label: 'Titre' },
+        { key: 'institution', label: 'Institution' },
         { key: 'specialite', label: 'Spécialité' },
         { key: 'bio', label: 'Biographie' },
         { key: 'image', label: 'Image' },

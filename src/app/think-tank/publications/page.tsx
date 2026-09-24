@@ -3,12 +3,14 @@ import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import PublicationsFilter from "@/components/thinktank/PublicationsFilter";
-import { publications, thematiques } from "@/data/thinktank";
+import { thematiques } from "@/data/thinktank";
+import { getPublications } from "@/lib/api/thinktank";
 
 const TT_GREEN = "#1E6F5C";
 const TT_GREEN_LIGHT = "#3ea08a";
 
-export default function PublicationsPage() {
+export default async function PublicationsPage() {
+  const publications = await getPublications();
   return (
     <>
       <ThinkTankHeader activeSection="Publications" />

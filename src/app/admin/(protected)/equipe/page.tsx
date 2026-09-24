@@ -22,6 +22,8 @@ export default function EquipePage() {
         { key: 'prenom', label: 'Prénom' },
         { key: 'slug', label: 'Slug' },
         { key: 'role', label: 'Rôle' },
+        { key: 'direction', label: 'Direction' },
+        { key: 'specialite', label: 'Spécialité' },
         { key: 'bio', label: 'Biographie' },
         { key: 'email', label: 'Email' },
         { key: 'image', label: 'Image' },

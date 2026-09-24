@@ -1,5 +1,5 @@
 import { readCollection } from "@/lib/content";
-import type { Article } from "@/data/actualites";
+import type { Article, Evenement } from "@/data/actualites";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -17,10 +17,32 @@ function mapArticle(api: any): Article {
   };
 }
 
+function mapEvenement(api: any): Evenement {
+  return {
+    id: api.id,
+    slug: api.slug,
+    titre: api.titre,
+    date: api.date,
+    heure: api.heure || "",
+    lieu: api.lieu || "",
+    type: api.type || "",
+    description: api.description || "",
+    inscriptionOuverte: api.inscriptionOuverte ?? true,
+    image: api.image || null,
+    placesLimitees: api.placesLimitees ?? false,
+  };
+}
+
 let staticFallback: Article[] | null = null;
 function getStaticFallback(): Article[] {
   if (!staticFallback) staticFallback = readCollection<Article>("articles");
   return staticFallback;
+}
+
+let staticEvenementsFallback: Evenement[] | null = null;
+function getStaticEvenementsFallback(): Evenement[] {
+  if (!staticEvenementsFallback) staticEvenementsFallback = readCollection<Evenement>("evenements");
+  return staticEvenementsFallback;
 }
 
 /**
@@ -51,4 +73,28 @@ export async function getArticles(): Promise<Article[]> {
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const all = await getArticles();
   return all.find((a) => a.slug === slug) ?? null;
+}
+
+export async function getEvenements(): Promise<Evenement[]> {
+  if (!API_URL) return getStaticEvenementsFallback();
+  try {
+    const res = await fetch(`${API_URL}/evenements?published=true&limit=100`, {
+      next: { revalidate: 300 },
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) throw new Error(`API responded ${res.status}`);
+    const json = await res.json();
+    if (!json?.success || !Array.isArray(json.data)) {
+      throw new Error("Unexpected API response shape");
+    }
+    return json.data.map(mapEvenement);
+  } catch (err) {
+    console.error("[evenements] API unavailable, falling back to static content:", err);
+    return getStaticEvenementsFallback();
+  }
+}
+
+export async function getEvenementBySlug(slug: string): Promise<Evenement | null> {
+  const all = await getEvenements();
+  return all.find((e) => e.slug === slug) ?? null;
 }

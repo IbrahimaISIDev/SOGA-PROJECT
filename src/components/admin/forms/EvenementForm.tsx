@@ -16,9 +16,13 @@ export default function EvenementForm({ initialData, onSubmit, onCancel, error, 
     titre: initialData?.titre || '',
     slug: initialData?.slug || '',
     date: initialData?.date || new Date().toISOString().split('T')[0],
+    heure: initialData?.heure || '',
     lieu: initialData?.lieu || '',
+    type: initialData?.type || '',
     description: initialData?.description || '',
     image: initialData?.image || '',
+    inscriptionOuverte: initialData?.inscriptionOuverte ?? true,
+    placesLimitees: initialData?.placesLimitees ?? false,
     published: initialData?.published ?? false,
   });
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
@@ -109,6 +113,32 @@ export default function EvenementForm({ initialData, onSubmit, onCancel, error, 
         </div>
       </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Heure</label>
+          <input
+            type="text"
+            name="heure"
+            value={formData.heure}
+            onChange={handleChange}
+            placeholder="Ex: 14h00"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold text-soga-black mb-2">Type</label>
+          <input
+            type="text"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            placeholder="Ex: Portes ouvertes"
+            className="w-full px-4 py-3 border-2 border-admin-muted/30 rounded-lg focus:outline-none focus:border-soga-gold focus:ring-2 focus:ring-soga-gold/20 transition-all duration-200 bg-white text-soga-black placeholder:text-admin-muted/50"
+          />
+        </div>
+      </div>
+
       <div className="space-y-2">
         <label className="block text-sm font-semibold text-soga-black mb-2">Image URL</label>
         <input
@@ -133,18 +163,48 @@ export default function EvenementForm({ initialData, onSubmit, onCancel, error, 
         />
       </div>
 
-      <div className="flex items-center p-4 bg-soga-gold/10 rounded-lg border border-soga-gold/30">
-        <input
-          type="checkbox"
-          name="published"
-          id="published"
-          checked={formData.published}
-          onChange={handleChange}
-          className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
-        />
-        <label htmlFor="published" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
-          Publier cet événement
-        </label>
+      <div className="flex items-center gap-6 p-4 bg-soga-gold/10 rounded-lg border border-soga-gold/30 flex-wrap">
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            name="inscriptionOuverte"
+            id="inscriptionOuverte"
+            checked={formData.inscriptionOuverte}
+            onChange={handleChange}
+            className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
+          />
+          <label htmlFor="inscriptionOuverte" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
+            Inscription ouverte
+          </label>
+        </div>
+
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            name="placesLimitees"
+            id="placesLimitees"
+            checked={formData.placesLimitees}
+            onChange={handleChange}
+            className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
+          />
+          <label htmlFor="placesLimitees" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
+            Places limitées
+          </label>
+        </div>
+
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            name="published"
+            id="published"
+            checked={formData.published}
+            onChange={handleChange}
+            className="w-5 h-5 text-soga-gold border-admin-muted rounded focus:ring-soga-gold focus:ring-offset-0"
+          />
+          <label htmlFor="published" className="ml-3 text-sm font-medium text-soga-black cursor-pointer">
+            Publier cet événement
+          </label>
+        </div>
       </div>
 
       <div className="flex justify-end space-x-4 pt-6 border-t border-admin-muted/20">

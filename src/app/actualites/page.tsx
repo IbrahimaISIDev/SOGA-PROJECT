@@ -5,12 +5,13 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { CardEvenement } from "@/components/ui/Card";
 import ArticlesFilter from "@/components/actualites/ArticlesFilter";
-import { evenements, categories } from "@/data/actualites";
-import { getArticles } from "@/lib/api/actualites";
+import { categories } from "@/data/actualites";
+import { getArticles, getEvenements } from "@/lib/api/actualites";
 import Link from "next/link";
 
 export default async function ActualitesPage() {
   const articles = await getArticles();
+  const evenements = await getEvenements();
   return (
     <>
       <Header />
