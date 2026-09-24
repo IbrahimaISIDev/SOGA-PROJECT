@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/* ─── SOGA Design Tokens ─────────────────────────────────────── */
+/* Brand accents stay constant across themes; the neutral palette
+   (sand/ink/line/muted/surface) inverts — see [data-theme="dark"] below. */
+:root {
+  --soga-black:       #0B0C0E;
+  --soga-graphite:    #16181C;
+  --soga-gold:        #C9962C;
+  --soga-gold-light:  #F0C868;
+  --soga-gold-deep:   #8C6516;
+  --soga-petrol:      #0D2B3E;
+  --soga-transition:  #1E6F5C;
+  --soga-sand:        #F6F4EF;
+  --soga-sand-alt:    #F0EDE3;
+  --soga-line:        #E2DED5;
+  --soga-ink:         #1A1A1A;
+  --soga-muted:       #6B6B6B;
+  --soga-surface:     #FFFFFF;
+}
+
+:root[data-theme="dark"] {
+  --soga-gold-deep:   #D9AE4E;
+  --soga-sand:        #121316;
+  --soga-sand-alt:    #1C1E22;
+  --soga-line:        #2B2D31;
+  --soga-ink:         #F0EEE8;
+  --soga-muted:       #9C9890;
+  --soga-surface:     #1A1C20;
+}
+
+/* ─── Tailwind v4 Theme ──────────────────────────────────────── */
+@theme inline {
+  /* Colors */
+  --color-soga-black:      var(--soga-black);
+  --color-soga-graphite:   var(--soga-graphite);
+  --color-soga-gold:       var(--soga-gold);
+  --color-soga-gold-light: var(--soga-gold-light);
+  --color-soga-gold-deep:  var(--soga-gold-deep);
+  --color-soga-petrol:     var(--soga-petrol);
+  --color-soga-transition: var(--soga-transition);
+  --color-soga-sand:       var(--soga-sand);
+  --color-soga-sand-alt:   var(--soga-sand-alt);
+  --color-soga-line:       var(--soga-line);
+  --color-soga-ink:        var(--soga-ink);
+  --color-soga-muted:      var(--soga-muted);
+  --color-soga-surface:    var(--soga-surface);
+
+  /* Fonts */
+  --font-display: var(--font-source-serif), "Georgia", serif;
+  --font-sans:    var(--font-inter), "Helvetica Neue", sans-serif;
+  --font-mono:    var(--font-ibm-plex-mono), "Courier New", monospace;
+
+  /* Border radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-none: 0px;
+
+  /* Shadows */
+  --shadow-float: 0 4px 24px rgba(11, 12, 14, 0.12);
+  --shadow-menu:  0 8px 24px rgba(11, 12, 14, 0.16);
+
+  /* Spacing (base 8px) */
+  --spacing-section-desktop: 120px;
+  --spacing-section-mobile:  72px;
+}
+
+/* ─── Base styles ────────────────────────────────────────────── */
+@layer base {
+  html {
+    color: var(--soga-ink);
+    background-color: var(--soga-sand);
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  /* Typographic scale */
+  .text-display {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .text-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 3.9vw, 56px);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
+  .text-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 2.8vw, 40px);
+    line-height: 1.15;
+    font-weight: 500;
+  }
+
+  .text-h3 {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2vw, 28px);
+    line-height: 1.22;
+    font-weight: 500;
+  }
+
+  .text-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(18px, 1.4vw, 20px);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .text-body {
+    font-size: clamp(16px, 1.2vw, 17px);
+    line-height: clamp(26px, 1.65em, 28px);
+  }
+
+  .text-small {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .text-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* Focus visible — gold outline */
+  :focus-visible {
+    outline: 2px solid var(--soga-gold);
+    outline-offset: 2px;
+  }
+
+  /* Page fade-in on route change */
+  @keyframes soga-page-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  main#main-content {
+    animation: soga-page-in 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Count pop — /actualites filter badge */
+  @keyframes count-pop {
+    from { opacity: 0; transform: scale(0.75); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .animate-count-pop {
+    animation: count-pop 260ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    main#main-content { animation: none; }
+  }
+
+  /* ── Print styles (publications Think Tank) ──────────── */
+  @media print {
+    header, footer, nav[aria-label="Navigation principale"],
+    .no-print, button { display: none !important; }
+    body { font-size: 11pt; color: #000; background: #fff; }
+    a { color: #000; text-decoration: underline; }
+    h1, h2, h3 { break-after: avoid; }
+    p, li { break-inside: avoid; orphans: 3; widows: 3; }
+    .container-soga { max-width: 100%; padding: 0; }
+  }
+}
+
+/* ─── Utility classes ────────────────────────────────────────── */
+@layer utilities {
+  /* Gold nav underline animation */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--soga-gold);
+    transition: width 200ms ease;
+  }
+  .nav-underline:hover::after,
+  .nav-underline.nav-active::after {
+    width: 100%;
+  }
+  .nav-underline.nav-active {
+    color: var(--soga-gold-light) !important;
+  }
+
+  /* Provisional content placeholder — soft brand wash, no hazard stripes */
+  .placeholder-block {
+    background-image:
+      radial-gradient(120% 120% at 15% 15%, rgba(201, 150, 44, 0.08), transparent 55%),
+      linear-gradient(155deg, var(--soga-graphite) 0%, var(--soga-black) 100%);
+  }
+
+  .placeholder-block-light {
+    background-image:
+      radial-gradient(120% 120% at 15% 15%, rgba(201, 150, 44, 0.1), transparent 55%),
+      linear-gradient(155deg, var(--soga-sand) 0%, var(--soga-line) 100%);
+  }
+
+  /* Container max-width */
+  .container-soga {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 6vw, 88px);
+  }
+
+  /* Section vertical rhythm */
+  .section-gap {
+    padding-block: clamp(72px, 8vw, 120px);
+  }
+
+  /* Card image hover scale */
+  .card-img-hover img {
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-img-hover:hover img {
+    transform: scale(1.02);
+  }
+
+  /* Card lift on hover — formations, actualités, événements */
+  .card-lift {
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 220ms ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Hero entrance — CSS-only so paint doesn't wait on hydration (LCP) */
+  @keyframes soga-hero-fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes soga-hero-clip-up {
+    from { clip-path: inset(0 0 100% 0); transform: translateY(100%); }
+    to   { clip-path: inset(0 0 0% 0); transform: translateY(0); }
+  }
+  .hero-fade-up {
+    animation: soga-hero-fade-up 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-clip-up {
+    animation: soga-hero-clip-up 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Theme toggle icon swap — driven by [data-theme] on <html>, no JS state */
+  .theme-icon-moon {
+    display: none;
+  }
+  [data-theme="dark"] .theme-icon-sun {
+    display: none;
+  }
+  [data-theme="dark"] .theme-icon-moon {
+    display: block;
+  }
+
+  /* Line clamp helpers */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

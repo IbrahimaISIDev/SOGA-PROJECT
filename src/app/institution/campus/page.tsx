@@ -1,0 +1,198 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import ScrollReveal from "@/components/home/ScrollReveal";
+import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
+import { institution } from "@/data/institution";
+
+export const metadata: Metadata = {
+  title: "Campus — SOGA",
+  description: institution.campus.description,
+};
+
+const GALERIE_PHOTOS = [
+  { src: "/media/terrain-02-derrick.jpg", alt: "Étudiants SOGA devant un appareil de forage lors d'une visite de site" },
+  { src: "/media/formations/licence-sciences-ingenieur.jpg", alt: "Étudiants en atelier pratique" },
+  { src: "/media/terrain-01-chantier-groupe.jpg", alt: "Groupe d'étudiants SOGA en visite sur un chantier industriel" },
+  { src: "/media/formations/bts-electrotechnique.jpg", alt: "Étudiants sur banc didactique électrotechnique" },
+  { src: "/media/terrain-04-tete-de-puits.jpg", alt: "Encadrants SOGA devant une tête de puits sur site industriel" },
+  { src: "/media/formations/technicien-specialise-instrumentation-oil-gas.jpg", alt: "Étudiants sur site industriel, instrumentation" },
+  { src: "/media/terrain-06-groupe-site.jpg", alt: "Étudiants SOGA en visite de terrain, casques de sécurité" },
+  { src: "/media/formations/bts-hygiene-securite-environnement.jpg", alt: "Étudiants en formation sécurité sur site" },
+];
+
+export default function CampusPage() {
+  const { campus, campuses } = institution;
+
+  return (
+    <>
+      <Header />
+      <main id="main-content">
+        {/* Hero plein-bleed */}
+        <div className="relative h-[60vh] min-h-[400px] max-h-[600px] overflow-hidden">
+          <div className="absolute inset-0 placeholder-block" aria-hidden="true" />
+          {/* Gradient overlay: transparent → dark bottom */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(11,12,14,0.1) 0%, rgba(11,12,14,0.85) 100%)",
+            }}
+            aria-hidden="true"
+          />
+          {/* Title bottom-left */}
+          <div className="absolute bottom-0 left-0 right-0 container-soga pb-10">
+            <nav aria-label="Fil d'Ariane" className="mb-4">
+              <ol className="flex flex-wrap items-center gap-2 text-eyebrow text-white/50">
+                <li>
+                  <Link href="/" className="hover:text-white/60 transition-colors">
+                    Accueil
+                  </Link>
+                </li>
+                <li aria-hidden>/</li>
+                <li>
+                  <Link href="/institution" className="hover:text-white/60 transition-colors">
+                    Institution
+                  </Link>
+                </li>
+                <li aria-hidden>/</li>
+                <li aria-current="page" className="text-soga-gold">
+                  Campus
+                </li>
+              </ol>
+            </nav>
+            <p className="text-eyebrow text-soga-gold mb-3">INSTITUTION</p>
+            <h1 className="text-h1 text-white">Notre Campus</h1>
+          </div>
+        </div>
+
+        {/* Description */}
+        <section className="section-gap bg-soga-black">
+          <div className="container-soga max-w-3xl">
+            <ScrollReveal>
+              <p className="text-lead text-white/80 leading-relaxed">{campus.description}</p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        <StratigraphicSeparator />
+
+        {/* Cinq campus */}
+        <section aria-labelledby="campuses-title" className="section-gap bg-soga-black">
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold mb-6">NOS IMPLANTATIONS</p>
+            </ScrollReveal>
+            <ScrollReveal delay={60}>
+              <h2 id="campuses-title" className="text-h2 text-white mb-12">
+                Cinq campus au Sénégal
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {campuses.map((c, i) => (
+                <ScrollReveal key={c.ville} delay={i * 70}>
+                  <div
+                    className="border-t-2 pt-4"
+                    style={{ borderColor: "#C9962C" }}
+                  >
+                    <h3 className="text-white font-semibold text-[18px] mb-2">{c.ville}</h3>
+                    <p className="text-small text-white/50 leading-relaxed">{c.adresse}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <StratigraphicSeparator />
+
+        {/* Infrastructure cards */}
+        <section aria-labelledby="infra-title" className="section-gap bg-soga-black">
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold mb-6">INFRASTRUCTURES</p>
+            </ScrollReveal>
+            <ScrollReveal delay={60}>
+              <h2 id="infra-title" className="text-h2 text-white mb-12">
+                Nos équipements
+              </h2>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {campus.infrastructures.map((infra, i) => (
+                <ScrollReveal key={infra.titre} delay={i * 70}>
+                  <article
+                    className="relative border overflow-hidden"
+                    style={{ borderColor: "rgba(255,255,255,0.1)" }}
+                    aria-label={infra.titre}
+                  >
+                    {/* Photo / placeholder */}
+                    <div
+                      className="aspect-[16/9] placeholder-block"
+                      aria-hidden="true"
+                    />
+
+                    {/* Content */}
+                    <div
+                      className="p-6"
+                      style={{ backgroundColor: "#16181C" }}
+                    >
+                      {infra.enPlanification && (
+                        <span
+                          className="text-eyebrow text-[10px] px-2.5 py-1 mb-3 inline-block font-semibold"
+                          style={{
+                            backgroundColor: "rgba(201,150,44,0.12)",
+                            color: "#C9962C",
+                            border: "1px solid rgba(201,150,44,0.2)",
+                          }}
+                        >
+                          EN PLANIFICATION
+                        </span>
+                      )}
+                      <h3 className="text-white font-semibold text-[17px] mb-2 leading-snug">
+                        {infra.titre}
+                      </h3>
+                      <p className="text-small text-white/50 leading-relaxed">{infra.detail}</p>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Galerie */}
+        <section aria-labelledby="gallery-title" className="section-gap bg-soga-black">
+          <div className="container-soga">
+            <ScrollReveal>
+              <p className="text-eyebrow text-soga-gold mb-6">GALERIE</p>
+            </ScrollReveal>
+            <ScrollReveal delay={60}>
+              <h2 id="gallery-title" className="text-h2 text-white mb-8">
+                La vie sur nos campus
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {GALERIE_PHOTOS.map((photo, i) => (
+                <ScrollReveal key={photo.src} delay={i * 40}>
+                  <div className="relative aspect-square rounded-md overflow-hidden">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(min-width: 768px) 25vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
