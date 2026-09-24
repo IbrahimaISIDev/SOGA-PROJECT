@@ -4,47 +4,36 @@
 
 Ce projet utilise une architecture monorepo avec deux interfaces accessibles sur le même domaine :
 
-- **Site public** : `https://sogasenegal.com`
-- **Interface admin** : `https://sogasenegal.com/admin`
+- **Site public** : `https://sogasenegal.com` (déjà déployé)
+- **Interface admin** : `https://sogasenegal.com/admin` (à ajouter)
 - **Backend API** : `https://api.sogasenegal.com` (à déployer séparément)
 
-## Déploiement sur Vercel
+## Mise à jour du déploiement existant
 
-### 1. Déployer le site principal
+Le site public Next.js est déjà déployé sur Vercel. Pour ajouter l'interface admin sur le chemin `/admin` :
+
+### 1. Mettre à jour le projet Vercel existant
 
 1. Connectez-vous à [Vercel](https://vercel.com)
-2. Cliquez sur "Add New Project"
-3. Importez le repo GitHub : `IbrahimaISIDev/SOGA-PROJECT`
-4. Configurez le projet :
-   - **Framework Preset**: Next.js
-   - **Root Directory**: `/` (ou `/frontend`)
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `.next`
-5. Ajoutez les variables d'environnement :
-   - `RESEND_API_KEY`: Votre clé API Resend
-   - `RESEND_FROM_EMAIL`: Adresse d'expédition email
-   - `CONTACT_EMAIL_TO`: Adresse de réception des emails
-6. Cliquez sur "Deploy"
+2. Ouvrez le projet SOGA-PROJECT existant
+3. Les fichiers de configuration sont déjà ajoutés :
+   - `vercel.json` : Redirige `/admin` vers le dossier admin
+   - `admin/vite.config.ts` : Configure le base path `/admin/`
+4. Vercel déploiera automatiquement les changements au prochain push
 
-### 2. Configuration de l'interface admin
+### 2. Variables d'environnement pour l'admin
 
-L'interface admin est déjà configurée pour être servie sur le chemin `/admin` grâce au fichier `vercel.json`.
+Ajoutez la variable d'environnement dans les settings Vercel du projet existant :
 
-Les fichiers de configuration incluent :
-- `vercel.json` : Redirige les requêtes `/admin` vers le dossier admin
-- `admin/vite.config.ts` : Configure le base path `/admin/` pour Vite
+- `VITE_API_URL`: URL du backend API en production (ex: `https://api.sogasenegal.com/api`)
 
-### 3. Variables d'environnement pour l'admin
-
-Dans le dossier `admin`, créez un fichier `.env.production` :
+Ou créez un fichier `admin/.env.production` :
 
 ```env
 VITE_API_URL=https://api.sogasenegal.com/api
 ```
 
-Ou ajoutez cette variable dans les settings Vercel du projet.
-
-### 4. Déploiement du backend API
+### 3. Déploiement du backend API
 
 Le backend doit être déployé séparément sur un service comme Railway, Render ou Heroku.
 
