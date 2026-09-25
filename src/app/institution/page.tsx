@@ -4,7 +4,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { CardMembre } from "@/components/ui/Card";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 import { getEquipe } from "@/lib/api/equipe";
 
 export const metadata = {
@@ -12,6 +12,7 @@ export const metadata = {
 };
 
 export default async function InstitutionPage() {
+  const institution = await getInstitution();
   const equipeAll = await getEquipe();
   const equipeReelle = equipeAll.filter((m) => m.nom !== "Contenu provisoire");
 

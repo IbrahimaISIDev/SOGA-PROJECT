@@ -5,14 +5,18 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
-export const metadata: Metadata = {
-  title: "Vision & Mission — SOGA",
-  description: institution.vision,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const institution = await getInstitution();
+  return {
+    title: "Vision & Mission — SOGA",
+    description: institution.vision,
+  };
+}
 
-export default function VisionMissionPage() {
+export default async function VisionMissionPage() {
+  const institution = await getInstitution();
   return (
     <>
       <Header />

@@ -5,15 +5,18 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
-export const metadata: Metadata = {
-  title: `Mot de la Fondatrice — SOGA`,
-  description: `${institution.fondatrice.nom}, ${institution.fondatrice.titre} de la Senegal Oil and Gas Academy.`,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const institution = await getInstitution();
+  return {
+    title: `Mot de la Fondatrice — SOGA`,
+    description: `${institution.fondatrice.nom}, ${institution.fondatrice.titre} de la Senegal Oil and Gas Academy.`,
+  };
+}
 
-export default function FondatricePage() {
-  const { fondatrice } = institution;
+export default async function FondatricePage() {
+  const { fondatrice } = await getInstitution();
 
   return (
     <>

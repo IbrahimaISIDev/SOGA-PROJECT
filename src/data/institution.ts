@@ -1,4 +1,4 @@
-import { readCollection, readDoc } from "@/lib/content";
+import { readDoc } from "@/lib/content";
 
 export interface MembreEquipe {
   id: string;
@@ -12,7 +12,7 @@ export interface MembreEquipe {
   portrait: string | null;
 }
 
-interface InstitutionDoc {
+export interface InstitutionDoc {
   nom: string;
   sigle: string;
   tagline: string;
@@ -69,10 +69,11 @@ interface InstitutionDoc {
   };
 }
 
-const institutionDoc = readDoc<InstitutionDoc>("institution", "institution");
-const equipe = readCollection<MembreEquipe>("equipe");
-
-export const institution = {
-  ...institutionDoc,
-  equipe,
-};
+/**
+ * Static fallback only — pages should read institution data via
+ * getInstitution() in @/lib/api/institution, which fetches the backend API
+ * (falling back to this static doc if it's unreachable). Kept here, not
+ * exported alongside the type, so nothing accidentally imports the stale
+ * synchronous version.
+ */
+export const staticInstitutionDoc = readDoc<InstitutionDoc>("institution", "institution");

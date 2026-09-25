@@ -10,7 +10,7 @@ import SemesterTimeline, { SemesterList } from "@/components/formations/Semester
 import { getFormations } from "@/lib/api/formations";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
 export async function generateStaticParams() {
   const formations = await getFormations();
@@ -44,6 +44,7 @@ export default async function FicheFormation({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const institution = await getInstitution();
   const formations = await getFormations();
   const formation = formations.find((f) => f.slug === slug);
   if (!formation) notFound();

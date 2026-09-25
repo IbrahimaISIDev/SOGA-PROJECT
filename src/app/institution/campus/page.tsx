@@ -5,12 +5,15 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
-export const metadata: Metadata = {
-  title: "Campus — SOGA",
-  description: institution.campus.description,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const institution = await getInstitution();
+  return {
+    title: "Campus — SOGA",
+    description: institution.campus.description,
+  };
+}
 
 const GALERIE_PHOTOS = [
   { src: "/media/terrain-02-derrick.jpg", alt: "Étudiants SOGA devant un appareil de forage lors d'une visite de site" },
@@ -23,8 +26,8 @@ const GALERIE_PHOTOS = [
   { src: "/media/formations/bts-hygiene-securite-environnement.jpg", alt: "Étudiants en formation sécurité sur site" },
 ];
 
-export default function CampusPage() {
-  const { campus, campuses } = institution;
+export default async function CampusPage() {
+  const { campus, campuses } = await getInstitution();
 
   return (
     <>

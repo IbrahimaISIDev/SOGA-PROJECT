@@ -6,7 +6,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import ThemeScript from "@/components/layout/ThemeScript";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
 const sourceSerif = Source_Serif_4({
   variable: "--font-source-serif",
@@ -52,28 +52,29 @@ export const viewport: Viewport = {
   ],
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  name: institution.nom,
-  alternateName: institution.sigle,
-  description: institution.vision,
-  url: SITE_URL,
-  email: institution.email,
-  telephone: institution.telephone,
-  address: institution.campuses.map((c) => ({
-    "@type": "PostalAddress",
-    addressLocality: c.ville,
-    streetAddress: c.adresse,
-    addressCountry: "SN",
-  })),
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const institution = await getInstitution();
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: institution.nom,
+    alternateName: institution.sigle,
+    description: institution.vision,
+    url: SITE_URL,
+    email: institution.email,
+    telephone: institution.telephone,
+    address: institution.campuses.map((c) => ({
+      "@type": "PostalAddress",
+      addressLocality: c.ville,
+      streetAddress: c.adresse,
+      addressCountry: "SN",
+    })),
+  };
+
   return (
     <html
       lang="fr"

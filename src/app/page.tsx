@@ -6,7 +6,7 @@ import HeroSection from "@/components/home/HeroSection";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { getFormations } from "@/lib/api/formations";
 import { getArticles, getEvenements } from "@/lib/api/actualites";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 import { getPublications } from "@/lib/api/thinktank";
 
 const HOME_STATS = [
@@ -102,6 +102,7 @@ function getLevelBadgeLabel(niveau: string) {
 }
 
 export default async function HomePage() {
+  const institution = await getInstitution();
   const formations = await getFormations();
   const formationsPhares = FORMATIONS_PHARES_SLUGS.map(
     (slug) => formations.find((f) => f.slug === slug)!

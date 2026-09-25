@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
+import type { InstitutionDoc } from "@/data/institution";
 
 export const metadata: Metadata = {
   title: "Mentions légales — SOGA",
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
     "Mentions légales, politique de confidentialité et cookies de la Senegal Oil and Gas Academy.",
 };
 
-const SECTIONS = [
+function getSections(institution: InstitutionDoc) {
+  return [
   {
     id: "editeur",
     titre: "Éditeur du site",
@@ -113,9 +115,12 @@ const SECTIONS = [
       </>,
     ],
   },
-];
+  ];
+}
 
-export default function MentionsLegalesPage() {
+export default async function MentionsLegalesPage() {
+  const institution = await getInstitution();
+  const SECTIONS = getSections(institution);
   return (
     <>
       <Header />

@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 import { getEquipe } from "@/lib/api/equipe";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function EquipePage() {
-  const { organigramme, fondatrice } = institution;
+  const { organigramme, fondatrice } = await getInstitution();
   const equipeAll = await getEquipe();
   const equipe = equipeAll.filter((m) => m.nom !== "Contenu provisoire");
 

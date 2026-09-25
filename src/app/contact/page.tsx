@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import ScrollReveal from "@/components/home/ScrollReveal";
 import ContactForm from "@/components/contact/ContactForm";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
 export const metadata: Metadata = {
   title: "Contact — SOGA",
@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     "Contactez la Senegal Oil and Gas Academy : admissions, partenariats, presse ou toute autre demande.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const institution = await getInstitution();
   return (
     <>
       <Header />

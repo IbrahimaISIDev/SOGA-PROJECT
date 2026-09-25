@@ -12,7 +12,7 @@ import { getPublications } from "@/lib/api/thinktank";
 import ReadingProgress from "@/components/ui/ReadingProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
 const TT_GREEN = "#1E6F5C";
 const TT_GREEN_LIGHT = "#3ea08a";
@@ -45,6 +45,7 @@ export default async function FichePublication({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const institution = await getInstitution();
   const publications = await getPublications();
   const pub = publications.find((p) => p.slug === slug);
   if (!pub) notFound();

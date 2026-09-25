@@ -10,7 +10,7 @@ import { getArticles } from "@/lib/api/actualites";
 import ReadingProgress from "@/components/ui/ReadingProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
-import { institution } from "@/data/institution";
+import { getInstitution } from "@/lib/api/institution";
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -38,6 +38,7 @@ export default async function ArticleDetail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const institution = await getInstitution();
   const articles = await getArticles();
   const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
