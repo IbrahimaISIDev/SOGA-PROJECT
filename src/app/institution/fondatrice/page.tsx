@@ -10,7 +10,7 @@ import { getInstitution } from "@/lib/api/institution";
 export async function generateMetadata(): Promise<Metadata> {
   const institution = await getInstitution();
   return {
-    title: `Mot de la Fondatrice — SOGA`,
+    title: `Mot de la Fondatrice`,
     description: `${institution.fondatrice.nom}, ${institution.fondatrice.titre} de la Senegal Oil and Gas Academy.`,
   };
 }

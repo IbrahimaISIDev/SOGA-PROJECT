@@ -21,7 +21,7 @@ export async function generateMetadata({
   const ev = evenements.find((e) => e.slug === slug);
   if (!ev) return {};
   return {
-    title: `${ev.titre} — SOGA`,
+    title: ev.titre,
     description: ev.description,
   };
 }

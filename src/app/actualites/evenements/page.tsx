@@ -6,7 +6,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import { getEvenements } from "@/lib/api/actualites";
 
 export const metadata: Metadata = {
-  title: "Agenda des événements — SOGA",
+  title: "Agenda des événements",
   description:
     "Retrouvez tous les événements à venir de la Senegal Oil and Gas Academy : journées portes ouvertes, conférences, cérémonies.",
 };

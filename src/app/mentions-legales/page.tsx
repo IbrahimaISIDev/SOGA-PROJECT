@@ -6,7 +6,7 @@ import { getInstitution } from "@/lib/api/institution";
 import type { InstitutionDoc } from "@/data/institution";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — SOGA",
+  title: "Mentions légales",
   description:
     "Mentions légales, politique de confidentialité et cookies de la Senegal Oil and Gas Academy.",
 };

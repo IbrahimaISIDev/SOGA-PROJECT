@@ -7,7 +7,7 @@ import ContactForm from "@/components/contact/ContactForm";
 import { getInstitution } from "@/lib/api/institution";
 
 export const metadata: Metadata = {
-  title: "Contact — SOGA",
+  title: "Contact",
   description:
     "Contactez la Senegal Oil and Gas Academy : admissions, partenariats, presse ou toute autre demande.",
 };

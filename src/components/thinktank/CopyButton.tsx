@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
+import { TT_GREEN, TT_GREEN_LIGHT } from "./theme";
 
 export default function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);

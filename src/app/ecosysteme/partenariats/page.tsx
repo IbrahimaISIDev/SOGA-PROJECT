@@ -9,7 +9,7 @@ import { categoriesPartenaires } from "@/data/ecosysteme";
 import { getPartenaires } from "@/lib/api/ecosysteme";
 
 export const metadata: Metadata = {
-  title: "Partenariats stratégiques — SOGA",
+  title: "Partenariats stratégiques",
   description:
     "Les partenaires institutionnels, industriels et académiques de la Senegal Oil and Gas Academy.",
 };

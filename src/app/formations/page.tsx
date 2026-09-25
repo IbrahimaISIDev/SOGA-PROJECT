@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import CatalogueFilter from "@/components/formations/CatalogueFilter";
 import { getFormations } from "@/lib/api/formations";
+
+export const metadata: Metadata = {
+  title: "Catalogue des formations",
+  description:
+    "Filières techniques et managériales de la Senegal Oil and Gas Academy, du Technicien Spécialisé au Master.",
+};
 
 export default async function CatalogueFormations() {
   const formations = await getFormations();

@@ -1,11 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
-const TT_BG_CARD = "#16181C";
-const TT_BORDER = "#2a2d33";
+import { TT_GREEN, TT_GREEN_LIGHT, TT_BG as TT_BG_CARD, TT_BORDER } from "./theme";
 
 interface PublicationSidebarProps {
   auteurs: string[];

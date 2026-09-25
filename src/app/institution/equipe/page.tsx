@@ -10,7 +10,7 @@ import { getInstitution } from "@/lib/api/institution";
 import { getEquipe } from "@/lib/api/equipe";
 
 export const metadata: Metadata = {
-  title: "Gouvernance & Équipe — SOGA",
+  title: "Gouvernance & Équipe",
   description:
     "Découvrez l'équipe dirigeante et les membres de la Senegal Oil and Gas Academy.",
 };

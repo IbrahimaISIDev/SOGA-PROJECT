@@ -24,7 +24,7 @@ export async function generateMetadata({
   const membre = equipeReelle.find((m) => m.slug === id);
   if (!membre) return {};
   return {
-    title: `${membre.nom} — Équipe SOGA`,
+    title: `${membre.nom} — Équipe`,
     description: `${membre.titre} — ${membre.specialite}`,
   };
 }

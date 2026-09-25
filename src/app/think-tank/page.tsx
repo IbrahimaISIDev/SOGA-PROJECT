@@ -4,14 +4,13 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 import { thematiques } from "@/data/thinktank";
 import { getPublications, getExperts } from "@/lib/api/thinktank";
+import { TT_GREEN } from "@/components/thinktank/theme";
 import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Think Tank SOGA",
+  title: "Think Tank",
 };
-
-const TT_GREEN = "#1E6F5C";
 
 export default async function ThinkTankPage() {
   const publications = await getPublications();

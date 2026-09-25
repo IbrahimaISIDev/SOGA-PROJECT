@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
@@ -5,9 +6,13 @@ import { StratigraphicSeparator } from "@/components/signature/StratigraphicColu
 import PublicationsFilter from "@/components/thinktank/PublicationsFilter";
 import { thematiques } from "@/data/thinktank";
 import { getPublications } from "@/lib/api/thinktank";
+import { TT_GREEN, TT_GREEN_LIGHT } from "@/components/thinktank/theme";
 
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
+export const metadata: Metadata = {
+  title: "Publications & Policy Briefs — Think Tank",
+  description:
+    "Analyses, rapports de fond et notes de politique publique du Think Tank de la Senegal Oil and Gas Academy.",
+};
 
 export default async function PublicationsPage() {
   const publications = await getPublications();

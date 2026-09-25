@@ -3,9 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Publication } from "@/data/thinktank";
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
+import { TT_GREEN, TT_GREEN_LIGHT } from "./theme";
 
 export default function PublicationsFilter({
   publications,

@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 
 export const metadata: Metadata = {
-  title: "Entreprises & recrutement — SOGA",
+  title: "Entreprises & recrutement",
   description:
     "Déposez une offre de stage ou d'emploi, ou recrutez directement les diplômés de la Senegal Oil and Gas Academy.",
 };

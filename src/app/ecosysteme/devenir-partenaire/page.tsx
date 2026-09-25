@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import DevenirPartenaireForm from "@/components/ecosysteme/DevenirPartenaireForm";
 
 export const metadata: Metadata = {
-  title: "Devenir partenaire — SOGA",
+  title: "Devenir partenaire",
   description:
     "Ministères, universités, entreprises, ONG — soumettez votre demande de partenariat avec la Senegal Oil and Gas Academy.",
 };

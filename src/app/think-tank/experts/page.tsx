@@ -3,17 +3,13 @@ import Image from "next/image";
 import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
 import { getExperts } from "@/lib/api/thinktank";
+import { TT_GREEN, TT_GREEN_LIGHT, TT_BG as TT_BG_CARD, TT_BORDER } from "@/components/thinktank/theme";
 
 export const metadata: Metadata = {
-  title: "Nos Experts — SOGA Think Tank",
+  title: "Nos Experts — Think Tank",
   description:
     "Les chercheurs et experts du Think Tank de la Senegal Oil and Gas Academy.",
 };
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
-const TT_BG_CARD = "#16181C";
-const TT_BORDER = "#2a2d33";
 
 export default async function ExpertsPage() {
   const experts = await getExperts();

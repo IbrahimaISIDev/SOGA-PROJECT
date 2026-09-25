@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
+import { TT_GREEN, TT_GREEN_LIGHT } from "./theme";
 
 const ttNav = [
   { label: "Publications", href: "/think-tank/publications" },

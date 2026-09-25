@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Espace Alumni — SOGA",
+  title: "Espace Alumni",
   description:
     "L'espace alumni SOGA — réseau des diplômés, prochainement disponible.",
 };

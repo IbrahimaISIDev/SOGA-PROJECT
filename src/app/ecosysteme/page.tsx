@@ -9,7 +9,7 @@ import { StratigraphicSeparator } from "@/components/signature/StratigraphicColu
 import { getPartenaires, getTemoignages } from "@/lib/api/ecosysteme";
 
 export const metadata: Metadata = {
-  title: "Écosystème SOGA",
+  title: "Écosystème",
   description:
     "Partenaires institutionnels, industriels, alumni et opportunités de recrutement de la Senegal Oil and Gas Academy.",
 };

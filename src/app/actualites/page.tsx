@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
@@ -8,6 +9,12 @@ import ArticlesFilter from "@/components/actualites/ArticlesFilter";
 import { categories } from "@/data/actualites";
 import { getArticles, getEvenements } from "@/lib/api/actualites";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Actualités & Communiqués",
+  description:
+    "Toutes les actualités de la Senegal Oil and Gas Academy : événements, partenariats, vie du campus et actualités institutionnelles.",
+};
 
 export default async function ActualitesPage() {
   const articles = await getArticles();

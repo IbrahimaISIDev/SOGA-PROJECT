@@ -13,11 +13,7 @@ import ReadingProgress from "@/components/ui/ReadingProgress";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/site";
 import { getInstitution } from "@/lib/api/institution";
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
-const TT_BG_CARD = "#16181C";
-const TT_BORDER = "#2a2d33";
+import { TT_GREEN, TT_GREEN_LIGHT, TT_BG as TT_BG_CARD, TT_BORDER } from "@/components/thinktank/theme";
 
 export async function generateStaticParams() {
   const publications = await getPublications();
@@ -34,7 +30,7 @@ export async function generateMetadata({
   const pub = publications.find((p) => p.slug === slug);
   if (!pub) return {};
   return {
-    title: `${pub.titre} — Think Tank SOGA`,
+    title: `${pub.titre} — Think Tank`,
     description: pub.resume,
   };
 }

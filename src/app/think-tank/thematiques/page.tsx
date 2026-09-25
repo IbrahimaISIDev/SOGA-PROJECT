@@ -3,17 +3,13 @@ import Link from "next/link";
 import ThinkTankHeader from "@/components/thinktank/ThinkTankHeader";
 import Footer from "@/components/layout/Footer";
 import { getThematiquesListe, getPublications } from "@/lib/api/thinktank";
+import { TT_GREEN, TT_GREEN_LIGHT, TT_BG, TT_BORDER } from "@/components/thinktank/theme";
 
 export const metadata: Metadata = {
-  title: "Thématiques de Recherche — SOGA Think Tank",
+  title: "Thématiques de Recherche — Think Tank",
   description:
     "Les axes de recherche du Think Tank SOGA : gouvernance, transition énergétique, contenu local et leadership.",
 };
-
-const TT_GREEN = "#1E6F5C";
-const TT_GREEN_LIGHT = "#3ea08a";
-const TT_BG = "#16181C";
-const TT_BORDER = "#2a2d33";
 
 export default async function ThematiquesPage() {
   const thematiquesListe = await getThematiquesListe();

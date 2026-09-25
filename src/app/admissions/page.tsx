@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/home/ScrollReveal";
 import { StratigraphicSeparator } from "@/components/signature/StratigraphicColumn";
 
 export const metadata: Metadata = {
-  title: "Admissions — SOGA",
+  title: "Admissions",
   description:
     "Processus et conditions d'admission à la Senegal Oil and Gas Academy. Quatre étapes, du dépôt de dossier à l'intégration.",
 };

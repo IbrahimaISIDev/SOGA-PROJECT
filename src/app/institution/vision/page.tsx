@@ -10,7 +10,7 @@ import { getInstitution } from "@/lib/api/institution";
 export async function generateMetadata(): Promise<Metadata> {
   const institution = await getInstitution();
   return {
-    title: "Vision & Mission — SOGA",
+    title: "Vision & Mission",
     description: institution.vision,
   };
 }
